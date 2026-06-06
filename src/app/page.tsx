@@ -5,18 +5,19 @@ import SiteInteractions from "@/components/SiteInteractions";
 import CursorLoader from "@/components/legacy/CursorLoader";
 import Navbar from "@/components/legacy/Navbar";
 import Hero from "@/components/legacy/Hero";
+import About from "@/components/legacy/About";
 
-function getLegacySectionsAfterHero() {
+function getLegacySectionsAfterAbout() {
     const filePath = path.join(process.cwd(), "src", "legacy", "index.html");
     const html = fs.readFileSync(filePath, "utf8");
 
     const bodyMatch = html.match(/<body[^>]*>([\s\S]*?)<\/body>/i);
     const bodyHtml = bodyMatch?.[1] ?? "";
 
-    const aboutStartIndex = bodyHtml.indexOf("<!-- ABOUT -->");
+    const servicesStartIndex = bodyHtml.indexOf("<!-- SERVICES -->");
 
     const remainingHtml =
-        aboutStartIndex >= 0 ? bodyHtml.slice(aboutStartIndex) : "";
+        servicesStartIndex >= 0 ? bodyHtml.slice(servicesStartIndex) : "";
 
     return remainingHtml
         .replace(
@@ -31,16 +32,17 @@ function getLegacySectionsAfterHero() {
 }
 
 export default function Home() {
-    const legacySectionsAfterHero = getLegacySectionsAfterHero();
+    const legacySectionsAfterAbout = getLegacySectionsAfterAbout();
 
     return (
         <>
             <CursorLoader />
             <Navbar />
             <Hero />
+            <About />
 
             <div
-                dangerouslySetInnerHTML={{ __html: legacySectionsAfterHero }}
+                dangerouslySetInnerHTML={{ __html: legacySectionsAfterAbout }}
             />
 
             <SiteInteractions />
