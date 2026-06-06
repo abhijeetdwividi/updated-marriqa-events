@@ -8,20 +8,19 @@ import Hero from "@/components/legacy/Hero";
 import About from "@/components/legacy/About";
 import Services from "@/components/legacy/Services";
 import Gallery from "@/components/legacy/Gallery";
+import Testimonials from "@/components/legacy/Testimonials";
 
-function getLegacySectionsAfterGallery() {
+function getLegacySectionsAfterTestimonials() {
     const filePath = path.join(process.cwd(), "src", "legacy", "index.html");
     const html = fs.readFileSync(filePath, "utf8");
 
     const bodyMatch = html.match(/<body[^>]*>([\s\S]*?)<\/body>/i);
     const bodyHtml = bodyMatch?.[1] ?? "";
 
-    const testimonialsStartIndex = bodyHtml.indexOf("<!-- TESTIMONIALS -->");
+    const bookingStartIndex = bodyHtml.indexOf("<!-- BOOKING FORM -->");
 
     const remainingHtml =
-        testimonialsStartIndex >= 0
-            ? bodyHtml.slice(testimonialsStartIndex)
-            : "";
+        bookingStartIndex >= 0 ? bodyHtml.slice(bookingStartIndex) : "";
 
     return remainingHtml
         .replace(
@@ -36,7 +35,8 @@ function getLegacySectionsAfterGallery() {
 }
 
 export default function Home() {
-    const legacySectionsAfterGallery = getLegacySectionsAfterGallery();
+    const legacySectionsAfterTestimonials =
+        getLegacySectionsAfterTestimonials();
 
     return (
         <>
@@ -46,9 +46,12 @@ export default function Home() {
             <About />
             <Services />
             <Gallery />
+            <Testimonials />
 
             <div
-                dangerouslySetInnerHTML={{ __html: legacySectionsAfterGallery }}
+                dangerouslySetInnerHTML={{
+                    __html: legacySectionsAfterTestimonials,
+                }}
             />
 
             <SiteInteractions />
