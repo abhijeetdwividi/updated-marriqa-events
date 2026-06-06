@@ -1524,3 +1524,346 @@ nav.scrolled .nav-cta {
 .nav-links a {
     line-height: 1 !important;
 }
+
+/* ── PACKAGES ── */
+#packages {
+    background:
+        radial-gradient(
+            circle at 20% 10%,
+            rgba(212, 175, 55, 0.08),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 80% 80%,
+            rgba(74, 20, 40, 0.22),
+            transparent 30%
+        ),
+        var(--black);
+    border-top: 1px solid rgba(212, 175, 55, 0.08);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.08);
+}
+
+.packages-header {
+    max-width: 1300px;
+    margin: 0 auto 4rem;
+}
+
+.packages-header p {
+    max-width: 680px;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.9;
+    font-weight: 300;
+}
+
+.packages-grid {
+    max-width: 1300px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.2rem;
+}
+
+.package-card {
+    position: relative;
+    overflow: hidden;
+    min-height: 560px;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.055),
+            rgba(255, 255, 255, 0.018)
+        ),
+        var(--charcoal);
+    border: 1px solid var(--glass-border);
+    padding: 2.2rem;
+    display: flex;
+    flex-direction: column;
+    transition:
+        transform 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+        border-color 0.45s ease,
+        background 0.45s ease;
+}
+
+.package-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        120deg,
+        transparent 0%,
+        rgba(212, 175, 55, 0.08) 50%,
+        transparent 100%
+    );
+    transform: translateX(-120%);
+    transition: transform 0.8s ease;
+    pointer-events: none;
+}
+
+.package-card::after {
+    content: "";
+    position: absolute;
+    top: -80px;
+    right: -80px;
+    width: 170px;
+    height: 170px;
+    border: 1px solid rgba(212, 175, 55, 0.18);
+    border-radius: 50%;
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.package-card:hover {
+    transform: translateY(-10px);
+    border-color: rgba(212, 175, 55, 0.45);
+    background:
+        linear-gradient(
+            145deg,
+            rgba(212, 175, 55, 0.08),
+            rgba(255, 255, 255, 0.02)
+        ),
+        var(--charcoal);
+}
+
+.package-card:hover::before {
+    transform: translateX(120%);
+}
+
+.package-tag {
+    width: fit-content;
+    border: 1px solid rgba(212, 175, 55, 0.28);
+    color: var(--gold);
+    background: rgba(212, 175, 55, 0.08);
+    padding: 0.45rem 0.75rem;
+    font-size: 0.58rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+}
+
+.package-card h3 {
+    font-family: "Cormorant Garamond", serif;
+    color: var(--white);
+    font-size: clamp(1.7rem, 3vw, 2.3rem);
+    font-weight: 300;
+    line-height: 1.1;
+    margin-bottom: 0.8rem;
+}
+
+.package-price {
+    color: var(--gold);
+    font-size: 0.78rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 1.4rem;
+}
+
+.package-desc {
+    color: var(--text-secondary);
+    font-size: 0.84rem;
+    line-height: 1.85;
+    font-weight: 300;
+    margin-bottom: 1.6rem;
+}
+
+.package-line {
+    width: 45px;
+    height: 1px;
+    background: var(--gold);
+    margin-bottom: 1.6rem;
+    transition: width 0.45s ease;
+}
+
+.package-card:hover .package-line {
+    width: 85px;
+}
+
+.package-card ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.85rem;
+}
+
+.package-card li {
+    position: relative;
+    color: var(--beige-dim);
+    font-size: 0.76rem;
+    line-height: 1.5;
+    padding-left: 1.25rem;
+    letter-spacing: 0.04em;
+}
+
+.package-card li::before {
+    content: "✦";
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--gold);
+    font-size: 0.65rem;
+}
+
+.package-btn {
+    margin-top: auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-size: 0.65rem;
+    padding: 0.8rem 1.25rem;
+    transition: all 0.35s ease;
+}
+
+.package-btn:hover {
+    background: var(--gold);
+    color: var(--black);
+}
+
+@media (max-width: 1100px) {
+    .packages-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 700px) {
+    .packages-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .package-card {
+        min-height: auto;
+        padding: 1.8rem;
+    }
+}
+/* ── PACKAGES + MOBILE RESPONSIVE PATCH ── */
+
+/* Fixed navbar anchor scroll improvement */
+section {
+    scroll-margin-top: 92px;
+}
+
+/* Give package CTA breathing space */
+.package-card ul {
+    margin-bottom: 2rem;
+}
+
+.package-btn {
+    margin-top: auto;
+}
+
+/* Tablet packages */
+@media (max-width: 1100px) {
+    .packages-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .package-card {
+        min-height: 560px;
+    }
+}
+
+/* Mobile navbar + packages fix */
+@media (max-width: 700px) {
+    nav {
+        padding: 1rem 5% !important;
+    }
+
+    nav.scrolled {
+        padding: 0.85rem 5% !important;
+    }
+
+    .nav-links,
+    .nav-cta {
+        display: none !important;
+    }
+
+    .hamburger {
+        display: flex !important;
+    }
+
+    .nav-logo {
+        font-size: 1.08rem !important;
+        letter-spacing: 0.18em !important;
+        line-height: 1.2 !important;
+        max-width: 72%;
+    }
+
+    .mobile-menu a:not(.btn-primary) {
+        font-size: 1.7rem !important;
+    }
+
+    .mobile-menu .btn-primary {
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        font-family: "Poppins", sans-serif !important;
+        font-size: 0.68rem !important;
+        letter-spacing: 0.18em !important;
+        line-height: 1 !important;
+        padding: 0.95rem 1.35rem !important;
+        color: var(--black) !important;
+        background: var(--gold) !important;
+        border: none !important;
+        width: auto !important;
+        min-height: 44px !important;
+    }
+
+    #packages {
+        padding: 5rem 5%;
+    }
+
+    .packages-header {
+        margin-bottom: 2.5rem;
+    }
+
+    .packages-header p {
+        font-size: 0.82rem;
+        line-height: 1.75;
+    }
+
+    .packages-grid {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+    }
+
+    .package-card {
+        min-height: auto;
+        padding: 1.65rem;
+    }
+
+    .package-card h3 {
+        font-size: 1.8rem;
+    }
+
+    .package-desc {
+        font-size: 0.8rem;
+    }
+
+    .package-card ul {
+        margin-bottom: 1.7rem;
+    }
+
+    .package-btn {
+        margin-top: 0;
+        width: 100%;
+        min-height: 44px;
+        padding: 0.8rem 1rem;
+    }
+}
+
+@media (max-width: 420px) {
+    .nav-logo {
+        font-size: 0.98rem !important;
+        letter-spacing: 0.15em !important;
+    }
+
+    .mobile-menu {
+        gap: 2rem;
+    }
+}
