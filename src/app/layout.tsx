@@ -1,7 +1,8 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
+    metadataBase: new URL("https://marriqaevents.com"),
     title: "Luxury Wedding Planner in Delhi NCR | Marriqa Events",
     description:
         "Marriqa Events is a luxury wedding planner and premium event management company in Delhi NCR, Rajasthan & Uttarakhand. We create destination weddings, luxury decor, engagement ceremonies, birthday galas & unforgettable celebrations across India.",
@@ -15,10 +16,12 @@ export const metadata: Metadata = {
         "wedding decorator India",
     ],
     authors: [{ name: "Marriqa Events" }],
-    robots: "index, follow",
-    themeColor: "#0b0b0b",
+    robots: {
+        index: true,
+        follow: true,
+    },
     alternates: {
-        canonical: "https://marriqaevents.com/",
+        canonical: "/",
     },
     icons: {
         icon: "/images/logonew.jpeg",
@@ -28,8 +31,16 @@ export const metadata: Metadata = {
         description:
             "Luxury weddings, premium decor, destination celebrations & unforgettable experiences across Delhi NCR, Rajasthan & Uttarakhand.",
         type: "website",
-        url: "https://marriqaevents.com/",
-        images: ["/images/logonew.jpeg"],
+        url: "/",
+        siteName: "Marriqa Events",
+        images: [
+            {
+                url: "/images/logonew.jpeg",
+                width: 1200,
+                height: 1200,
+                alt: "Marriqa Events Logo",
+            },
+        ],
     },
     twitter: {
         card: "summary_large_image",
@@ -38,6 +49,12 @@ export const metadata: Metadata = {
             "Luxury weddings, destination events & premium decor company in India.",
         images: ["/images/logonew.jpeg"],
     },
+};
+
+export const viewport: Viewport = {
+    width: "device-width",
+    initialScale: 1,
+    themeColor: "#0b0b0b",
 };
 
 export default function RootLayout({
