@@ -7,18 +7,21 @@ import Navbar from "@/components/legacy/Navbar";
 import Hero from "@/components/legacy/Hero";
 import About from "@/components/legacy/About";
 import Services from "@/components/legacy/Services";
+import Gallery from "@/components/legacy/Gallery";
 
-function getLegacySectionsAfterServices() {
+function getLegacySectionsAfterGallery() {
     const filePath = path.join(process.cwd(), "src", "legacy", "index.html");
     const html = fs.readFileSync(filePath, "utf8");
 
     const bodyMatch = html.match(/<body[^>]*>([\s\S]*?)<\/body>/i);
     const bodyHtml = bodyMatch?.[1] ?? "";
 
-    const galleryStartIndex = bodyHtml.indexOf("<!-- GALLERY -->");
+    const testimonialsStartIndex = bodyHtml.indexOf("<!-- TESTIMONIALS -->");
 
     const remainingHtml =
-        galleryStartIndex >= 0 ? bodyHtml.slice(galleryStartIndex) : "";
+        testimonialsStartIndex >= 0
+            ? bodyHtml.slice(testimonialsStartIndex)
+            : "";
 
     return remainingHtml
         .replace(
@@ -33,7 +36,7 @@ function getLegacySectionsAfterServices() {
 }
 
 export default function Home() {
-    const legacySectionsAfterServices = getLegacySectionsAfterServices();
+    const legacySectionsAfterGallery = getLegacySectionsAfterGallery();
 
     return (
         <>
@@ -42,11 +45,10 @@ export default function Home() {
             <Hero />
             <About />
             <Services />
+            <Gallery />
 
             <div
-                dangerouslySetInnerHTML={{
-                    __html: legacySectionsAfterServices,
-                }}
+                dangerouslySetInnerHTML={{ __html: legacySectionsAfterGallery }}
             />
 
             <SiteInteractions />
