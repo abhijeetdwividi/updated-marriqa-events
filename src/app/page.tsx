@@ -6,6 +6,7 @@ import Hero from "@/components/legacy/Hero";
 import About from "@/components/legacy/About";
 import Services from "@/components/legacy/Services";
 import Packages from "@/components/legacy/Packages";
+import VenuePartners from "@/components/legacy/VenuePartners";
 import Gallery from "@/components/legacy/Gallery";
 import Testimonials from "@/components/legacy/Testimonials";
 import Contact from "@/components/legacy/Contact";
@@ -21,6 +22,7 @@ export default function Home() {
             <About />
             <Services />
             <Packages />
+            <VenuePartners />
             <Gallery />
             <Testimonials />
             <Contact />
