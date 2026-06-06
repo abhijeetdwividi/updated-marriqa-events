@@ -1,7 +1,5 @@
-import fs from "fs";
-import path from "path";
-
 import SiteInteractions from "@/components/SiteInteractions";
+
 import CursorLoader from "@/components/legacy/CursorLoader";
 import Navbar from "@/components/legacy/Navbar";
 import Hero from "@/components/legacy/Hero";
@@ -11,34 +9,9 @@ import Gallery from "@/components/legacy/Gallery";
 import Testimonials from "@/components/legacy/Testimonials";
 import Contact from "@/components/legacy/Contact";
 import Instagram from "@/components/legacy/Instagram";
-
-function getLegacySectionsAfterInstagram() {
-    const filePath = path.join(process.cwd(), "src", "legacy", "index.html");
-    const html = fs.readFileSync(filePath, "utf8");
-
-    const bodyMatch = html.match(/<body[^>]*>([\s\S]*?)<\/body>/i);
-    const bodyHtml = bodyMatch?.[1] ?? "";
-
-    const footerStartIndex = bodyHtml.indexOf("<!-- FOOTER -->");
-
-    const remainingHtml =
-        footerStartIndex >= 0 ? bodyHtml.slice(footerStartIndex) : "";
-
-    return remainingHtml
-        .replace(
-            /<script\b[^>]*src=["'](?:\.\/)?script\.js["'][^>]*>\s*<\/script>/gi,
-            "",
-        )
-        .replaceAll('src="./images/', 'src="/images/')
-        .replaceAll("src='./images/", "src='/images/")
-        .replaceAll('href="./images/', 'href="/images/')
-        .replaceAll("href='./images/", "href='/images/")
-        .replaceAll("url(./images/", "url(/images/");
-}
+import Footer from "@/components/legacy/Footer";
 
 export default function Home() {
-    const legacySectionsAfterInstagram = getLegacySectionsAfterInstagram();
-
     return (
         <>
             <CursorLoader />
@@ -50,12 +23,7 @@ export default function Home() {
             <Testimonials />
             <Contact />
             <Instagram />
-
-            <div
-                dangerouslySetInnerHTML={{
-                    __html: legacySectionsAfterInstagram,
-                }}
-            />
+            <Footer />
 
             <SiteInteractions />
         </>
