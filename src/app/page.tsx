@@ -10,18 +10,19 @@ import Services from "@/components/legacy/Services";
 import Gallery from "@/components/legacy/Gallery";
 import Testimonials from "@/components/legacy/Testimonials";
 import Contact from "@/components/legacy/Contact";
+import Instagram from "@/components/legacy/Instagram";
 
-function getLegacySectionsAfterContact() {
+function getLegacySectionsAfterInstagram() {
     const filePath = path.join(process.cwd(), "src", "legacy", "index.html");
     const html = fs.readFileSync(filePath, "utf8");
 
     const bodyMatch = html.match(/<body[^>]*>([\s\S]*?)<\/body>/i);
     const bodyHtml = bodyMatch?.[1] ?? "";
 
-    const instagramStartIndex = bodyHtml.indexOf("<!-- INSTAGRAM -->");
+    const footerStartIndex = bodyHtml.indexOf("<!-- FOOTER -->");
 
     const remainingHtml =
-        instagramStartIndex >= 0 ? bodyHtml.slice(instagramStartIndex) : "";
+        footerStartIndex >= 0 ? bodyHtml.slice(footerStartIndex) : "";
 
     return remainingHtml
         .replace(
@@ -36,7 +37,7 @@ function getLegacySectionsAfterContact() {
 }
 
 export default function Home() {
-    const legacySectionsAfterContact = getLegacySectionsAfterContact();
+    const legacySectionsAfterInstagram = getLegacySectionsAfterInstagram();
 
     return (
         <>
@@ -48,9 +49,12 @@ export default function Home() {
             <Gallery />
             <Testimonials />
             <Contact />
+            <Instagram />
 
             <div
-                dangerouslySetInnerHTML={{ __html: legacySectionsAfterContact }}
+                dangerouslySetInnerHTML={{
+                    __html: legacySectionsAfterInstagram,
+                }}
             />
 
             <SiteInteractions />
