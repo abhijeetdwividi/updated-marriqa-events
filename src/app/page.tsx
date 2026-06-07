@@ -9,9 +9,12 @@ import Packages from "@/components/legacy/Packages";
 import VenuePartners from "@/components/legacy/VenuePartners";
 import Gallery from "@/components/legacy/Gallery";
 import Testimonials from "@/components/legacy/Testimonials";
+import BlogSection from "@/components/legacy/BlogSection";
 import Contact from "@/components/legacy/Contact";
 import Instagram from "@/components/legacy/Instagram";
 import Footer from "@/components/legacy/Footer";
+
+export const dynamic = "force-dynamic";
 
 export default function Home() {
     return (
@@ -25,6 +28,7 @@ export default function Home() {
             <VenuePartners />
             <Gallery />
             <Testimonials />
+            <BlogSection />
             <Contact />
             <Instagram />
             <Footer />
