@@ -1,70 +1,32 @@
-const venuePartners = [
-    {
-        region: "Mussoorie",
-        title: "Baris Resort Mussoorie",
-        image: "https://images.unsplash.com/photo-1602002418082-a4443e081dd1?q=80&w=1600&auto=format&fit=crop",
-        description:
-            "A premium mountain resort option for intimate destination weddings, anniversary celebrations, and luxury family gatherings.",
-        features: [
-            "Hill views",
-            "Resort stay",
-            "Indoor + outdoor spaces",
-            "Destination weddings",
-        ],
-    },
-    {
-        region: "Jim Corbett",
-        title: "Baris Resort Jim Corbett",
-        image: "https://images.unsplash.com/photo-1582719508461-905c673771fd?q=80&w=1600&auto=format&fit=crop",
-        description:
-            "A scenic resort experience surrounded by nature, ideal for poolside haldi, sundowner events, and multi-day weddings.",
-        features: [
-            "Nature resort",
-            "Multiple functions",
-            "Room inventory",
-            "Wedding stays",
-        ],
-    },
-    {
-        region: "Jim Corbett",
-        title: "The Corbett Niskh Resort",
-        image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=1600&auto=format&fit=crop",
-        description:
-            "A destination-friendly resort option for families looking for rooms, lawns, food, decor, and complete wedding flow.",
-        features: ["Resort wedding", "Guest stay", "Lawns", "2-day events"],
-    },
-    {
-        region: "Jim Corbett",
-        title: "Machaan Corbett Resort",
-        image: "https://images.unsplash.com/photo-1540541338287-41700207dee6?q=80&w=1600&auto=format&fit=crop",
-        description:
-            "A premium Corbett resort suitable for destination wedding experiences, family stays, and nature-inspired celebrations.",
-        features: [
-            "Corbett venue",
-            "Wedding package",
-            "Outdoor events",
-            "Guest experience",
-        ],
-    },
-    {
-        region: "Varanasi",
-        title: "Ramada Plaza JHV Varanasi",
-        image: "https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?q=80&w=1600&auto=format&fit=crop",
-        description:
-            "A hotel venue option for elegant wedding functions, guest accommodation, and premium city wedding experiences.",
-        features: ["Hotel wedding", "Rooms", "Banquet", "City venue"],
-    },
-    {
-        region: "Delhi NCR",
-        title: "Noida Farmhouse Venues",
-        image: "https://images.unsplash.com/photo-1529290130-4ca3753253ae?q=80&w=1600&auto=format&fit=crop",
-        description:
-            "Curated farmhouse venues for engagements, haldi, mehendi, cocktail nights, birthdays, and intimate weddings.",
-        features: ["Noida", "Farmhouse", "Lawn events", "Budget options"],
-    },
-];
+import { createClient } from "@/lib/supabase/server";
 
-export default function VenuePartners() {
+type VenuePartner = {
+    id: string;
+    name: string;
+    slug: string;
+    region: string | null;
+    location: string | null;
+    image_url: string | null;
+    description: string | null;
+    features: string[] | null;
+};
+
+export default async function VenuePartners() {
+    const supabase = await createClient();
+
+    const { data: venues, error } = await supabase
+        .from("venue_partners")
+        .select(
+            "id, name, slug, region, location, image_url, description, features",
+        )
+        .eq("is_active", true)
+        .order("sort_order", { ascending: true })
+        .order("created_at", { ascending: false });
+
+    if (error || !venues || venues.length === 0) {
+        return null;
+    }
+
     return (
         <section id="venue-partners">
             <div className="venue-partners-inner">
@@ -86,38 +48,50 @@ export default function VenuePartners() {
                 </div>
 
                 <div className="venue-partners-grid venue-partners-grid-image">
-                    {venuePartners.map((venue, index) => (
+                    {(venues as VenuePartner[]).map((venue, index) => (
                         <div
                             className="venue-partner-card venue-partner-image-card reveal"
                             style={{
                                 transitionDelay: `${0.1 + index * 0.08}s`,
                             }}
-                            key={venue.title}
+                            key={venue.id}
                         >
                             <div className="venue-image-wrap">
-                                <img
-                                    src={venue.image}
-                                    alt={venue.title}
-                                    loading="lazy"
-                                />
+                                {venue.image_url ? (
+                                    <img
+                                        src={venue.image_url}
+                                        alt={venue.name}
+                                        loading="lazy"
+                                    />
+                                ) : (
+                                    <div className="venue-placeholder-image">
+                                        Marriqa Venue
+                                    </div>
+                                )}
 
                                 <div className="venue-image-overlay"></div>
 
                                 <span className="venue-region">
-                                    {venue.region}
+                                    {venue.region ||
+                                        venue.location ||
+                                        "Venue Partner"}
                                 </span>
                             </div>
 
                             <div className="venue-card-content">
-                                <h3>{venue.title}</h3>
+                                <h3>{venue.name}</h3>
 
-                                <p>{venue.description}</p>
+                                {venue.description ? (
+                                    <p>{venue.description}</p>
+                                ) : null}
 
-                                <div className="venue-feature-list">
-                                    {venue.features.map((feature) => (
-                                        <span key={feature}>{feature}</span>
-                                    ))}
-                                </div>
+                                {venue.features && venue.features.length > 0 ? (
+                                    <div className="venue-feature-list">
+                                        {venue.features.map((feature) => (
+                                            <span key={feature}>{feature}</span>
+                                        ))}
+                                    </div>
+                                ) : null}
 
                                 <a href="#contact" className="venue-card-btn">
                                     Enquire Venue
