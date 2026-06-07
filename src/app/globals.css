@@ -3859,3 +3859,127 @@ section {
 .admin-dashboard-card-disabled span {
     color: var(--text-muted);
 }
+
+/* ── TESTIMONIALS CMS / FRONTEND REFINEMENT ── */
+
+.admin-testimonial-rating {
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(212, 175, 55, 0.16),
+            transparent 55%
+        ),
+        rgba(255, 255, 255, 0.035);
+}
+
+.admin-testimonial-rating span {
+    color: var(--gold);
+    font-family: "Cormorant Garamond", serif;
+    font-size: 2rem;
+    letter-spacing: 0;
+}
+
+.dynamic-testi-card {
+    min-height: 310px;
+    display: flex;
+    flex-direction: column;
+}
+
+.testi-stars {
+    color: var(--gold);
+    font-size: 0.9rem;
+    letter-spacing: 0.22em;
+    margin-bottom: 1.2rem;
+}
+
+.dynamic-testi-card p {
+    flex: 1;
+}
+
+.testi-client {
+    margin-top: 1.5rem;
+    border-top: 1px solid rgba(212, 175, 55, 0.14);
+    padding-top: 1rem;
+}
+
+.testi-client h4 {
+    color: var(--white);
+    font-family: "Cormorant Garamond", serif;
+    font-size: 1.35rem;
+    font-weight: 300;
+    margin-bottom: 0.25rem;
+}
+
+.testi-client span {
+    color: var(--gold);
+    font-size: 0.56rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+/* ── TESTIMONIAL CAROUSEL HORIZONTAL FIX ── */
+
+#testimonials {
+    overflow: hidden !important;
+}
+
+.testi-carousel {
+    width: 100% !important;
+    overflow: hidden !important;
+    position: relative !important;
+}
+
+.testi-track,
+#testiTrack {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    align-items: stretch !important;
+    gap: 1.2rem !important;
+    width: max-content !important;
+    animation: testimonialScroll 42s linear infinite !important;
+    will-change: transform;
+}
+
+.testi-track:hover,
+#testiTrack:hover {
+    animation-play-state: paused !important;
+}
+
+.testi-card,
+.dynamic-testi-card {
+    flex: 0 0 420px !important;
+    width: 420px !important;
+    max-width: 420px !important;
+    min-height: 310px !important;
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+.dynamic-testi-card p {
+    flex: 1;
+}
+
+@keyframes testimonialScroll {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+@media (max-width: 700px) {
+    .testi-track,
+    #testiTrack {
+        gap: 1rem !important;
+        animation-duration: 34s !important;
+    }
+
+    .testi-card,
+    .dynamic-testi-card {
+        flex-basis: 82vw !important;
+        width: 82vw !important;
+        max-width: 82vw !important;
+    }
+}

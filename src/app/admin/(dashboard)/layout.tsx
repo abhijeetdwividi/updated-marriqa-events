@@ -48,7 +48,7 @@ export default async function AdminDashboardLayout({
                     <Link href="/admin/venues">Venue Partners</Link>
                     <Link href="/admin/packages">Packages</Link>
                     <Link href="/admin/gallery">Gallery</Link>
-                    <span>Testimonials</span>
+                    <Link href="/admin/testimonials">Testimonials</Link>
                 </div>
 
                 <AdminLogoutButton />

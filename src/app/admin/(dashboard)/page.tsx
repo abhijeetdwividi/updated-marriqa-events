@@ -33,8 +33,8 @@ const adminCards = [
         title: "Testimonials",
         description:
             "Add client reviews, event stories, star ratings, and display order.",
-        href: "",
-        status: "Coming Next",
+        href: "/admin/testimonials",
+        status: "Manage Testimonials",
     },
 ];
 
