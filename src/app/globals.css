@@ -3983,3 +3983,139 @@ section {
         max-width: 82vw !important;
     }
 }
+
+/* ── VENUE CARD IMAGE LEAK + TEXT JITTER FIX ── */
+
+.venue-partners-grid-image {
+    overflow: visible;
+}
+
+.venue-partner-image-card {
+    overflow: hidden !important;
+    isolation: isolate;
+    contain: paint;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+}
+
+.venue-partner-image-card .venue-image-wrap {
+    overflow: hidden !important;
+    isolation: isolate;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+}
+
+.venue-partner-image-card .venue-image-wrap img {
+    transform: scale(1.015) translateZ(0) !important;
+    backface-visibility: hidden;
+    will-change: transform;
+}
+
+.venue-partner-image-card:hover .venue-image-wrap img {
+    transform: scale(1.045) translateZ(0) !important;
+}
+
+/* Prevent text jitter while card/image is animating */
+.venue-partner-image-card .venue-card-content,
+.venue-partner-image-card .venue-card-content *,
+.venue-partner-image-card .venue-feature-list span,
+.venue-partner-image-card .venue-card-btn {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: geometricPrecision;
+}
+
+/* Reduce harsh card jump that causes layout jitter */
+.venue-partner-image-card:hover {
+    transform: translateY(-6px) translateZ(0) !important;
+}
+
+/* Prevent weird tap/click hover effect on mobile */
+@media (max-width: 900px) {
+    .venue-partner-image-card:hover {
+        transform: none !important;
+    }
+
+    .venue-partner-image-card:hover .venue-image-wrap img {
+        transform: scale(1.015) translateZ(0) !important;
+    }
+}
+
+/* ── FINAL VENUE CARD STABILITY FIX ── */
+/* Removes image leak, text glitter, click jitter, and heavy hover transforms */
+
+.venue-partner-image-card,
+.venue-partner-image-card:hover,
+.venue-partner-image-card:active,
+.venue-partner-image-card:focus,
+.venue-partner-image-card:focus-within {
+    transform: none !important;
+    overflow: hidden !important;
+    contain: paint !important;
+    isolation: isolate !important;
+    backface-visibility: visible !important;
+    box-shadow: 0 22px 60px rgba(0, 0, 0, 0.18) !important;
+}
+
+.venue-partner-image-card:hover {
+    border-color: rgba(212, 175, 55, 0.36) !important;
+    box-shadow: 0 24px 65px rgba(0, 0, 0, 0.24) !important;
+}
+
+/* Remove decorative pseudo layers that can create shimmer/glitter effect */
+.venue-partner-image-card::before,
+.venue-partner-image-card::after {
+    display: none !important;
+    content: none !important;
+}
+
+.venue-partner-image-card .venue-image-wrap {
+    overflow: hidden !important;
+    clip-path: inset(0) !important;
+    contain: paint !important;
+    isolation: isolate !important;
+    transform: none !important;
+    backface-visibility: visible !important;
+}
+
+.venue-partner-image-card .venue-image-wrap img,
+.venue-partner-image-card:hover .venue-image-wrap img,
+.venue-partner-image-card:active .venue-image-wrap img,
+.venue-partner-image-card:focus .venue-image-wrap img {
+    transform: none !important;
+    scale: 1 !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    will-change: auto !important;
+    backface-visibility: visible !important;
+    transition: filter 0.25s ease !important;
+    filter: brightness(0.82) saturate(0.88) contrast(1.02) !important;
+}
+
+.venue-partner-image-card:hover .venue-image-wrap img {
+    filter: brightness(0.9) saturate(0.92) contrast(1.03) !important;
+}
+
+/* Reset text rendering changes that can create glitter/jitter */
+.venue-partner-image-card .venue-card-content,
+.venue-partner-image-card .venue-card-content *,
+.venue-partner-image-card .venue-feature-list span,
+.venue-partner-image-card .venue-card-btn,
+.venue-location-line,
+.venue-region-pill,
+.venue-image-caption,
+.venue-image-caption span {
+    transform: none !important;
+    backface-visibility: visible !important;
+    will-change: auto !important;
+    text-rendering: auto !important;
+    -webkit-font-smoothing: antialiased !important;
+}
+
+/* Keep button hover clean but no movement */
+.venue-partner-image-card .venue-card-btn,
+.venue-partner-image-card .venue-card-btn:hover {
+    transform: none !important;
+}
