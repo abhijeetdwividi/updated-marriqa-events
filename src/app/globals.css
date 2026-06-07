@@ -3575,3 +3575,211 @@ section {
         padding: 0.34rem 0.55rem;
     }
 }
+
+/* ── PACKAGE CMS / FRONTEND REFINEMENT ── */
+
+.admin-package-index {
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(212, 175, 55, 0.16),
+            transparent 55%
+        ),
+        rgba(255, 255, 255, 0.035);
+}
+
+.admin-package-index span {
+    color: var(--gold);
+    font-family: "Cormorant Garamond", serif;
+    font-size: 2.2rem;
+    letter-spacing: 0;
+}
+
+#packages {
+    background:
+        radial-gradient(
+            circle at 20% 15%,
+            rgba(212, 175, 55, 0.06),
+            transparent 28%
+        ),
+        var(--black);
+}
+
+.packages-inner {
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+.packages-header {
+    max-width: 760px;
+    margin-bottom: 4rem;
+}
+
+.packages-header p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.9;
+    font-weight: 300;
+}
+
+.packages-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.1rem;
+    align-items: stretch;
+}
+
+.package-card {
+    position: relative;
+    overflow: hidden;
+    min-height: 520px;
+    border: 1px solid rgba(212, 175, 55, 0.14);
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.058),
+            rgba(255, 255, 255, 0.018)
+        ),
+        var(--charcoal);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    transition:
+        transform 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+        border-color 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+.package-card::before {
+    content: "";
+    position: absolute;
+    right: -60px;
+    top: -60px;
+    width: 150px;
+    height: 150px;
+    border: 1px solid rgba(212, 175, 55, 0.14);
+    border-radius: 50%;
+}
+
+.package-card:hover {
+    transform: translateY(-10px);
+    border-color: rgba(212, 175, 55, 0.42);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.28);
+}
+
+.package-tag {
+    width: fit-content;
+    max-width: 100%;
+    border: 1px solid rgba(212, 175, 55, 0.25);
+    background: rgba(212, 175, 55, 0.07);
+    color: var(--gold);
+    padding: 0.42rem 0.7rem;
+    font-size: 0.55rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    margin-bottom: 1.4rem;
+}
+
+.package-card h3 {
+    font-family: "Cormorant Garamond", serif;
+    color: var(--white);
+    font-size: clamp(1.9rem, 3vw, 2.45rem);
+    font-weight: 300;
+    line-height: 1.05;
+    margin-bottom: 1rem;
+}
+
+.package-price {
+    color: var(--gold);
+    font-size: 0.78rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 1.2rem;
+}
+
+.package-card p {
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    line-height: 1.85;
+    margin-bottom: 1.4rem;
+}
+
+.package-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.8rem;
+    display: grid;
+    gap: 0.75rem;
+}
+
+.package-card li {
+    color: var(--text-secondary);
+    font-size: 0.76rem;
+    line-height: 1.5;
+    padding-left: 1.2rem;
+    position: relative;
+}
+
+.package-card li::before {
+    content: "✦";
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--gold);
+    font-size: 0.62rem;
+}
+
+.package-card-btn {
+    margin-top: auto;
+    width: 100%;
+    min-height: 44px;
+    border: 1px solid rgba(212, 175, 55, 0.45);
+    background: linear-gradient(
+        90deg,
+        rgba(212, 175, 55, 0.14),
+        rgba(212, 175, 55, 0.04)
+    );
+    color: var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 0.62rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    transition:
+        background 0.35s ease,
+        color 0.35s ease,
+        border-color 0.35s ease;
+}
+
+.package-card-btn:hover {
+    background: var(--gold);
+    color: var(--black);
+    border-color: var(--gold);
+}
+
+@media (max-width: 1100px) {
+    .packages-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .package-card {
+        min-height: 500px;
+    }
+}
+
+@media (max-width: 700px) {
+    .packages-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .packages-header {
+        margin-bottom: 2.5rem;
+    }
+
+    .package-card {
+        min-height: auto;
+        padding: 1.55rem;
+    }
+}

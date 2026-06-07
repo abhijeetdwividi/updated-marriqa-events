@@ -1,98 +1,88 @@
-const packages = [
-    {
-        tag: "Most Booked",
-        title: "Engagement Luxe",
-        price: "Starting ₹1.5L",
-        description:
-            "A premium engagement setup curated with elegant decor, couple seating, floral styling, and a luxury photo-worthy backdrop.",
-        inclusions: [
-            "Engagement backdrop",
-            "Couple seating",
-            "Welcome board",
-            "Entry passage styling",
-            "Table centrepieces",
-            "Basic lighting support",
-        ],
-    },
-    {
-        tag: "Planner’s Pick",
-        title: "Wedding Signature Decor",
-        price: "Starting ₹4.5L",
-        description:
-            "A complete wedding decor experience designed for families who want a grand, premium, and beautifully coordinated celebration.",
-        inclusions: [
-            "Jaimala stage",
-            "Mandap decor",
-            "Aisle runner",
-            "VIP lounge",
-            "Round table decor",
-            "Chandeliers & ambient lighting",
-        ],
-    },
-    {
-        tag: "Premium",
-        title: "Destination Wedding Experience",
-        price: "Custom Quote",
-        description:
-            "End-to-end destination wedding planning across palaces, resorts, farmhouses, and mountain venues with complete guest experience support.",
-        inclusions: [
-            "Venue shortlisting",
-            "Decor planning",
-            "Hospitality support",
-            "Artist & entertainment",
-            "Event flow planning",
-            "Vendor coordination",
-        ],
-    },
-];
+import { createClient } from "@/lib/supabase/server";
 
-export default function Packages() {
+type PackageItem = {
+    id: string;
+    title: string;
+    tag: string | null;
+    price: string | null;
+    description: string | null;
+    inclusions: string[] | null;
+};
+
+export default async function Packages() {
+    const supabase = await createClient();
+
+    const { data: packages, error } = await supabase
+        .from("packages")
+        .select("id, title, tag, price, description, inclusions")
+        .eq("is_active", true)
+        .order("sort_order", { ascending: true })
+        .order("created_at", { ascending: false });
+
+    if (error || !packages || packages.length === 0) {
+        return null;
+    }
+
     return (
         <section id="packages">
-            <div className="packages-header reveal">
-                <span className="section-label">Curated Experiences</span>
+            <div className="packages-inner">
+                <div className="packages-header reveal">
+                    <span className="section-label">Curated Celebrations</span>
 
-                <h2 className="section-title">
-                    Most Popular <em>Packages</em>
-                </h2>
+                    <h2 className="section-title">
+                        Most Popular <em>Packages</em>
+                    </h2>
 
-                <div className="gold-line"></div>
+                    <div className="gold-line"></div>
 
-                <p>
-                    Carefully designed celebration packages for couples and
-                    families who want premium styling, smooth execution, and a
-                    memorable guest experience.
-                </p>
-            </div>
+                    <p>
+                        Thoughtfully designed event experiences for engagements,
+                        destination weddings, anniversary celebrations, decor
+                        styling, and complete wedding planning.
+                    </p>
+                </div>
 
-            <div className="packages-grid">
-                {packages.map((item, index) => (
-                    <div
-                        className="package-card reveal"
-                        style={{ transitionDelay: `${0.1 + index * 0.08}s` }}
-                        key={item.title}
-                    >
-                        <div className="package-tag">{item.tag}</div>
+                <div className="packages-grid">
+                    {(packages as PackageItem[]).map((item, index) => (
+                        <article
+                            className="package-card reveal"
+                            style={{
+                                transitionDelay: `${0.1 + index * 0.08}s`,
+                            }}
+                            key={item.id}
+                        >
+                            {item.tag ? (
+                                <span className="package-tag">{item.tag}</span>
+                            ) : null}
 
-                        <h3>{item.title}</h3>
+                            <h3>{item.title}</h3>
 
-                        <div className="package-price">{item.price}</div>
+                            {item.price ? (
+                                <div className="package-price">
+                                    {item.price}
+                                </div>
+                            ) : null}
 
-                        <p className="package-desc">{item.description}</p>
+                            {item.description ? (
+                                <p>{item.description}</p>
+                            ) : null}
 
-                        <div className="package-line"></div>
+                            {item.inclusions && item.inclusions.length > 0 ? (
+                                <ul>
+                                    {item.inclusions
+                                        .slice(0, 6)
+                                        .map((inclusion) => (
+                                            <li key={inclusion}>{inclusion}</li>
+                                        ))}
+                                </ul>
+                            ) : null}
 
-                        <ul>
-                            {item.inclusions.map((inclusion) => (
-                                <li key={inclusion}>{inclusion}</li>
-                            ))}
-                        </ul>
-
-                        <a href="#contact" className="package-btn">
-                            Request Quote
-                        </a>
-                    </div>
-                ))}
+                            <a href="#contact" className="package-card-btn">
+                                Enquire Package
+                            </a>
+                        </article>
+                    ))}
+                </div>
             </div>
         </section>
     );
