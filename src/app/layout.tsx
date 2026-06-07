@@ -1,60 +1,95 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
+const siteUrl =
+    process.env.NEXT_PUBLIC_SITE_URL ||
+    "https://updated-marriqa-events.vercel.app";
+
+const siteTitle =
+    "Marriqa Events | Luxury Wedding Planner in Delhi NCR & Uttarakhand";
+
+const siteDescription =
+    "Marriqa Events designs luxury weddings, destination weddings, engagement ceremonies, premium decor, venue experiences, and bespoke event celebrations across Delhi NCR, Uttarakhand, Rajasthan, and Pan India.";
+
 export const metadata: Metadata = {
-    metadataBase: new URL("https://marriqaevents.com"),
-    title: "Luxury Wedding Planner in Delhi NCR | Marriqa Events",
-    description:
-        "Marriqa Events is a luxury wedding planner and premium event management company in Delhi NCR, Rajasthan & Uttarakhand. We create destination weddings, luxury decor, engagement ceremonies, birthday galas & unforgettable celebrations across India.",
-    keywords: [
-        "luxury wedding planner Delhi NCR",
-        "premium wedding planner India",
-        "destination wedding planner Rajasthan",
-        "wedding planner Meerut",
-        "luxury wedding decor",
-        "event management company Delhi NCR",
-        "wedding decorator India",
-    ],
-    authors: [{ name: "Marriqa Events" }],
-    robots: {
-        index: true,
-        follow: true,
+    metadataBase: new URL(siteUrl),
+
+    title: {
+        default: siteTitle,
+        template: "%s | Marriqa Events",
     },
+
+    description: siteDescription,
+
+    keywords: [
+        "Marriqa Events",
+        "Luxury wedding planner",
+        "Wedding planner in Delhi NCR",
+        "Destination wedding planner",
+        "Wedding decor Delhi",
+        "Wedding planner Uttarakhand",
+        "Wedding planner Mussoorie",
+        "Wedding planner Jim Corbett",
+        "Wedding planner Rajasthan",
+        "Engagement decor",
+        "Luxury event planner India",
+    ],
+
+    authors: [{ name: "Marriqa Events" }],
+    creator: "Marriqa Events",
+    publisher: "Marriqa Events",
+
     alternates: {
         canonical: "/",
     },
-    icons: {
-        icon: "/images/logonew.jpeg",
-    },
+
     openGraph: {
-        title: "Marriqa Events | Luxury Wedding Planner",
-        description:
-            "Luxury weddings, premium decor, destination celebrations & unforgettable experiences across Delhi NCR, Rajasthan & Uttarakhand.",
         type: "website",
+        locale: "en_IN",
         url: "/",
         siteName: "Marriqa Events",
+        title: siteTitle,
+        description: siteDescription,
         images: [
             {
-                url: "/images/logonew.jpeg",
+                url: "/images/destination.png",
                 width: 1200,
-                height: 1200,
-                alt: "Marriqa Events Logo",
+                height: 630,
+                alt: "Marriqa Events luxury wedding and destination event decor",
             },
         ],
     },
+
     twitter: {
         card: "summary_large_image",
-        title: "Marriqa Events | Luxury Wedding Planner",
-        description:
-            "Luxury weddings, destination events & premium decor company in India.",
-        images: ["/images/logonew.jpeg"],
+        title: siteTitle,
+        description: siteDescription,
+        images: ["/images/destination.png"],
+    },
+
+    robots: {
+        index: true,
+        follow: true,
+        googleBot: {
+            index: true,
+            follow: true,
+            "max-video-preview": -1,
+            "max-image-preview": "large",
+            "max-snippet": -1,
+        },
+    },
+
+    icons: {
+        icon: "/images/logonew.jpeg",
+        apple: "/images/logonew.jpeg",
     },
 };
 
 export const viewport: Viewport = {
     width: "device-width",
     initialScale: 1,
-    themeColor: "#0b0b0b",
+    maximumScale: 5,
+    themeColor: "#050505",
 };
 
 export default function RootLayout({
