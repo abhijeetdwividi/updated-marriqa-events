@@ -3192,3 +3192,71 @@ section {
         padding-top: 6rem;
     }
 }
+
+/* ── VENUE DYNAMIC PLACEHOLDER ── */
+.venue-placeholder-image {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gold);
+    font-family: "Cormorant Garamond", serif;
+    font-size: 1.6rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    background:
+        radial-gradient(
+            circle at 30% 20%,
+            rgba(212, 175, 55, 0.12),
+            transparent 35%
+        ),
+        var(--charcoal-2);
+}
+
+/* ── VENUE PARTNER BUTTON SPACING FIX ── */
+
+.venue-partner-image-card {
+    height: 100%;
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+.venue-partner-image-card .venue-card-content {
+    flex: 1;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start;
+}
+
+.venue-partner-image-card .venue-card-content p {
+    margin-bottom: 1rem;
+}
+
+.venue-partner-image-card .venue-feature-list {
+    margin-bottom: 1.5rem;
+}
+
+.venue-partner-image-card .venue-card-btn {
+    margin-top: auto !important;
+    align-self: flex-start;
+}
+
+/* Better visual spacing when features are missing */
+.venue-partner-image-card .venue-card-content > .venue-card-btn {
+    margin-top: 1.6rem;
+}
+
+.venue-partner-image-card .venue-feature-list + .venue-card-btn {
+    margin-top: auto !important;
+}
+
+@media (max-width: 700px) {
+    .venue-partner-image-card .venue-card-content {
+        min-height: auto;
+    }
+
+    .venue-partner-image-card .venue-card-btn {
+        margin-top: 1.4rem !important;
+    }
+}
