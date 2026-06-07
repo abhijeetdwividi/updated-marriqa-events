@@ -3783,3 +3783,32 @@ section {
         padding: 1.55rem;
     }
 }
+
+/* ── GALLERY CMS REFINEMENT ── */
+
+.admin-blog-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.admin-gallery-note {
+    color: var(--text-muted);
+    font-size: 0.72rem;
+    line-height: 1.6;
+}
+
+.gallery-item {
+    cursor: pointer;
+}
+
+.gallery-item img {
+    display: block;
+}
+
+.g-label {
+    max-width: calc(100% - 2rem);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

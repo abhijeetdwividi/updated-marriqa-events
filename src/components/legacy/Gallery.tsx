@@ -1,4 +1,27 @@
-export default function Gallery() {
+import { createClient } from "@/lib/supabase/server";
+
+type GalleryImage = {
+    id: string;
+    title: string | null;
+    category: string | null;
+    image_url: string;
+    alt_text: string | null;
+};
+
+export default async function Gallery() {
+    const supabase = await createClient();
+
+    const { data: images, error } = await supabase
+        .from("gallery_images")
+        .select("id, title, category, image_url, alt_text")
+        .eq("is_active", true)
+        .order("sort_order", { ascending: true })
+        .order("created_at", { ascending: false });
+
+    if (error || !images || images.length === 0) {
+        return null;
+    }
+
     return (
         <>
             <section id="gallery">
@@ -15,137 +38,31 @@ export default function Gallery() {
                 </div>
 
                 <div className="gallery-grid" id="galleryGrid">
-                    <div className="gallery-item reveal">
-                        <img
-                            src="https://images.unsplash.com/photo-1757017199822-beab923a1afc?q=80&w=1287&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                            alt="Luxury Wedding"
-                            loading="lazy"
-                        />
+                    {(images as GalleryImage[]).map((image, index) => (
+                        <div
+                            className="gallery-item reveal"
+                            style={{ transitionDelay: `${index * 0.05}s` }}
+                            key={image.id}
+                        >
+                            <img
+                                src={image.image_url}
+                                alt={
+                                    image.alt_text ||
+                                    image.title ||
+                                    "Marriqa Events Gallery"
+                                }
+                                loading="lazy"
+                            />
 
-                        <div className="g-overlay">
-                            <span className="g-label">Royal Nuptials</span>
+                            <div className="g-overlay">
+                                <span className="g-label">
+                                    {image.title ||
+                                        image.category ||
+                                        "Marriqa Events"}
+                                </span>
+                            </div>
                         </div>
-                    </div>
-
-                    <div
-                        className="gallery-item reveal"
-                        style={{ transitionDelay: "0.1s" }}
-                    >
-                        <img
-                            src="/images/img1.png"
-                            alt="Premium Decor"
-                            loading="lazy"
-                        />
-
-                        <div className="g-overlay">
-                            <span className="g-label">Premium Decor</span>
-                        </div>
-                    </div>
-
-                    <div
-                        className="gallery-item reveal"
-                        style={{ transitionDelay: "0.15s" }}
-                    >
-                        <img
-                            src="https://images.unsplash.com/photo-1680491024206-7321f775d538?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                            alt="Engagement"
-                            loading="lazy"
-                        />
-
-                        <div className="g-overlay">
-                            <span className="g-label">Golden Engagement</span>
-                        </div>
-                    </div>
-
-                    <div
-                        className="gallery-item reveal"
-                        style={{ transitionDelay: "0.2s" }}
-                    >
-                        <img
-                            src="https://images.unsplash.com/photo-1600400411727-6f0fd6e10933?q=80&w=2662&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                            alt="Corporate"
-                            loading="lazy"
-                        />
-
-                        <div className="g-overlay">
-                            <span className="g-label">Gala Evening</span>
-                        </div>
-                    </div>
-
-                    <div
-                        className="gallery-item reveal"
-                        style={{ transitionDelay: "0.05s" }}
-                    >
-                        <img
-                            src="https://images.unsplash.com/photo-1607977229409-8c278bc34628?q=80&w=1287&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                            alt="Birthday"
-                            loading="lazy"
-                        />
-
-                        <div className="g-overlay">
-                            <span className="g-label">Luxury Birthday</span>
-                        </div>
-                    </div>
-
-                    <div
-                        className="gallery-item reveal"
-                        style={{ transitionDelay: "0.25s" }}
-                    >
-                        <img
-                            src="https://images.unsplash.com/photo-1654764746242-7592b9c6ce2e?q=80&w=1365&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                            alt="Destination"
-                            loading="lazy"
-                        />
-
-                        <div className="g-overlay">
-                            <span className="g-label">Destination Wedding</span>
-                        </div>
-                    </div>
-
-                    <div
-                        className="gallery-item reveal"
-                        style={{ transitionDelay: "0.3s" }}
-                    >
-                        <img
-                            src="/images/img3.png"
-                            alt="Celebration"
-                            loading="lazy"
-                        />
-
-                        <div className="g-overlay">
-                            <span className="g-label">Signature Decor</span>
-                        </div>
-                    </div>
-
-                    <div
-                        className="gallery-item reveal"
-                        style={{ transitionDelay: "0.35s" }}
-                    >
-                        <img
-                            src="/images/img5.png"
-                            alt="Decor"
-                            loading="lazy"
-                        />
-
-                        <div className="g-overlay">
-                            <span className="g-label">Floral Art</span>
-                        </div>
-                    </div>
-
-                    <div
-                        className="gallery-item reveal"
-                        style={{ transitionDelay: "0.4s" }}
-                    >
-                        <img
-                            src="/images/img2.png"
-                            alt="Luxury"
-                            loading="lazy"
-                        />
-
-                        <div className="g-overlay">
-                            <span className="g-label">Luxury Setting</span>
-                        </div>
-                    </div>
+                    ))}
                 </div>
             </section>
 
