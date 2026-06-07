@@ -2,6 +2,13 @@ import Link from "next/link";
 
 const adminCards = [
     {
+        title: "Enquiries",
+        description:
+            "View website leads, event enquiries, client contact details, and follow-up status.",
+        href: "/admin/enquiries",
+        status: "View Leads",
+    },
+    {
         title: "Blogs",
         description:
             "Create wedding guides, venue blogs, planning tips, and inspiration articles.",

@@ -1,4 +1,64 @@
+"use client";
+
+import { FormEvent, useState } from "react";
+import { createClient } from "@/lib/supabase/client";
+
 export default function Contact() {
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [successMessage, setSuccessMessage] = useState("");
+    const [errorMessage, setErrorMessage] = useState("");
+
+    async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+        event.preventDefault();
+
+        const form = event.currentTarget;
+        const formData = new FormData(form);
+
+        setIsSubmitting(true);
+        setSuccessMessage("");
+        setErrorMessage("");
+
+        const supabase = createClient();
+
+        const payload = {
+            full_name: String(formData.get("name") || "").trim(),
+            phone: String(formData.get("phone") || "").trim(),
+            email: String(formData.get("email") || "").trim(),
+            event_type: String(formData.get("event_type") || "").trim(),
+            event_date: String(formData.get("event_date") || "") || null,
+            budget: String(formData.get("budget") || "").trim() || null,
+            location: String(formData.get("location") || "").trim() || null,
+            guest_count: String(formData.get("guests") || "").trim() || null,
+            message: String(formData.get("message") || "").trim() || null,
+            status: "New",
+        };
+
+        if (
+            !payload.full_name ||
+            !payload.phone ||
+            !payload.email ||
+            !payload.event_type
+        ) {
+            setErrorMessage("Please fill all required fields.");
+            setIsSubmitting(false);
+            return;
+        }
+
+        const { error } = await supabase.from("enquiries").insert(payload);
+
+        setIsSubmitting(false);
+
+        if (error) {
+            setErrorMessage(error.message);
+            return;
+        }
+
+        form.reset();
+        setSuccessMessage(
+            "✦ Thank you. We will be in touch within 24 hours. ✦",
+        );
+    }
+
     return (
         <section id="contact">
             <div className="contact-inner">
@@ -87,8 +147,8 @@ export default function Contact() {
                 <div className="reveal-right">
                     <form
                         id="bookingForm"
-                        action="https://formspree.io/f/xbdwvelo"
-                        method="POST"
+                        data-supabase-form="true"
+                        onSubmit={handleSubmit}
                     >
                         <div className="form-grid">
                             <div className="form-group">
@@ -192,15 +252,30 @@ export default function Contact() {
                             </div>
                         </div>
 
+                        {errorMessage ? (
+                            <div className="form-error">{errorMessage}</div>
+                        ) : null}
+
                         <div className="form-submit">
-                            <button type="submit" className="btn-primary">
-                                Send Enquiry &nbsp;→
+                            <button
+                                type="submit"
+                                className="btn-primary"
+                                disabled={isSubmitting}
+                            >
+                                {isSubmitting
+                                    ? "Sending..."
+                                    : "Send Enquiry  →"}
                             </button>
                         </div>
 
-                        <div className="form-success" id="formSuccess">
-                            ✦ &nbsp; Thank you. We will be in touch within 24
-                            hours. &nbsp; ✦
+                        <div
+                            className="form-success"
+                            id="formSuccess"
+                            style={{
+                                display: successMessage ? "block" : "none",
+                            }}
+                        >
+                            {successMessage}
                         </div>
                     </form>
                 </div>

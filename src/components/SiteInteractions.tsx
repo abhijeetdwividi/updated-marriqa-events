@@ -95,13 +95,13 @@ export default function SiteInteractions() {
                 const size = Math.random() * 4 + 1;
 
                 p.style.cssText = `
-          width:${size}px;
-          height:${size}px;
-          left:${Math.random() * 100}%;
-          bottom:${Math.random() * 20}%;
-          animation-duration:${Math.random() * 15 + 10}s;
-          animation-delay:${Math.random() * 10}s;
-        `;
+                    width:${size}px;
+                    height:${size}px;
+                    left:${Math.random() * 100}%;
+                    bottom:${Math.random() * 20}%;
+                    animation-duration:${Math.random() * 15 + 10}s;
+                    animation-delay:${Math.random() * 10}s;
+                `;
 
                 particlesContainer.appendChild(p);
             }
@@ -154,7 +154,7 @@ export default function SiteInteractions() {
             }
         });
 
-        // TESTIMONIALS
+        // TESTIMONIALS FALLBACK
         const testimonials: Testimonial[] = [
             {
                 name: "Priya & Arjun Sharma",
@@ -198,26 +198,28 @@ export default function SiteInteractions() {
 
         if (track && track.children.length === 0) {
             const renderTestimonial = (t: Testimonial) => `
-        <div class="testi-card">
-          <div class="testi-quote">"</div>
-          <p class="testi-text">${t.text}</p>
-          <div class="testi-stars">★ ★ ★ ★ ★</div>
-          <div class="testi-author">
-            <div class="testi-avatar">${t.initial}</div>
-            <div>
-              <div class="testi-name">${t.name}</div>
-              <div class="testi-event">${t.event}</div>
-            </div>
-          </div>
-        </div>
-      `;
+                <div class="testi-card">
+                    <div class="testi-quote">"</div>
+                    <p class="testi-text">${t.text}</p>
+                    <div class="testi-stars">★ ★ ★ ★ ★</div>
+                    <div class="testi-author">
+                        <div class="testi-avatar">${t.initial}</div>
+                        <div>
+                            <div class="testi-name">${t.name}</div>
+                            <div class="testi-event">${t.event}</div>
+                        </div>
+                    </div>
+                </div>
+            `;
 
             [...testimonials, ...testimonials].forEach((testimonial) => {
                 track.innerHTML += renderTestimonial(testimonial);
             });
         }
 
-        // FORM SUBMIT
+        // OLD FORM SUBMIT FALLBACK
+        // This only works for old Formspree form.
+        // Supabase contact form is handled inside Contact.tsx.
         const form = document.getElementById(
             "bookingForm",
         ) as HTMLFormElement | null;
@@ -272,7 +274,9 @@ export default function SiteInteractions() {
             }
         };
 
-        form?.addEventListener("submit", handleSubmit);
+        if (form && !form.dataset.supabaseForm) {
+            form.addEventListener("submit", handleSubmit);
+        }
 
         // PARALLAX HERO
         const handleHeroParallax = () => {
@@ -293,9 +297,14 @@ export default function SiteInteractions() {
             document.removeEventListener("mousemove", handleMouseMove);
             window.removeEventListener("scroll", handleScrollNavbar);
             document.removeEventListener("scroll", handleHeroParallax);
+
             hamburger?.removeEventListener("click", openMenu);
             menuClose?.removeEventListener("click", closeMenu);
-            form?.removeEventListener("submit", handleSubmit);
+
+            if (form && !form.dataset.supabaseForm) {
+                form.removeEventListener("submit", handleSubmit);
+            }
+
             window.clearTimeout(loaderTimer);
             revealObserver.disconnect();
         };

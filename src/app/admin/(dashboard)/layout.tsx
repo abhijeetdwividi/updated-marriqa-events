@@ -44,6 +44,7 @@ export default async function AdminDashboardLayout({
 
                 <div className="admin-nav">
                     <Link href="/admin">Dashboard</Link>
+                    <Link href="/admin/enquiries">Enquiries</Link>
                     <Link href="/admin/blogs">Blogs</Link>
                     <Link href="/admin/venues">Venue Partners</Link>
                     <Link href="/admin/packages">Packages</Link>
