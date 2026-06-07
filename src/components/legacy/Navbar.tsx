@@ -14,10 +14,19 @@ export default function Navbar() {
                         <a href="#services">Services</a>
                     </li>
                     <li>
+                        <a href="#packages">Packages</a>
+                    </li>
+                    <li>
+                        <a href="#venue-partners">Venues</a>
+                    </li>
+                    <li>
                         <a href="#gallery">Portfolio</a>
                     </li>
                     <li>
                         <a href="#testimonials">Stories</a>
+                    </li>
+                    <li>
+                        <a href="#blog">Blogs</a>
                     </li>
                     <li>
                         <a href="#contact">Contact</a>
@@ -46,11 +55,20 @@ export default function Navbar() {
                 <a href="#services" className="mobile-link">
                     Services
                 </a>
+                <a href="#packages" className="mobile-link">
+                    Packages
+                </a>
+                <a href="#venue-partners" className="mobile-link">
+                    Venue Partners
+                </a>
                 <a href="#gallery" className="mobile-link">
                     Portfolio
                 </a>
                 <a href="#testimonials" className="mobile-link">
                     Stories
+                </a>
+                <a href="#blog" className="mobile-link">
+                    Blogs
                 </a>
                 <a href="#contact" className="mobile-link">
                     Contact

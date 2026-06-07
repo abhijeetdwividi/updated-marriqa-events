@@ -4119,3 +4119,85 @@ section {
 .venue-partner-image-card .venue-card-btn:hover {
     transform: none !important;
 }
+
+/* ── NAVBAR EXTRA SECTION LINKS FIX ── */
+
+.nav-links {
+    gap: clamp(1rem, 1.6vw, 1.9rem) !important;
+}
+
+.nav-links a {
+    white-space: nowrap;
+    font-size: 0.58rem !important;
+    letter-spacing: 0.18em !important;
+}
+
+@media (max-width: 1220px) {
+    .nav-links {
+        gap: 0.9rem !important;
+    }
+
+    .nav-links a {
+        font-size: 0.52rem !important;
+        letter-spacing: 0.14em !important;
+    }
+
+    .nav-cta {
+        padding: 0 0.85rem !important;
+        font-size: 0.55rem !important;
+    }
+}
+
+@media (max-width: 1040px) {
+    .nav-links,
+    .nav-cta {
+        display: none !important;
+    }
+
+    .hamburger {
+        display: flex !important;
+    }
+}
+/* ── NAVBAR TEXT SIZE REFINEMENT ── */
+
+.nav-links {
+    gap: clamp(1rem, 1.45vw, 1.65rem) !important;
+}
+
+.nav-links a {
+    font-size: 0.66rem !important;
+    letter-spacing: 0.18em !important;
+    white-space: nowrap;
+}
+
+.nav-cta {
+    font-size: 0.62rem !important;
+    padding: 0 1.05rem !important;
+}
+
+@media (max-width: 1280px) {
+    .nav-links {
+        gap: 0.95rem !important;
+    }
+
+    .nav-links a {
+        font-size: 0.61rem !important;
+        letter-spacing: 0.14em !important;
+    }
+
+    .nav-cta {
+        font-size: 0.58rem !important;
+        padding: 0 0.9rem !important;
+    }
+}
+
+@media (max-width: 1120px) {
+    .nav-links,
+    .nav-cta {
+        display: none !important;
+    }
+
+    .hamburger {
+        display: flex !important;
+    }
+}
