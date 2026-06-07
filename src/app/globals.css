@@ -2574,3 +2574,275 @@ section {
         font-size: 0.7rem;
     }
 }
+
+/* ── ADMIN BLOG CMS ── */
+
+.admin-list-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.admin-list-header h1 {
+    font-family: "Cormorant Garamond", serif;
+    color: var(--white);
+    font-size: clamp(2.4rem, 5vw, 4rem);
+    font-weight: 300;
+    line-height: 1.05;
+    margin-bottom: 0.7rem;
+}
+
+.admin-list-header p {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    line-height: 1.7;
+}
+
+.admin-primary-link,
+.admin-secondary-link,
+.admin-danger-btn,
+.admin-editor-actions button {
+    min-height: 42px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-size: 0.65rem;
+    font-family: "Poppins", sans-serif;
+    cursor: pointer !important;
+}
+
+.admin-primary-link,
+.admin-editor-actions button {
+    background: var(--gold);
+    color: var(--black);
+    border: 1px solid var(--gold);
+    padding: 0.85rem 1.15rem;
+}
+
+.admin-secondary-link {
+    color: var(--gold);
+    border: 1px solid rgba(212, 175, 55, 0.35);
+    background: transparent;
+    padding: 0.85rem 1.15rem;
+}
+
+.admin-danger-btn {
+    color: #ff9b9b;
+    border: 1px solid rgba(255, 80, 80, 0.4);
+    background: rgba(255, 80, 80, 0.08);
+    padding: 0.85rem 1.15rem;
+}
+
+.admin-table-card,
+.admin-editor-form {
+    border: 1px solid var(--glass-border);
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.055),
+            rgba(255, 255, 255, 0.018)
+        ),
+        var(--charcoal);
+}
+
+.admin-blog-list {
+    display: grid;
+}
+
+.admin-blog-row {
+    display: grid;
+    grid-template-columns: 120px 1fr auto;
+    gap: 1.2rem;
+    align-items: center;
+    padding: 1rem;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.12);
+}
+
+.admin-blog-row:last-child {
+    border-bottom: 0;
+}
+
+.admin-blog-thumb {
+    width: 120px;
+    height: 86px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(212, 175, 55, 0.12);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.admin-blog-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.admin-blog-thumb span {
+    color: var(--text-muted);
+    font-size: 0.62rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+.admin-blog-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 0.6rem;
+}
+
+.admin-blog-meta span {
+    border: 1px solid rgba(212, 175, 55, 0.16);
+    color: var(--gold);
+    padding: 0.25rem 0.45rem;
+    font-size: 0.55rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+}
+
+.admin-blog-info h3 {
+    color: var(--white);
+    font-family: "Cormorant Garamond", serif;
+    font-size: 1.55rem;
+    font-weight: 300;
+    margin-bottom: 0.25rem;
+}
+
+.admin-blog-info p {
+    color: var(--text-muted);
+    font-size: 0.75rem;
+}
+
+.admin-blog-actions {
+    display: flex;
+    gap: 0.7rem;
+    align-items: center;
+}
+
+.admin-empty-state {
+    padding: 3rem;
+    text-align: center;
+}
+
+.admin-empty-state h3 {
+    color: var(--white);
+    font-family: "Cormorant Garamond", serif;
+    font-size: 2rem;
+    font-weight: 300;
+    margin-bottom: 0.7rem;
+}
+
+.admin-empty-state p {
+    color: var(--text-secondary);
+    margin-bottom: 1.4rem;
+}
+
+.admin-editor-form {
+    padding: 1.5rem;
+}
+
+.admin-editor-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.admin-field-full {
+    grid-column: 1 / -1;
+}
+
+.admin-field textarea {
+    width: 100%;
+    resize: vertical;
+    background: rgba(255, 255, 255, 0.035);
+    border: 1px solid rgba(212, 175, 55, 0.18);
+    color: var(--white);
+    padding: 0.9rem 1rem;
+    font-family: "Poppins", sans-serif;
+    outline: none;
+}
+
+.admin-field textarea:focus {
+    border-color: var(--gold);
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.08);
+}
+
+.admin-toggle-field {
+    min-height: 49px;
+    border: 1px solid rgba(212, 175, 55, 0.18);
+    background: rgba(255, 255, 255, 0.035);
+    padding: 0.85rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    color: var(--text-secondary);
+    font-size: 0.78rem;
+}
+
+.admin-toggle-field input {
+    width: 16px;
+    height: 16px;
+}
+
+.admin-image-preview {
+    border: 1px solid rgba(212, 175, 55, 0.18);
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.025);
+}
+
+.admin-image-preview img {
+    width: 220px;
+    max-width: 100%;
+    height: 140px;
+    object-fit: cover;
+    display: block;
+    margin-bottom: 0.7rem;
+}
+
+.admin-image-preview p {
+    color: var(--text-muted);
+    font-size: 0.7rem;
+}
+
+.admin-editor-actions {
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: flex-end;
+}
+
+@media (max-width: 900px) {
+    .admin-list-header {
+        flex-direction: column;
+    }
+
+    .admin-blog-row {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-blog-thumb {
+        width: 100%;
+        height: 180px;
+    }
+
+    .admin-blog-actions {
+        flex-wrap: wrap;
+    }
+
+    .admin-editor-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-primary-link,
+    .admin-secondary-link,
+    .admin-danger-btn,
+    .admin-editor-actions button {
+        width: 100%;
+    }
+}
