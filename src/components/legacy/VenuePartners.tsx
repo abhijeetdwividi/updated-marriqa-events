@@ -48,57 +48,90 @@ export default async function VenuePartners() {
                 </div>
 
                 <div className="venue-partners-grid venue-partners-grid-image">
-                    {(venues as VenuePartner[]).map((venue, index) => (
-                        <div
-                            className="venue-partner-card venue-partner-image-card reveal"
-                            style={{
-                                transitionDelay: `${0.1 + index * 0.08}s`,
-                            }}
-                            key={venue.id}
-                        >
-                            <div className="venue-image-wrap">
-                                {venue.image_url ? (
-                                    <img
-                                        src={venue.image_url}
-                                        alt={venue.name}
-                                        loading="lazy"
-                                    />
-                                ) : (
-                                    <div className="venue-placeholder-image">
-                                        Marriqa Venue
+                    {(venues as VenuePartner[]).map((venue, index) => {
+                        const visibleFeatures =
+                            venue.features?.slice(0, 4) ?? [];
+                        const remainingFeatures =
+                            venue.features && venue.features.length > 4
+                                ? venue.features.length - 4
+                                : 0;
+
+                        return (
+                            <div
+                                className="venue-partner-card venue-partner-image-card reveal"
+                                style={{
+                                    transitionDelay: `${0.1 + index * 0.08}s`,
+                                }}
+                                key={venue.id}
+                            >
+                                <div className="venue-image-wrap">
+                                    {venue.image_url ? (
+                                        <img
+                                            src={venue.image_url}
+                                            alt={venue.name}
+                                            loading="lazy"
+                                        />
+                                    ) : (
+                                        <div className="venue-placeholder-image">
+                                            Marriqa Venue
+                                        </div>
+                                    )}
+
+                                    <div className="venue-image-overlay"></div>
+
+                                    <span className="venue-region-pill">
+                                        {venue.region || "Venue Partner"}
+                                    </span>
+
+                                    <div className="venue-image-caption">
+                                        <span>Curated Venue</span>
                                     </div>
-                                )}
+                                </div>
 
-                                <div className="venue-image-overlay"></div>
+                                <div className="venue-card-content">
+                                    <div>
+                                        <h3>{venue.name}</h3>
 
-                                <span className="venue-region">
-                                    {venue.region ||
-                                        venue.location ||
-                                        "Venue Partner"}
-                                </span>
-                            </div>
+                                        {venue.location ? (
+                                            <div className="venue-location-line">
+                                                {venue.location}
+                                            </div>
+                                        ) : null}
 
-                            <div className="venue-card-content">
-                                <h3>{venue.name}</h3>
+                                        {venue.description ? (
+                                            <p>{venue.description}</p>
+                                        ) : null}
 
-                                {venue.description ? (
-                                    <p>{venue.description}</p>
-                                ) : null}
+                                        {visibleFeatures.length > 0 ? (
+                                            <div className="venue-feature-list">
+                                                {visibleFeatures.map(
+                                                    (feature) => (
+                                                        <span key={feature}>
+                                                            {feature}
+                                                        </span>
+                                                    ),
+                                                )}
 
-                                {venue.features && venue.features.length > 0 ? (
-                                    <div className="venue-feature-list">
-                                        {venue.features.map((feature) => (
-                                            <span key={feature}>{feature}</span>
-                                        ))}
+                                                {remainingFeatures > 0 ? (
+                                                    <span>
+                                                        +{remainingFeatures}{" "}
+                                                        more
+                                                    </span>
+                                                ) : null}
+                                            </div>
+                                        ) : null}
                                     </div>
-                                ) : null}
 
-                                <a href="#contact" className="venue-card-btn">
-                                    Enquire Venue
-                                </a>
+                                    <a
+                                        href="#contact"
+                                        className="venue-card-btn"
+                                    >
+                                        Enquire Venue
+                                    </a>
+                                </div>
                             </div>
-                        </div>
-                    ))}
+                        );
+                    })}
                 </div>
 
                 <div className="venue-partners-cta reveal">
