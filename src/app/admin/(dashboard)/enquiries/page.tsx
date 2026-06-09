@@ -17,6 +17,16 @@ type Enquiry = {
     created_at: string;
 };
 
+function getWhatsappUrl(phone: string, fullName: string, eventType: string) {
+    const cleanedPhone = phone.replace(/\D/g, "");
+
+    const message = encodeURIComponent(
+        `Hello ${fullName}, this is Marriqa Events. We received your enquiry for ${eventType}. Would love to discuss your event details.`,
+    );
+
+    return `https://wa.me/${cleanedPhone}?text=${message}`;
+}
+
 export default async function AdminEnquiriesPage() {
     const supabase = await createClient();
 
@@ -90,6 +100,33 @@ export default async function AdminEnquiriesPage() {
                                     </div>
 
                                     <div className="admin-enquiry-actions">
+                                        <a
+                                            href={`tel:${enquiry.phone}`}
+                                            className="admin-secondary-link admin-mini-action"
+                                        >
+                                            Call
+                                        </a>
+
+                                        <a
+                                            href={getWhatsappUrl(
+                                                enquiry.phone,
+                                                enquiry.full_name,
+                                                enquiry.event_type,
+                                            )}
+                                            target="_blank"
+                                            rel="noreferrer"
+                                            className="admin-secondary-link admin-mini-action"
+                                        >
+                                            WhatsApp
+                                        </a>
+
+                                        <a
+                                            href={`mailto:${enquiry.email}`}
+                                            className="admin-secondary-link admin-mini-action"
+                                        >
+                                            Email
+                                        </a>
+
                                         <EnquiryStatusSelect
                                             enquiryId={enquiry.id}
                                             currentStatus={enquiry.status}

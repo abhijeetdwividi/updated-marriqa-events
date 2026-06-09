@@ -4744,3 +4744,26 @@ body .admin-nav a:hover {
     border-color: rgba(212, 175, 55, 0.42) !important;
     color: var(--white) !important;
 }
+/* ── ENQUIRY QUICK ACTION BUTTONS ── */
+
+.admin-mini-action {
+    min-height: 42px !important;
+    padding: 0.78rem 0.9rem !important;
+    font-size: 0.58rem !important;
+    white-space: nowrap;
+}
+
+.admin-enquiry-actions {
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+@media (max-width: 900px) {
+    .admin-mini-action {
+        width: 100%;
+    }
+
+    .admin-enquiry-actions {
+        width: 100%;
+    }
+}
