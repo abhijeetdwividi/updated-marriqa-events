@@ -18,7 +18,7 @@ export default async function EditVenuePage({ params }: EditVenuePageProps) {
     const { data: venue, error } = await supabase
         .from("venue_partners")
         .select(
-            "id, name, slug, region, location, image_url, description, features, is_active, sort_order",
+            "id, name, slug, region, location, image_url, description, features, is_active, sort_order, venue_type, min_budget, max_budget, min_guests, max_guests, room_count, lawn_capacity, banquet_capacity, best_for, finder_highlights, package_note",
         )
         .eq("id", id)
         .single();

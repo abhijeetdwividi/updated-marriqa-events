@@ -5775,3 +5775,16 @@ footer {
         letter-spacing: 0.13em;
     }
 }
+/* ── ADMIN FORM SECTION DIVIDER ── */
+
+.admin-form-divider {
+    border-top: 1px solid rgba(212, 175, 55, 0.16);
+    padding-top: 1.4rem;
+    margin-top: 0.8rem;
+}
+
+.admin-form-divider span {
+    color: var(--gold) !important;
+    font-size: 0.62rem !important;
+    letter-spacing: 0.26em !important;
+}
