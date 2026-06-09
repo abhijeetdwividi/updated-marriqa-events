@@ -280,6 +280,19 @@ export default function SiteInteractions() {
 
         // PARALLAX HERO
         const handleHeroParallax = () => {
+            if (window.innerWidth <= 768) {
+                const heroContent = document.querySelector(
+                    ".hero-content",
+                ) as HTMLElement | null;
+
+                if (heroContent) {
+                    heroContent.style.transform = "none";
+                    heroContent.style.opacity = "1";
+                }
+
+                return;
+            }
+
             const scrolled = window.scrollY;
             const heroContent = document.querySelector(
                 ".hero-content",
@@ -287,7 +300,10 @@ export default function SiteInteractions() {
 
             if (heroContent && scrolled < window.innerHeight) {
                 heroContent.style.transform = `translateY(${scrolled * 0.25}px)`;
-                heroContent.style.opacity = `${1 - scrolled / (window.innerHeight * 0.8)}`;
+                heroContent.style.opacity = `${Math.max(
+                    0,
+                    1 - scrolled / (window.innerHeight * 0.8),
+                )}`;
             }
         };
 
