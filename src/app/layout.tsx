@@ -82,12 +82,21 @@ export const metadata: Metadata = {
     icons: {
         icon: [
             {
-                url: "/favicon.jpeg",
+                url: "/icon.jpeg?v=2",
+                type: "image/jpeg",
+            },
+            {
+                url: "/favicon.jpeg?v=2",
                 type: "image/jpeg",
             },
         ],
-        shortcut: "/favicon.jpeg",
-        apple: "/favicon.jpeg",
+        apple: [
+            {
+                url: "/apple-icon.jpeg?v=2",
+                type: "image/jpeg",
+            },
+        ],
+        shortcut: "/favicon.jpeg?v=2",
     },
 };
 
