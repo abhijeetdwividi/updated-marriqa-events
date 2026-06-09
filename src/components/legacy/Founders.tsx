@@ -1,7 +1,7 @@
 const founders = [
     {
         label: "Founder",
-        name: "Ashu Prasad",
+        name: "Ashutosh Prasad",
         bio: "Ashu brings over 4 years of hands-on experience in event management, leading the planning, creative direction, and complete execution of celebrations at Marriqa Events. His strength lies in transforming ideas into well-crafted experiences — blending creativity, detailing, and smooth coordination to deliver events that feel elegant, personal, and memorable.",
         tags: ["Planning", "Creative Direction", "Execution"],
     },
