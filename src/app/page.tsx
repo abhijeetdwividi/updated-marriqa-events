@@ -15,6 +15,7 @@ import BlogSection from "@/components/legacy/BlogSection";
 import Contact from "@/components/legacy/Contact";
 import Instagram from "@/components/legacy/Instagram";
 import Footer from "@/components/legacy/Footer";
+import FloatingEnquiry from "@/components/legacy/FloatingEnquiry";
 
 export const dynamic = "force-dynamic";
 
@@ -74,6 +75,7 @@ export default function Home() {
             <Contact />
             <Instagram />
             <Footer />
+            <FloatingEnquiry />
 
             <SiteInteractions />
         </>
