@@ -1,10 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Poppins:wght@200;300;400;500;600&display=swap");
 
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
 :root {
     --black: #0b0b0b;
     --charcoal: #121212;
@@ -46,7 +41,7 @@ body {
     cursor: none;
 }
 
-/* â”€â”€ CUSTOM CURSOR â”€â”€ */
+/* CUSTOM CURSOR */
 #cursor {
     width: 12px;
     height: 12px;
@@ -91,7 +86,7 @@ button:hover ~ #cursor {
     height: 20px;
 }
 
-/* â”€â”€ LOADING SCREEN â”€â”€ */
+/* LOADING SCREEN  */
 #loader {
     position: fixed;
     inset: 0;
@@ -160,7 +155,7 @@ button:hover ~ #cursor {
     }
 }
 
-/* â”€â”€ NAVBAR â”€â”€ */
+/*  NAVBAR  */
 nav {
     position: fixed;
     top: 0;
@@ -255,7 +250,7 @@ nav.scrolled {
     transition: all 0.3s;
 }
 
-/* â”€â”€ HERO â”€â”€ */
+/*  HERO */
 #hero {
     min-height: 100vh;
     position: relative;
@@ -512,7 +507,7 @@ nav.scrolled {
     }
 }
 
-/* â”€â”€ SECTIONS BASE â”€â”€ */
+/*  SECTIONS BASE */
 section {
     padding: 8rem 6%;
     position: relative;
@@ -570,7 +565,7 @@ section {
     transform: translateX(0);
 }
 
-/* â”€â”€ ABOUT â”€â”€ */
+/*  ABOUT  */
 #about {
     background: var(--charcoal);
 }
@@ -689,7 +684,7 @@ section {
     flex-shrink: 0;
 }
 
-/* â”€â”€ SERVICES â”€â”€ */
+/*  SERVICES */
 #services {
     background: var(--black);
 }
@@ -814,7 +809,7 @@ section {
     border-color: var(--glass-border);
 }
 
-/* â”€â”€ GALLERY â”€â”€ */
+/*  GALLERY  */
 #gallery {
     background: var(--charcoal);
 }
@@ -905,7 +900,7 @@ section {
     transform: rotate(90deg);
 }
 
-/* â”€â”€ TESTIMONIALS â”€â”€ */
+/*  TESTIMONIALS  */
 #testimonials {
     background: var(--black);
     overflow: hidden;
@@ -1029,7 +1024,7 @@ section {
     margin-top: 0.15rem;
 }
 
-/* â”€â”€ BOOKING FORM â”€â”€ */
+/*  BOOKING FORM */
 #contact {
     background: linear-gradient(
         135deg,
@@ -1167,7 +1162,7 @@ section {
     margin-top: 1.5rem;
 }
 
-/* â”€â”€ INSTAGRAM â”€â”€ */
+/*  INSTAGRAM  */
 #instagram {
     background: var(--black);
 }
@@ -1236,7 +1231,7 @@ section {
     margin-top: 2.5rem;
 }
 
-/* â”€â”€ FOOTER â”€â”€ */
+/*  FOOTER  */
 footer {
     background: #080808;
     border-top: 1px solid var(--glass-border);
@@ -1406,7 +1401,7 @@ footer {
     font-family: "Cormorant Garamond", serif;
 }
 
-/* â”€â”€ RESPONSIVE â”€â”€ */
+/*  RESPONSIVE  */
 @media (max-width: 1100px) {
     .services-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -1473,7 +1468,7 @@ footer {
     }
 }
 
-/* ── PIXEL MATCH PATCH: ORIGINAL WEBSITE FONT + NAV CTA ── */
+/*  PIXEL MATCH PATCH: ORIGINAL WEBSITE FONT + NAV CTA  */
 
 html,
 body {
@@ -1525,7 +1520,7 @@ nav.scrolled .nav-cta {
     line-height: 1 !important;
 }
 
-/* ── PACKAGES ── */
+/*  PACKAGES  */
 #packages {
     background:
         radial-gradient(
@@ -1696,7 +1691,7 @@ nav.scrolled .nav-cta {
 }
 
 .package-card li::before {
-    content: "✦";
+    content: "âœ¦";
     position: absolute;
     left: 0;
     top: 0;
@@ -1741,7 +1736,7 @@ nav.scrolled .nav-cta {
         padding: 1.8rem;
     }
 }
-/* ── PACKAGES + MOBILE RESPONSIVE PATCH ── */
+/*  PACKAGES + MOBILE RESPONSIVE PATCH */
 
 /* Fixed navbar anchor scroll improvement */
 section {
@@ -1868,7 +1863,7 @@ section {
     }
 }
 
-/* ── VENUE PARTNERS ── */
+/* VENUE PARTNERS */
 #venue-partners {
     background:
         radial-gradient(
@@ -2078,7 +2073,7 @@ section {
     }
 }
 
-/* ── VENUE PARTNERS IMAGE CARD PATCH ── */
+/* VENUE PARTNERS IMAGE CARD PATCH */
 
 .venue-partners-grid-image {
     grid-template-columns: repeat(3, 1fr);
@@ -2205,7 +2200,7 @@ section {
     }
 }
 
-/* ── ADMIN PANEL ── */
+/* ADMIN PANEL */
 .admin-login-page,
 .admin-login-page *,
 .admin-shell,
@@ -2451,7 +2446,7 @@ section {
     }
 }
 
-/* ── ADMIN SIDEBAR NAV FIX ── */
+/* ADMIN SIDEBAR NAV FIX  */
 .admin-sidebar .admin-nav {
     position: static !important;
     inset: auto !important;
@@ -2482,7 +2477,7 @@ section {
     line-height: 1.05;
 }
 
-/* ── ADMIN BRANDING REFINEMENT ── */
+/*  ADMIN BRANDING REFINEMENT */
 
 .admin-brand-block {
     border: 1px solid rgba(212, 175, 55, 0.2);
@@ -2575,7 +2570,7 @@ section {
     }
 }
 
-/* ── ADMIN BLOG CMS ── */
+/*  ADMIN BLOG CMS */
 
 .admin-list-header {
     display: flex;
@@ -2847,7 +2842,7 @@ section {
     }
 }
 
-/* ── FRONTEND BLOG SECTION ── */
+/*  FRONTEND BLOG SECTION */
 
 #blog {
     background:
@@ -3026,7 +3021,7 @@ section {
     opacity: 0.7;
 }
 
-/* ── BLOG DETAIL PAGE ── */
+/*  BLOG DETAIL PAGE */
 
 .blog-detail-page {
     min-height: 100vh;
@@ -3193,7 +3188,7 @@ section {
     }
 }
 
-/* ── VENUE DYNAMIC PLACEHOLDER ── */
+/* VENUE DYNAMIC PLACEHOLDER */
 .venue-placeholder-image {
     width: 100%;
     height: 100%;
@@ -3214,7 +3209,7 @@ section {
         var(--charcoal-2);
 }
 
-/* ── VENUE PARTNER BUTTON SPACING FIX ── */
+/* VENUE PARTNER BUTTON SPACING FIX */
 
 .venue-partner-image-card {
     height: 100%;
@@ -3260,7 +3255,7 @@ section {
         margin-top: 1.4rem !important;
     }
 }
-/* ── PREMIUM VENUE PARTNER CARDS ── */
+/* PREMIUM VENUE PARTNER CARDS */
 
 .venue-partners-grid-image {
     align-items: stretch;
@@ -3481,7 +3476,7 @@ section {
         margin-top: 1.3rem !important;
     }
 }
-/* ── VENUE LOCATION BADGE SIZE FIX ── */
+/* VENUE LOCATION BADGE SIZE FIX  */
 
 .venue-partner-image-card .venue-region {
     width: auto !important;
@@ -3525,7 +3520,7 @@ section {
     }
 }
 
-/* ── VENUE SMALL REGION PILL FIX ── */
+/* VENUE SMALL REGION PILL FIX  */
 
 .venue-partner-image-card .venue-region {
     display: none !important;
@@ -3576,7 +3571,7 @@ section {
     }
 }
 
-/* ── PACKAGE CMS / FRONTEND REFINEMENT ── */
+/* PACKAGE CMS / FRONTEND REFINEMENT  */
 
 .admin-package-index {
     background:
@@ -3721,7 +3716,7 @@ section {
 }
 
 .package-card li::before {
-    content: "✦";
+    content: "âœ¦";
     position: absolute;
     left: 0;
     top: 0;
@@ -3784,7 +3779,7 @@ section {
     }
 }
 
-/* ── GALLERY CMS REFINEMENT ── */
+/*  GALLERY CMS REFINEMENT  */
 
 .admin-blog-thumb img {
     width: 100%;
@@ -3812,7 +3807,7 @@ section {
     text-overflow: ellipsis;
     white-space: nowrap;
 }
-/* ── ADMIN DASHBOARD CLICKABLE CARDS ── */
+/*  ADMIN DASHBOARD CLICKABLE CARDS */
 
 .admin-dashboard-card {
     text-decoration: none;
@@ -3824,7 +3819,7 @@ section {
 }
 
 .admin-dashboard-card-link::after {
-    content: "→";
+    content: "â†’";
     position: absolute;
     right: 1.4rem;
     bottom: 1.15rem;
@@ -3860,7 +3855,7 @@ section {
     color: var(--text-muted);
 }
 
-/* ── TESTIMONIALS CMS / FRONTEND REFINEMENT ── */
+/*  TESTIMONIALS CMS / FRONTEND REFINEMENT */
 
 .admin-testimonial-rating {
     background:
@@ -3916,7 +3911,7 @@ section {
     letter-spacing: 0.18em;
     text-transform: uppercase;
 }
-/* ── TESTIMONIAL CAROUSEL HORIZONTAL FIX ── */
+/*  TESTIMONIAL CAROUSEL HORIZONTAL FIX  */
 
 #testimonials {
     overflow: hidden !important;
@@ -3984,65 +3979,7 @@ section {
     }
 }
 
-/* ── VENUE CARD IMAGE LEAK + TEXT JITTER FIX ── */
-
-.venue-partners-grid-image {
-    overflow: visible;
-}
-
-.venue-partner-image-card {
-    overflow: hidden !important;
-    isolation: isolate;
-    contain: paint;
-    transform: translateZ(0);
-    backface-visibility: hidden;
-}
-
-.venue-partner-image-card .venue-image-wrap {
-    overflow: hidden !important;
-    isolation: isolate;
-    transform: translateZ(0);
-    backface-visibility: hidden;
-}
-
-.venue-partner-image-card .venue-image-wrap img {
-    transform: scale(1.015) translateZ(0) !important;
-    backface-visibility: hidden;
-    will-change: transform;
-}
-
-.venue-partner-image-card:hover .venue-image-wrap img {
-    transform: scale(1.045) translateZ(0) !important;
-}
-
-/* Prevent text jitter while card/image is animating */
-.venue-partner-image-card .venue-card-content,
-.venue-partner-image-card .venue-card-content *,
-.venue-partner-image-card .venue-feature-list span,
-.venue-partner-image-card .venue-card-btn {
-    transform: translateZ(0);
-    backface-visibility: hidden;
-    -webkit-font-smoothing: antialiased;
-    text-rendering: geometricPrecision;
-}
-
-/* Reduce harsh card jump that causes layout jitter */
-.venue-partner-image-card:hover {
-    transform: translateY(-6px) translateZ(0) !important;
-}
-
-/* Prevent weird tap/click hover effect on mobile */
-@media (max-width: 900px) {
-    .venue-partner-image-card:hover {
-        transform: none !important;
-    }
-
-    .venue-partner-image-card:hover .venue-image-wrap img {
-        transform: scale(1.015) translateZ(0) !important;
-    }
-}
-
-/* ── FINAL VENUE CARD STABILITY FIX ── */
+/*  FINAL VENUE CARD STABILITY FIX  */
 /* Removes image leak, text glitter, click jitter, and heavy hover transforms */
 
 .venue-partner-image-card,
@@ -4120,45 +4057,7 @@ section {
     transform: none !important;
 }
 
-/* ── NAVBAR EXTRA SECTION LINKS FIX ── */
-
-.nav-links {
-    gap: clamp(1rem, 1.6vw, 1.9rem) !important;
-}
-
-.nav-links a {
-    white-space: nowrap;
-    font-size: 0.58rem !important;
-    letter-spacing: 0.18em !important;
-}
-
-@media (max-width: 1220px) {
-    .nav-links {
-        gap: 0.9rem !important;
-    }
-
-    .nav-links a {
-        font-size: 0.52rem !important;
-        letter-spacing: 0.14em !important;
-    }
-
-    .nav-cta {
-        padding: 0 0.85rem !important;
-        font-size: 0.55rem !important;
-    }
-}
-
-@media (max-width: 1040px) {
-    .nav-links,
-    .nav-cta {
-        display: none !important;
-    }
-
-    .hamburger {
-        display: flex !important;
-    }
-}
-/* ── NAVBAR TEXT SIZE REFINEMENT ── */
+/* NAVBAR TEXT SIZE REFINEMENT */
 
 .nav-links {
     gap: clamp(1rem, 1.45vw, 1.65rem) !important;
@@ -4202,7 +4101,7 @@ section {
     }
 }
 
-/* ── ADMIN ENQUIRIES / LEADS ── */
+/*  ADMIN ENQUIRIES / LEADS  */
 
 .form-error {
     margin-top: 1rem;
@@ -4337,7 +4236,7 @@ section {
     }
 }
 
-/* ── ADMIN DASHBOARD STATS ── */
+/*  ADMIN DASHBOARD STATS */
 
 .admin-stats-grid {
     display: grid;
@@ -4518,48 +4417,7 @@ section {
     }
 }
 
-/* ── ADMIN DASHBOARD RECENT LEADS SYMMETRY FIX ── */
-
-.admin-dashboard-split {
-    display: grid !important;
-    grid-template-columns: 1fr !important;
-    gap: 1.4rem !important;
-    align-items: stretch !important;
-}
-
-.admin-recent-panel {
-    width: 100% !important;
-    max-width: none !important;
-    margin-top: 0.4rem !important;
-}
-
-.admin-recent-list {
-    display: grid !important;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.9rem;
-}
-
-.admin-recent-item {
-    border: 1px solid rgba(212, 175, 55, 0.12) !important;
-    padding: 1rem !important;
-    background: rgba(255, 255, 255, 0.02);
-}
-
-.admin-recent-item:last-child {
-    border-bottom: 1px solid rgba(212, 175, 55, 0.12) !important;
-}
-
-.admin-empty-mini {
-    max-width: 100% !important;
-}
-
-@media (max-width: 900px) {
-    .admin-recent-list {
-        grid-template-columns: 1fr;
-    }
-}
-
-/* ── ADMIN DASHBOARD CLEAN OVERVIEW LAYOUT ── */
+/* ADMIN DASHBOARD CLEAN OVERVIEW LAYOUT */
 
 .admin-recent-panel-full {
     width: 100% !important;
@@ -4610,84 +4468,8 @@ section {
         grid-template-columns: 1fr;
     }
 }
-/* ── ADMIN SIDEBAR HOVER LINE FIX ── */
 
-.admin-sidebar a::before,
-.admin-sidebar a::after,
-.admin-nav a::before,
-.admin-nav a::after {
-    display: none !important;
-    content: none !important;
-}
-
-.admin-sidebar a,
-.admin-nav a {
-    position: relative;
-    overflow: hidden;
-}
-
-.admin-sidebar a:hover,
-.admin-nav a:hover {
-    border-color: rgba(212, 175, 55, 0.42) !important;
-    background: rgba(212, 175, 55, 0.055) !important;
-    color: var(--gold) !important;
-    transform: none !important;
-}
-
-/* ── FINAL ADMIN SIDEBAR HOVER ARTIFACT FIX ── */
-
-body .admin-sidebar a,
-body .admin-sidebar a:hover,
-body .admin-sidebar a:focus,
-body .admin-sidebar a:active,
-body .admin-nav a,
-body .admin-nav a:hover,
-body .admin-nav a:focus,
-body .admin-nav a:active {
-    text-decoration: none !important;
-    background-image: none !important;
-    box-shadow: none !important;
-    outline: none !important;
-}
-
-body .admin-sidebar a::before,
-body .admin-sidebar a::after,
-body .admin-sidebar a:hover::before,
-body .admin-sidebar a:hover::after,
-body .admin-sidebar a:focus::before,
-body .admin-sidebar a:focus::after,
-body .admin-sidebar a:active::before,
-body .admin-sidebar a:active::after,
-body .admin-nav a::before,
-body .admin-nav a::after,
-body .admin-nav a:hover::before,
-body .admin-nav a:hover::after,
-body .admin-nav a:focus::before,
-body .admin-nav a:focus::after,
-body .admin-nav a:active::before,
-body .admin-nav a:active::after {
-    content: "" !important;
-    display: none !important;
-    opacity: 0 !important;
-    visibility: hidden !important;
-    width: 0 !important;
-    height: 0 !important;
-    min-width: 0 !important;
-    min-height: 0 !important;
-    border: 0 !important;
-    background: none !important;
-    transform: none !important;
-}
-
-/* Clean sidebar hover style */
-body .admin-sidebar a:hover,
-body .admin-nav a:hover {
-    color: var(--gold) !important;
-    background: rgba(212, 175, 55, 0.055) !important;
-    border-color: rgba(212, 175, 55, 0.42) !important;
-    transform: none !important;
-}
-/* ── FINAL ADMIN NAV LINK CLEANUP ── */
+/* FINAL ADMIN NAV LINK CLEANUP */
 
 .admin-nav {
     display: grid !important;
@@ -4744,7 +4526,7 @@ body .admin-nav a:hover {
     border-color: rgba(212, 175, 55, 0.42) !important;
     color: var(--white) !important;
 }
-/* ── ENQUIRY QUICK ACTION BUTTONS ── */
+/*  ENQUIRY QUICK ACTION BUTTONS */
 
 .admin-mini-action {
     min-height: 42px !important;
@@ -4768,7 +4550,7 @@ body .admin-nav a:hover {
     }
 }
 
-/* ── FINAL MOBILE RESPONSIVENESS AUDIT PATCH ── */
+/* FINAL MOBILE RESPONSIVENESS AUDIT PATCH  */
 
 /* Prevent accidental horizontal overflow */
 html,
@@ -5203,33 +4985,8 @@ body {
     }
 }
 
-/* ── FINAL MOBILE HERO + FOOTER ALIGNMENT FIX ── */
+/*  MOBILE HERO SCROLL + FOOTER ALIGNMENT FIX */
 
-/* Hero meta box symmetry */
-.hero-meta,
-.hero-tag,
-.hero-kicker,
-.hero-badge {
-    text-align: center !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-    justify-content: center !important;
-}
-
-/* If hero meta uses plain text inside a bordered box */
-.hero-meta {
-    display: inline-flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    gap: 0.75rem !important;
-    width: fit-content !important;
-    max-width: 100% !important;
-    padding: 0.7rem 1.4rem !important;
-    text-align: center !important;
-    white-space: nowrap !important;
-}
-
-/* Scroll indicator should always stay centered */
 .scroll-indicator {
     left: 50% !important;
     right: auto !important;
@@ -5239,7 +4996,6 @@ body {
     justify-content: center !important;
 }
 
-/* Keep scroll text/line centered even after hero parallax */
 .scroll-indicator span,
 .scroll-indicator p,
 .scroll-indicator div {
@@ -5248,23 +5004,7 @@ body {
     margin-right: auto !important;
 }
 
-/* Mobile hero meta refinement */
 @media (max-width: 700px) {
-    .hero-meta {
-        display: flex !important;
-        width: 100% !important;
-        max-width: 320px !important;
-        min-height: 44px !important;
-        padding: 0.7rem 0.9rem !important;
-        margin-bottom: 2rem !important;
-        gap: 0.45rem !important;
-        white-space: normal !important;
-        text-align: center !important;
-        line-height: 1.6 !important;
-        letter-spacing: 0.22em !important;
-        font-size: 0.55rem !important;
-    }
-
     .hero-content {
         text-align: center !important;
         align-items: center !important;
@@ -5277,20 +5017,11 @@ body {
     }
 }
 
-@media (max-width: 420px) {
-    .hero-meta {
-        max-width: 290px !important;
-        font-size: 0.5rem !important;
-        letter-spacing: 0.18em !important;
-        padding: 0.65rem 0.75rem !important;
-    }
-}
-
-/* Footer symmetry desktop + tablet */
 footer {
     overflow: hidden !important;
 }
 
+.footer-inner,
 .footer-content {
     align-items: flex-start !important;
 }
@@ -5305,7 +5036,6 @@ footer {
     min-width: 0 !important;
 }
 
-/* Footer mobile/tablet clean centered layout */
 @media (max-width: 900px) {
     footer {
         text-align: center !important;
@@ -5313,6 +5043,7 @@ footer {
         padding-right: 6% !important;
     }
 
+    .footer-inner,
     .footer-content {
         display: grid !important;
         grid-template-columns: 1fr !important;
@@ -5368,8 +5099,8 @@ footer {
     }
 }
 
-/* Very small phone footer polish */
 @media (max-width: 430px) {
+    .footer-inner,
     .footer-content {
         gap: 1.6rem !important;
     }
@@ -5387,7 +5118,8 @@ footer {
         padding-bottom: 2rem !important;
     }
 }
-/* ── FINAL HERO BADGE RESPONSIVE FIX ── */
+
+/*  FINAL HERO BADGE RESPONSIVE FIX npm run build */
 
 .hero-badge.hero-meta-regions {
     display: inline-flex !important;
