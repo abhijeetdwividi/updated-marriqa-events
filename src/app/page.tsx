@@ -4,6 +4,7 @@ import CursorLoader from "@/components/legacy/CursorLoader";
 import Navbar from "@/components/legacy/Navbar";
 import Hero from "@/components/legacy/Hero";
 import About from "@/components/legacy/About";
+import Founders from "@/components/legacy/Founders";
 import Services from "@/components/legacy/Services";
 import Packages from "@/components/legacy/Packages";
 import VenuePartners from "@/components/legacy/VenuePartners";
@@ -61,6 +62,7 @@ export default function Home() {
             <Navbar />
             <Hero />
             <About />
+            <Founders />
             <Services />
             <Packages />
             <VenuePartners />
