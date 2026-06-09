@@ -87,8 +87,7 @@ export async function generateMetadata({
 
     const description = getSeoDescription(post);
     const blogUrl = `${siteUrl}/blogs/${post.slug}`;
-    const imageUrl =
-        post.cover_image_url || `${siteUrl}/images/destination.png`;
+    const imageUrl = post.cover_image_url || `${siteUrl}/opengraph-image`;
 
     return {
         title: post.title,
@@ -147,7 +146,7 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
                         description: getSeoDescription(post),
                         image:
                             post.cover_image_url ||
-                            `${siteUrl}/images/destination.png`,
+                            `${siteUrl}/opengraph-image`,
                         datePublished: post.created_at,
                         author: {
                             "@type": "Organization",

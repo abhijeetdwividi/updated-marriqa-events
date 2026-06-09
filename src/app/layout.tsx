@@ -52,10 +52,10 @@ export const metadata: Metadata = {
         description: siteDescription,
         images: [
             {
-                url: "/images/destination.png",
+                url: `${siteUrl}/opengraph-image`,
                 width: 1200,
                 height: 630,
-                alt: "Marriqa Events luxury wedding and destination event decor",
+                alt: "Marriqa Events luxury wedding planner and event designer",
             },
         ],
     },
@@ -64,7 +64,7 @@ export const metadata: Metadata = {
         card: "summary_large_image",
         title: siteTitle,
         description: siteDescription,
-        images: ["/images/destination.png"],
+        images: [`${siteUrl}/twitter-image`],
     },
 
     robots: {
