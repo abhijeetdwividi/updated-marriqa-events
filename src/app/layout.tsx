@@ -80,8 +80,14 @@ export const metadata: Metadata = {
     },
 
     icons: {
-        icon: "/images/logonew.jpeg",
-        apple: "/images/logonew.jpeg",
+        icon: [
+            {
+                url: "/favicon.jpeg",
+                type: "image/jpeg",
+            },
+        ],
+        shortcut: "/favicon.jpeg",
+        apple: "/favicon.jpeg",
     },
 };
 
