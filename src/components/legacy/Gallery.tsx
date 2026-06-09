@@ -22,6 +22,10 @@ export default async function Gallery() {
         return null;
     }
 
+    const galleryImages = images as GalleryImage[];
+    const featuredImage = galleryImages[0];
+    const gridImages = galleryImages.slice(1);
+
     return (
         <>
             <section id="gallery">
@@ -35,34 +39,74 @@ export default async function Gallery() {
                     </h2>
 
                     <div className="gold-line"></div>
+
+                    <p className="portfolio-reveal-intro">
+                        A quiet visual journal of luxury decor, destination
+                        celebrations, floral details, and signature Marriqa
+                        event experiences.
+                    </p>
                 </div>
 
-                <div className="gallery-grid" id="galleryGrid">
-                    {(images as GalleryImage[]).map((image, index) => (
-                        <div
-                            className="gallery-item reveal"
-                            style={{ transitionDelay: `${index * 0.05}s` }}
-                            key={image.id}
-                        >
+                <div className="portfolio-wall" id="galleryGrid">
+                    {featuredImage ? (
+                        <div className="gallery-item portfolio-wall-featured reveal">
                             <img
-                                src={image.image_url}
+                                src={featuredImage.image_url}
                                 alt={
-                                    image.alt_text ||
-                                    image.title ||
-                                    "Marriqa Events Gallery"
+                                    featuredImage.alt_text ||
+                                    featuredImage.title ||
+                                    "Marriqa Events Portfolio"
                                 }
                                 loading="lazy"
                             />
 
-                            <div className="g-overlay">
-                                <span className="g-label">
-                                    {image.title ||
-                                        image.category ||
-                                        "Marriqa Events"}
-                                </span>
+                            <div className="portfolio-wall-overlay">
+                                <span>Featured Moment</span>
+                                <h3>
+                                    {featuredImage.title ||
+                                        featuredImage.category ||
+                                        "Luxury Celebration"}
+                                </h3>
                             </div>
                         </div>
-                    ))}
+                    ) : null}
+
+                    <div className="portfolio-wall-grid">
+                        {gridImages.map((image, index) => (
+                            <div
+                                className="gallery-item portfolio-wall-card reveal"
+                                style={{
+                                    transitionDelay: `${index * 0.04}s`,
+                                }}
+                                key={image.id}
+                            >
+                                <img
+                                    src={image.image_url}
+                                    alt={
+                                        image.alt_text ||
+                                        image.title ||
+                                        "Marriqa Events Portfolio"
+                                    }
+                                    loading="lazy"
+                                />
+
+                                <div className="portfolio-wall-overlay">
+                                    <span>
+                                        {image.category ||
+                                            `Portfolio ${index + 1}`}
+                                    </span>
+
+                                    <h3>
+                                        {image.title ||
+                                            image.category ||
+                                            "Marriqa Events"}
+                                    </h3>
+
+                                    <small>View Moment</small>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
                 </div>
             </section>
 
