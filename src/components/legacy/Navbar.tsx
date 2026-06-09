@@ -23,6 +23,9 @@ export default function Navbar() {
                         <a href="#venue-partners">Venues</a>
                     </li>
                     <li>
+                        <a href="#venue-finder">Venue Finder</a>
+                    </li>
+                    <li>
                         <a href="#gallery">Portfolio</a>
                     </li>
                     <li>
@@ -63,6 +66,9 @@ export default function Navbar() {
                 </a>
                 <a href="#venue-partners" className="mobile-link">
                     Venue Partners
+                </a>
+                <a href="#venue-finder" className="mobile-link">
+                    Venue Finder
                 </a>
                 <a href="#gallery" className="mobile-link">
                     Portfolio

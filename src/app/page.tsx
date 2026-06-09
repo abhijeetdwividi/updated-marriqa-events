@@ -8,6 +8,7 @@ import Founders from "@/components/legacy/Founders";
 import Services from "@/components/legacy/Services";
 import Packages from "@/components/legacy/Packages";
 import VenuePartners from "@/components/legacy/VenuePartners";
+import VenueFinder from "@/components/legacy/VenueFinder";
 import Gallery from "@/components/legacy/Gallery";
 import Testimonials from "@/components/legacy/Testimonials";
 import BlogSection from "@/components/legacy/BlogSection";
@@ -66,6 +67,7 @@ export default function Home() {
             <Services />
             <Packages />
             <VenuePartners />
+            <VenueFinder />
             <Gallery />
             <Testimonials />
             <BlogSection />
