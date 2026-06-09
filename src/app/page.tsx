@@ -16,9 +16,47 @@ import Footer from "@/components/legacy/Footer";
 
 export const dynamic = "force-dynamic";
 
+const siteUrl =
+    process.env.NEXT_PUBLIC_SITE_URL || "https://www.marriqaevents.com";
+
 export default function Home() {
     return (
         <>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                    __html: JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "LocalBusiness",
+                        name: "Marriqa Events",
+                        url: siteUrl,
+                        logo: `${siteUrl}/images/logonew.jpeg`,
+                        image: `${siteUrl}/images/destination.png`,
+                        telephone: "+91 82522 16549",
+                        email: "marriqaevents@gmail.com",
+                        priceRange: "₹₹₹",
+                        address: {
+                            "@type": "PostalAddress",
+                            addressLocality: "Delhi NCR",
+                            addressRegion: "Delhi NCR",
+                            addressCountry: "IN",
+                        },
+                        areaServed: [
+                            "Delhi NCR",
+                            "Uttarakhand",
+                            "Rajasthan",
+                            "Jim Corbett",
+                            "Mussoorie",
+                            "Noida",
+                            "Pan India",
+                        ],
+                        sameAs: ["https://www.instagram.com/marriqaevents"],
+                        description:
+                            "Marriqa Events is a luxury wedding planner and event design company for destination weddings, engagement ceremonies, premium decor, venue experiences, and bespoke celebrations across Delhi NCR, Uttarakhand, Rajasthan, and Pan India.",
+                    }),
+                }}
+            />
+
             <CursorLoader />
             <Navbar />
             <Hero />
