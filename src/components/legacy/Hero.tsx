@@ -6,8 +6,13 @@ export default function Hero() {
             <div className="particles" id="particles"></div>
 
             <div className="hero-content">
-                <div className="hero-badge">
-                    Est. 2026 &nbsp;·&nbsp; Delhi NCR &nbsp;·&nbsp; India
+                <div className="hero-badge hero-meta-regions">
+                    <span className="hero-meta-year">EST. 2023</span>
+
+                    <span className="hero-meta-locations">
+                        Delhi NCR <em>•</em> Uttarakhand <em>•</em> Rajasthan{" "}
+                        <em>•</em> Pan India
+                    </span>
                 </div>
 
                 <div className="hero-logo-text">Marriqa</div>
