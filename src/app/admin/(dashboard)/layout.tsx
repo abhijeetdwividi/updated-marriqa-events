@@ -29,6 +29,37 @@ export default async function AdminDashboardLayout({
         redirect("/admin/login");
     }
 
+    const navItems = [
+        {
+            label: "Dashboard",
+            href: "/admin",
+        },
+        {
+            label: "Enquiries",
+            href: "/admin/enquiries",
+        },
+        {
+            label: "Blogs",
+            href: "/admin/blogs",
+        },
+        {
+            label: "Venue Partners",
+            href: "/admin/venues",
+        },
+        {
+            label: "Packages",
+            href: "/admin/packages",
+        },
+        {
+            label: "Gallery",
+            href: "/admin/gallery",
+        },
+        {
+            label: "Testimonials",
+            href: "/admin/testimonials",
+        },
+    ];
+
     return (
         <main className="admin-shell">
             <aside className="admin-sidebar">
@@ -42,15 +73,17 @@ export default async function AdminDashboardLayout({
                     <div className="admin-brand-email">{adminUser.email}</div>
                 </div>
 
-                <div className="admin-nav">
-                    <Link href="/admin">Dashboard</Link>
-                    <Link href="/admin/enquiries">Enquiries</Link>
-                    <Link href="/admin/blogs">Blogs</Link>
-                    <Link href="/admin/venues">Venue Partners</Link>
-                    <Link href="/admin/packages">Packages</Link>
-                    <Link href="/admin/gallery">Gallery</Link>
-                    <Link href="/admin/testimonials">Testimonials</Link>
-                </div>
+                <nav className="admin-nav" aria-label="Admin navigation">
+                    {navItems.map((item) => (
+                        <Link
+                            href={item.href}
+                            className="admin-nav-link"
+                            key={item.href}
+                        >
+                            {item.label}
+                        </Link>
+                    ))}
+                </nav>
 
                 <AdminLogoutButton />
             </aside>
