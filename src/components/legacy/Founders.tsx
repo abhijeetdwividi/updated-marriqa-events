@@ -1,13 +1,13 @@
 const founders = [
     {
         label: "Founder",
-        name: "Ashutosh Prasad",
+        name: "Ashutosh",
         bio: "Ashu brings over 4 years of hands-on experience in event management, leading the planning, creative direction, and complete execution of celebrations at Marriqa Events. His strength lies in transforming ideas into well-crafted experiences — blending creativity, detailing, and smooth coordination to deliver events that feel elegant, personal, and memorable.",
         tags: ["Planning", "Creative Direction", "Execution"],
     },
     {
         label: "Co-Founder",
-        name: "Abhijeet Dwivedi",
+        name: "Abhijeet",
         bio: "Abhijeet brings together technology, strategy, and business-focused execution to strengthen the digital side of Marriqa Events. He focuses on creating smoother client journeys, efficient online systems, and a refined digital presence that supports the brand’s growth as a modern luxury event company.",
         tags: ["Digital Strategy", "Client Experience", "Brand Growth"],
     },

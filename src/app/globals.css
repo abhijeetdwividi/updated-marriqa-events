@@ -5788,3 +5788,564 @@ footer {
     font-size: 0.62rem !important;
     letter-spacing: 0.26em !important;
 }
+/* ── VENUE FINDER SECTION ── */
+
+#venue-finder {
+    background:
+        radial-gradient(
+            circle at 12% 18%,
+            rgba(212, 175, 55, 0.06),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 88% 82%,
+            rgba(74, 20, 40, 0.2),
+            transparent 34%
+        ),
+        var(--charcoal);
+    border-top: 1px solid rgba(212, 175, 55, 0.08);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.08);
+}
+
+.venue-finder-inner {
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+.venue-finder-header {
+    max-width: 780px;
+    margin-bottom: 3.5rem;
+}
+
+.venue-finder-header p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.9;
+    font-weight: 300;
+}
+
+.venue-finder-box {
+    display: grid;
+    grid-template-columns: 0.82fr 1.18fr;
+    gap: 1.2rem;
+}
+
+.venue-finder-form,
+.venue-finder-results {
+    border: 1px solid rgba(212, 175, 55, 0.16);
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.045),
+            rgba(255, 255, 255, 0.014)
+        ),
+        var(--black);
+}
+
+.venue-finder-form {
+    padding: 1.6rem;
+    display: grid;
+    gap: 1rem;
+    align-content: start;
+}
+
+.venue-finder-field {
+    display: grid;
+    gap: 0.5rem;
+}
+
+.venue-finder-field label {
+    color: var(--text-muted);
+    font-size: 0.58rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+}
+
+.venue-finder-field input,
+.venue-finder-field select {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.035);
+    border: 1px solid rgba(212, 175, 55, 0.15);
+    color: var(--white);
+    padding: 0.9rem 1rem;
+    font-family: "Poppins", sans-serif;
+    font-size: 0.82rem;
+    outline: none;
+}
+
+.venue-finder-field select option {
+    background: #151515;
+    color: var(--white);
+}
+
+.venue-finder-submit,
+.venue-finder-whatsapp {
+    margin-top: 0.5rem;
+    min-height: 48px;
+    border: 1px solid var(--gold);
+    background: var(--gold);
+    color: var(--black);
+    font-family: "Poppins", sans-serif;
+    font-size: 0.62rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.9rem 1.2rem;
+    cursor: pointer;
+}
+
+.venue-finder-results {
+    min-height: 520px;
+    padding: 1.6rem;
+}
+
+.venue-finder-empty {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.venue-finder-empty span,
+.venue-finder-result-header span,
+.venue-finder-score {
+    color: var(--gold);
+    font-size: 0.58rem;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    margin-bottom: 0.8rem;
+}
+
+.venue-finder-empty h3,
+.venue-finder-result-header h3 {
+    color: var(--white);
+    font-family: "Cormorant Garamond", serif;
+    font-size: 2.4rem;
+    font-weight: 300;
+    line-height: 1;
+    margin-bottom: 1rem;
+}
+
+.venue-finder-empty p {
+    color: var(--text-secondary);
+    font-size: 0.88rem;
+    line-height: 1.85;
+    max-width: 520px;
+}
+
+.venue-finder-result-list {
+    display: grid;
+    gap: 1rem;
+    margin-top: 1.2rem;
+}
+
+.venue-finder-result-card {
+    display: grid;
+    grid-template-columns: 190px 1fr;
+    gap: 1rem;
+    border: 1px solid rgba(212, 175, 55, 0.14);
+    background: rgba(255, 255, 255, 0.025);
+    overflow: hidden;
+}
+
+.venue-finder-result-image {
+    position: relative;
+    min-height: 210px;
+    background: #080808;
+}
+
+.venue-finder-result-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: brightness(0.78) saturate(0.8);
+}
+
+.venue-finder-result-image span {
+    position: absolute;
+    left: 0.9rem;
+    bottom: 0.9rem;
+    color: var(--gold);
+    background: rgba(11, 11, 11, 0.7);
+    border: 1px solid rgba(212, 175, 55, 0.25);
+    padding: 0.4rem 0.6rem;
+    font-size: 0.5rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+
+.venue-finder-result-content {
+    padding: 1.1rem;
+}
+
+.venue-finder-result-content h4 {
+    color: var(--white);
+    font-family: "Cormorant Garamond", serif;
+    font-size: 2rem;
+    font-weight: 300;
+    line-height: 1;
+    margin-bottom: 0.45rem;
+}
+
+.venue-finder-location {
+    color: var(--text-muted);
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+}
+
+.venue-finder-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.65rem;
+    margin-bottom: 1rem;
+}
+
+.venue-finder-stats span {
+    color: var(--text-muted);
+    font-size: 0.65rem;
+    line-height: 1.5;
+}
+
+.venue-finder-stats strong {
+    color: var(--beige);
+    font-weight: 400;
+}
+
+.venue-finder-note {
+    color: var(--text-secondary);
+    font-size: 0.78rem;
+    line-height: 1.7;
+    margin-bottom: 1rem;
+}
+
+.venue-finder-reasons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+}
+
+.venue-finder-reasons span {
+    border: 1px solid rgba(212, 175, 55, 0.15);
+    color: var(--beige-dim);
+    padding: 0.35rem 0.55rem;
+    font-size: 0.52rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+@media (max-width: 1050px) {
+    .venue-finder-box {
+        grid-template-columns: 1fr;
+    }
+
+    .venue-finder-results {
+        min-height: auto;
+    }
+}
+
+@media (max-width: 700px) {
+    #venue-finder {
+        padding-top: 5rem !important;
+        padding-bottom: 5rem !important;
+    }
+
+    .venue-finder-form,
+    .venue-finder-results {
+        padding: 1.2rem;
+    }
+
+    .venue-finder-result-card {
+        grid-template-columns: 1fr;
+    }
+
+    .venue-finder-result-image {
+        height: 220px;
+    }
+
+    .venue-finder-stats {
+        grid-template-columns: 1fr;
+    }
+}
+/* ── REFINED MINIMAL VENUE FINDER LAYOUT ── */
+
+.venue-finder-box-refined {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+}
+
+.venue-finder-form-refined {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 1rem !important;
+    padding: 1.35rem !important;
+}
+
+.venue-finder-actions {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 0.7rem;
+    align-items: end;
+}
+
+.venue-finder-reset {
+    min-height: 48px;
+    border: 1px solid rgba(212, 175, 55, 0.26);
+    background: transparent;
+    color: var(--gold);
+    font-family: "Poppins", sans-serif;
+    font-size: 0.62rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 0.9rem 1.15rem;
+    cursor: pointer;
+}
+
+.venue-finder-results-refined {
+    min-height: auto !important;
+    padding: 1.35rem !important;
+}
+
+.venue-finder-empty-refined {
+    min-height: 280px !important;
+    text-align: center;
+    align-items: center;
+}
+
+.venue-finder-empty-refined p {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.venue-finder-result-header-refined {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 1rem;
+    margin-bottom: 1.2rem;
+}
+
+.venue-finder-whatsapp-top {
+    margin-top: 0 !important;
+    white-space: nowrap;
+}
+
+.venue-finder-result-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+.venue-finder-premium-card {
+    border: 1px solid rgba(212, 175, 55, 0.14);
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.035),
+            rgba(255, 255, 255, 0.012)
+        ),
+        #0b0b0b;
+    overflow: hidden;
+    transition:
+        transform 0.45s ease,
+        border-color 0.45s ease,
+        box-shadow 0.45s ease;
+}
+
+.venue-finder-premium-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(212, 175, 55, 0.38);
+    box-shadow: 0 26px 70px rgba(0, 0, 0, 0.28);
+}
+
+.venue-finder-premium-image {
+    position: relative;
+    height: 230px;
+    background: #080808;
+    overflow: hidden;
+}
+
+.venue-finder-premium-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: brightness(0.78) saturate(0.8);
+    transform: scale(1.02);
+    transition:
+        transform 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+        filter 0.45s ease;
+}
+
+.venue-finder-premium-card:hover .venue-finder-premium-image img {
+    transform: scale(1.005);
+    filter: brightness(0.9) saturate(0.92);
+}
+
+.venue-finder-premium-image::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(to top, rgba(11, 11, 11, 0.82), transparent 58%),
+        linear-gradient(to bottom, rgba(11, 11, 11, 0.18), transparent 36%);
+}
+
+.venue-finder-premium-image span {
+    position: absolute;
+    left: 1rem;
+    bottom: 1rem;
+    z-index: 2;
+    color: var(--gold);
+    background: rgba(11, 11, 11, 0.68);
+    border: 1px solid rgba(212, 175, 55, 0.28);
+    padding: 0.42rem 0.65rem;
+    font-size: 0.5rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+
+.venue-finder-premium-image strong {
+    position: absolute;
+    right: 1rem;
+    bottom: 1rem;
+    z-index: 2;
+    color: var(--white);
+    font-family: "Cormorant Garamond", serif;
+    font-size: 2rem;
+    font-weight: 300;
+    line-height: 1;
+}
+
+.venue-finder-premium-content {
+    padding: 1.15rem;
+}
+
+.venue-finder-premium-content h4 {
+    color: var(--white);
+    font-family: "Cormorant Garamond", serif;
+    font-size: 2rem;
+    font-weight: 300;
+    line-height: 1;
+    margin-bottom: 1rem;
+}
+
+.venue-finder-premium-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.65rem;
+    margin-bottom: 1rem;
+}
+
+.venue-finder-premium-stats div {
+    border-top: 1px solid rgba(212, 175, 55, 0.16);
+    padding-top: 0.65rem;
+}
+
+.venue-finder-premium-stats span {
+    display: block;
+    color: var(--text-muted);
+    font-size: 0.52rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin-bottom: 0.28rem;
+}
+
+.venue-finder-premium-stats strong {
+    color: var(--beige);
+    font-size: 0.72rem;
+    font-weight: 400;
+    line-height: 1.4;
+}
+
+.venue-finder-result-card {
+    display: none !important;
+}
+
+@media (max-width: 1050px) {
+    .venue-finder-form-refined {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    }
+
+    .venue-finder-result-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 700px) {
+    .venue-finder-form-refined,
+    .venue-finder-result-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    .venue-finder-actions {
+        grid-template-columns: 1fr;
+    }
+
+    .venue-finder-result-header-refined {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .venue-finder-whatsapp-top {
+        width: 100%;
+    }
+
+    .venue-finder-premium-image {
+        height: 220px;
+    }
+
+    .venue-finder-premium-stats {
+        grid-template-columns: 1fr;
+    }
+}
+/* ── VENUE FINDER BUTTON ALIGNMENT REFINEMENT ── */
+
+.venue-finder-form-refined .venue-finder-actions {
+    grid-column: 1 / -1 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 0.75rem !important;
+    margin-top: 0.35rem !important;
+}
+
+.venue-finder-form-refined .venue-finder-submit {
+    width: auto !important;
+    min-width: 245px !important;
+    margin-top: 0 !important;
+}
+
+.venue-finder-form-refined .venue-finder-reset {
+    width: auto !important;
+    min-width: 120px !important;
+}
+
+.venue-finder-form-refined .venue-finder-submit:hover {
+    box-shadow: 0 12px 38px rgba(212, 175, 55, 0.24);
+    transform: translateY(-1px);
+}
+
+.venue-finder-form-refined .venue-finder-reset:hover {
+    border-color: rgba(212, 175, 55, 0.52);
+    background: rgba(212, 175, 55, 0.06);
+}
+
+@media (max-width: 700px) {
+    .venue-finder-form-refined .venue-finder-actions {
+        flex-direction: column !important;
+        align-items: stretch !important;
+    }
+
+    .venue-finder-form-refined .venue-finder-submit,
+    .venue-finder-form-refined .venue-finder-reset {
+        width: 100% !important;
+        min-width: 0 !important;
+    }
+}
