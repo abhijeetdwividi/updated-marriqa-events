@@ -27,8 +27,100 @@ const initialForm: FloatingForm = {
     message: "",
 };
 
+const eventTypeOptions = [
+    "Wedding",
+    "Engagement",
+    "Anniversary",
+    "Corporate Event",
+    "Private Celebration",
+];
+
+const locationOptions = [
+    "Delhi NCR",
+    "Noida",
+    "Gurugram",
+    "Faridabad",
+    "Ghaziabad",
+    "Meerut",
+    "Dehradun",
+    "Mussoorie",
+    "Jim Corbett",
+    "Rishikesh",
+    "Nainital / Bhimtal",
+    "Jaipur / Rajasthan",
+    "Varanasi",
+    "Other / Not decided",
+];
+
+const budgetOptions = [
+    "Budget not finalized",
+    "Under ₹5L",
+    "₹5L - ₹10L",
+    "₹10L - ₹20L",
+    "₹20L - ₹40L",
+    "₹40L - ₹75L",
+    "₹75L+",
+];
+
+const guestCountOptions = [
+    "Not finalized",
+    "Under 50 guests",
+    "50 - 100 guests",
+    "100 - 200 guests",
+    "200 - 350 guests",
+    "350 - 500 guests",
+    "500+ guests",
+];
+
+function getEventMonthOptions() {
+    const options = [
+        {
+            label: "Date not finalized",
+            value: "",
+        },
+    ];
+
+    const today = new Date();
+
+    for (let index = 0; index < 18; index += 1) {
+        const date = new Date(today.getFullYear(), today.getMonth() + index, 1);
+
+        const label = date.toLocaleDateString("en-IN", {
+            month: "long",
+            year: "numeric",
+        });
+
+        const value = `${date.getFullYear()}-${String(
+            date.getMonth() + 1,
+        ).padStart(2, "0")}-01`;
+
+        options.push({
+            label,
+            value,
+        });
+    }
+
+    return options;
+}
+
+function getReadableEventDate(value: string) {
+    if (!value) return "Not finalized";
+
+    const date = new Date(value);
+
+    if (Number.isNaN(date.getTime())) {
+        return value;
+    }
+
+    return date.toLocaleDateString("en-IN", {
+        month: "long",
+        year: "numeric",
+    });
+}
+
 export default function FloatingEnquiry() {
     const supabase = useMemo(() => createClient(), []);
+    const eventMonthOptions = useMemo(() => getEventMonthOptions(), []);
 
     const [isOpen, setIsOpen] = useState(false);
     const [form, setForm] = useState<FloatingForm>(initialForm);
@@ -77,11 +169,13 @@ export default function FloatingEnquiry() {
                 form.email || "Not shared"
             }\nEvent Type: ${
                 form.eventType || "Not selected"
-            }\nEvent Date: ${form.eventDate || "Not shared"}\nBudget: ${
-                form.budget || "Not shared"
-            }\nLocation: ${form.location || "Not shared"}\nGuest Count: ${
-                form.guestCount || "Not shared"
-            }\nMessage: ${form.message || "Not shared"}`,
+            }\nEvent Month / Timeline: ${getReadableEventDate(
+                form.eventDate,
+            )}\nBudget: ${form.budget || "Not shared"}\nLocation: ${
+                form.location || "Not shared"
+            }\nGuest Count: ${form.guestCount || "Not shared"}\nMessage: ${
+                form.message || "Not shared"
+            }`,
         );
 
         return `https://wa.me/918252216549?text=${message}`;
@@ -230,63 +324,84 @@ export default function FloatingEnquiry() {
                                     onChange={handleChange}
                                 >
                                     <option value="">Select event type</option>
-                                    <option value="Wedding">Wedding</option>
-                                    <option value="Engagement">
-                                        Engagement
-                                    </option>
-                                    <option value="Anniversary">
-                                        Anniversary
-                                    </option>
-                                    <option value="Corporate Event">
-                                        Corporate Event
-                                    </option>
-                                    <option value="Private Celebration">
-                                        Private Celebration
-                                    </option>
+                                    {eventTypeOptions.map((eventType) => (
+                                        <option
+                                            key={eventType}
+                                            value={eventType}
+                                        >
+                                            {eventType}
+                                        </option>
+                                    ))}
                                 </select>
                             </label>
 
                             <label>
-                                <span>Event Date</span>
-                                <input
-                                    type="date"
+                                <span>Event Month / Timeline</span>
+                                <select
                                     name="eventDate"
                                     value={form.eventDate}
                                     onChange={handleChange}
-                                />
+                                >
+                                    {eventMonthOptions.map((option) => (
+                                        <option
+                                            key={option.label}
+                                            value={option.value}
+                                        >
+                                            {option.label}
+                                        </option>
+                                    ))}
+                                </select>
                             </label>
 
                             <label>
                                 <span>Budget</span>
-                                <input
-                                    type="text"
+                                <select
                                     name="budget"
                                     value={form.budget}
                                     onChange={handleChange}
-                                    placeholder="Example: ₹10L - ₹20L"
-                                />
+                                >
+                                    <option value="">Select budget</option>
+                                    {budgetOptions.map((budget) => (
+                                        <option key={budget} value={budget}>
+                                            {budget}
+                                        </option>
+                                    ))}
+                                </select>
                             </label>
 
                             <label>
-                                <span>Location</span>
-                                <input
-                                    type="text"
+                                <span>Preferred Location</span>
+                                <select
                                     name="location"
                                     value={form.location}
                                     onChange={handleChange}
-                                    placeholder="Delhi NCR / Mussoorie / Corbett"
-                                />
+                                >
+                                    <option value="">Select location</option>
+                                    {locationOptions.map((location) => (
+                                        <option key={location} value={location}>
+                                            {location}
+                                        </option>
+                                    ))}
+                                </select>
                             </label>
 
                             <label>
                                 <span>Guest Count</span>
-                                <input
-                                    type="text"
+                                <select
                                     name="guestCount"
                                     value={form.guestCount}
                                     onChange={handleChange}
-                                    placeholder="Example: 150"
-                                />
+                                >
+                                    <option value="">Select guest count</option>
+                                    {guestCountOptions.map((guestCount) => (
+                                        <option
+                                            key={guestCount}
+                                            value={guestCount}
+                                        >
+                                            {guestCount}
+                                        </option>
+                                    ))}
+                                </select>
                             </label>
 
                             <label className="floating-enquiry-full">
