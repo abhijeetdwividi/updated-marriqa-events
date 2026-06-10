@@ -1,9 +1,9 @@
 import type { Metadata, Viewport } from "next";
+import type { ReactNode } from "react";
 import "./globals.css";
 
 const siteUrl =
-    process.env.NEXT_PUBLIC_SITE_URL ||
-    "https://updated-marriqa-events.vercel.app";
+    process.env.NEXT_PUBLIC_SITE_URL || "https://www.marriqaevents.com";
 
 const siteTitle =
     "Marriqa Events | Luxury Wedding Planner in Delhi NCR & Uttarakhand";
@@ -41,6 +41,17 @@ export const metadata: Metadata = {
 
     alternates: {
         canonical: "/",
+    },
+
+    icons: {
+        icon: [
+            {
+                url: "/favicon.svg",
+                type: "image/svg+xml",
+            },
+        ],
+        shortcut: "/favicon.svg",
+        apple: "/favicon.svg",
     },
 
     openGraph: {
@@ -90,11 +101,15 @@ export const viewport: Viewport = {
 export default function RootLayout({
     children,
 }: Readonly<{
-    children: React.ReactNode;
+    children: ReactNode;
 }>) {
     return (
         <html lang="en">
             <head>
+                <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+                <link rel="shortcut icon" href="/favicon.svg" />
+                <link rel="apple-touch-icon" href="/favicon.svg" />
+
                 <link rel="preconnect" href="https://fonts.googleapis.com" />
                 <link
                     rel="preconnect"
@@ -106,6 +121,7 @@ export default function RootLayout({
                     rel="stylesheet"
                 />
             </head>
+
             <body>{children}</body>
         </html>
     );
