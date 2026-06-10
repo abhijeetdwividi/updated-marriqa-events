@@ -7159,3 +7159,595 @@ footer {
         margin-bottom: 1.4rem !important;
     }
 }
+/* ── VENUE FINDER MOBILE RESULT CARD COMPACT FIX ── */
+
+@media (max-width: 700px) {
+    #venue-finder {
+        padding: 4.2rem 1rem 4.8rem !important;
+    }
+
+    #venue-finder .venue-finder-inner {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    #venue-finder .venue-finder-header {
+        margin-bottom: 2rem !important;
+    }
+
+    #venue-finder .venue-finder-header .section-title,
+    #venue-finder .venue-finder-header h2 {
+        font-size: clamp(2.2rem, 11vw, 3rem) !important;
+        line-height: 1.02 !important;
+        margin-bottom: 0.8rem !important;
+    }
+
+    #venue-finder .venue-finder-header p {
+        font-size: 0.84rem !important;
+        line-height: 1.75 !important;
+        max-width: 92% !important;
+    }
+
+    #venue-finder .venue-finder-results,
+    #venue-finder .venue-finder-results-grid,
+    #venue-finder [class*="results"] {
+        gap: 1.1rem !important;
+        margin-top: 1.4rem !important;
+    }
+
+    #venue-finder .venue-result-card,
+    #venue-finder .venue-finder-result-card,
+    #venue-finder .venue-match-card,
+    #venue-finder [class*="result-card"],
+    #venue-finder [class*="match-card"] {
+        padding: 0 !important;
+        margin: 0 auto 1.15rem !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow: hidden !important;
+    }
+
+    #venue-finder .venue-result-image,
+    #venue-finder .venue-result-image img,
+    #venue-finder .venue-finder-result-image,
+    #venue-finder [class*="result"] img,
+    #venue-finder [class*="match"] img {
+        height: 210px !important;
+        max-height: 210px !important;
+        object-fit: cover !important;
+    }
+
+    #venue-finder .venue-result-content,
+    #venue-finder .venue-finder-result-content,
+    #venue-finder [class*="result-content"],
+    #venue-finder [class*="match-content"] {
+        padding: 1.25rem 1.15rem 1.35rem !important;
+    }
+
+    #venue-finder .venue-result-title,
+    #venue-finder .venue-finder-result-title,
+    #venue-finder [class*="result"] h3,
+    #venue-finder [class*="match"] h3 {
+        font-size: clamp(1.85rem, 9vw, 2.4rem) !important;
+        line-height: 1.08 !important;
+        margin-bottom: 0.8rem !important;
+    }
+
+    #venue-finder .venue-result-location,
+    #venue-finder [class*="location"] {
+        font-size: 0.64rem !important;
+        letter-spacing: 0.2em !important;
+        margin-bottom: 0.8rem !important;
+    }
+
+    #venue-finder .venue-result-stats,
+    #venue-finder .venue-finder-result-stats,
+    #venue-finder [class*="stats"] {
+        gap: 0 !important;
+        margin: 0.8rem 0 0.9rem !important;
+    }
+
+    #venue-finder .venue-result-stat,
+    #venue-finder .venue-finder-result-stat,
+    #venue-finder [class*="stat"] {
+        padding: 0.65rem 0 !important;
+    }
+
+    #venue-finder .venue-result-stat span,
+    #venue-finder .venue-finder-result-stat span,
+    #venue-finder [class*="stat"] span {
+        font-size: 0.52rem !important;
+        letter-spacing: 0.18em !important;
+    }
+
+    #venue-finder .venue-result-stat strong,
+    #venue-finder .venue-finder-result-stat strong,
+    #venue-finder [class*="stat"] strong {
+        font-size: 0.92rem !important;
+        line-height: 1.35 !important;
+    }
+
+    #venue-finder .venue-result-badge,
+    #venue-finder .venue-finder-result-badge,
+    #venue-finder [class*="badge"] {
+        font-size: 0.52rem !important;
+        letter-spacing: 0.16em !important;
+        padding: 0.48rem 0.62rem !important;
+    }
+
+    #venue-finder .venue-result-score,
+    #venue-finder .venue-finder-result-score,
+    #venue-finder [class*="score"] {
+        font-size: 2.35rem !important;
+        line-height: 1 !important;
+    }
+
+    #venue-finder .venue-result-note,
+    #venue-finder .venue-finder-result-note,
+    #venue-finder [class*="note"] {
+        font-size: 0.78rem !important;
+        line-height: 1.65 !important;
+        margin-top: 0.9rem !important;
+    }
+
+    #venue-finder .venue-result-reasons,
+    #venue-finder .venue-result-highlights,
+    #venue-finder [class*="reasons"],
+    #venue-finder [class*="highlights"] {
+        gap: 0.45rem !important;
+        margin-top: 0.9rem !important;
+    }
+
+    #venue-finder .venue-result-cta,
+    #venue-finder .venue-finder-result-cta,
+    #venue-finder [class*="result"] a,
+    #venue-finder [class*="match"] a {
+        min-height: 42px !important;
+        padding: 0.75rem 0.95rem !important;
+        font-size: 0.54rem !important;
+        letter-spacing: 0.16em !important;
+    }
+}
+
+@media (max-width: 390px) {
+    #venue-finder .venue-result-image,
+    #venue-finder .venue-result-image img,
+    #venue-finder .venue-finder-result-image,
+    #venue-finder [class*="result"] img,
+    #venue-finder [class*="match"] img {
+        height: 185px !important;
+        max-height: 185px !important;
+    }
+
+    #venue-finder .venue-result-content,
+    #venue-finder .venue-finder-result-content,
+    #venue-finder [class*="result-content"],
+    #venue-finder [class*="match-content"] {
+        padding: 1.05rem 1rem 1.2rem !important;
+    }
+
+    #venue-finder .venue-result-title,
+    #venue-finder .venue-finder-result-title,
+    #venue-finder [class*="result"] h3,
+    #venue-finder [class*="match"] h3 {
+        font-size: 1.8rem !important;
+    }
+
+    #venue-finder .venue-result-score,
+    #venue-finder .venue-finder-result-score,
+    #venue-finder [class*="score"] {
+        font-size: 2rem !important;
+    }
+}
+/* ── GLOBAL MOBILE SECTION SCALE REFINEMENT ── */
+
+@media (max-width: 700px) {
+    section:not(#hero) {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+    }
+
+    .section-label {
+        font-size: 0.52rem !important;
+        letter-spacing: 0.22em !important;
+        margin-bottom: 0.75rem !important;
+    }
+
+    .section-title,
+    section:not(#hero) h2 {
+        font-size: clamp(2.05rem, 10vw, 3rem) !important;
+        line-height: 1.05 !important;
+    }
+
+    .gold-line {
+        margin: 1rem 0 1.2rem !important;
+    }
+
+    .about-content,
+    .services-grid,
+    .packages-grid,
+    .venue-partners-grid,
+    .founders-split-grid,
+    .testimonials-grid,
+    .blog-grid {
+        gap: 1.2rem !important;
+    }
+
+    .service-card,
+    .package-card,
+    .venue-partner-card,
+    .founder-split-card,
+    .testimonial-card,
+    .blog-card {
+        padding: 1.25rem !important;
+    }
+
+    .service-card h3,
+    .package-card h3,
+    .venue-partner-card h3,
+    .founder-split-card h3,
+    .testimonial-card h3,
+    .blog-card h3 {
+        font-size: clamp(1.45rem, 7vw, 2rem) !important;
+        line-height: 1.12 !important;
+    }
+
+    .service-card p,
+    .package-card p,
+    .venue-partner-card p,
+    .founder-split-card p,
+    .testimonial-card p,
+    .blog-card p,
+    section:not(#hero) p {
+        font-size: 0.84rem !important;
+        line-height: 1.75 !important;
+    }
+
+    .venue-partner-card img,
+    .blog-card img,
+    .gallery-item img {
+        max-height: 250px !important;
+        object-fit: cover !important;
+    }
+}
+
+@media (max-width: 390px) {
+    .section-title,
+    section:not(#hero) h2 {
+        font-size: clamp(1.9rem, 9.5vw, 2.55rem) !important;
+    }
+
+    .service-card,
+    .package-card,
+    .venue-partner-card,
+    .founder-split-card,
+    .testimonial-card,
+    .blog-card {
+        padding: 1.05rem !important;
+    }
+
+    .service-card p,
+    .package-card p,
+    .venue-partner-card p,
+    .founder-split-card p,
+    .testimonial-card p,
+    .blog-card p,
+    section:not(#hero) p {
+        font-size: 0.8rem !important;
+    }
+}
+/* ── VENUE FINDER MOBILE RESULT CARD COMPACT FIX ── */
+
+@media (max-width: 700px) {
+    #venue-finder {
+        padding: 4.2rem 1rem 4.8rem !important;
+    }
+
+    #venue-finder .venue-finder-inner {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    #venue-finder .venue-finder-header {
+        margin-bottom: 2rem !important;
+    }
+
+    #venue-finder .venue-finder-header .section-title,
+    #venue-finder .venue-finder-header h2 {
+        font-size: clamp(2.2rem, 11vw, 3rem) !important;
+        line-height: 1.02 !important;
+        margin-bottom: 0.8rem !important;
+    }
+
+    #venue-finder .venue-finder-header p {
+        font-size: 0.84rem !important;
+        line-height: 1.75 !important;
+        max-width: 92% !important;
+    }
+
+    #venue-finder .venue-finder-results,
+    #venue-finder .venue-finder-results-grid,
+    #venue-finder [class*="results"] {
+        gap: 1.1rem !important;
+        margin-top: 1.4rem !important;
+    }
+
+    #venue-finder .venue-finder-premium-card,
+    #venue-finder .venue-result-card,
+    #venue-finder .venue-finder-result-card,
+    #venue-finder .venue-match-card,
+    #venue-finder [class*="result-card"],
+    #venue-finder [class*="match-card"] {
+        padding: 0 !important;
+        margin: 0 auto 1.15rem !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow: hidden !important;
+    }
+
+    #venue-finder .venue-finder-premium-image,
+    #venue-finder .venue-result-image,
+    #venue-finder .venue-finder-result-image {
+        height: 210px !important;
+        max-height: 210px !important;
+        overflow: hidden !important;
+    }
+
+    #venue-finder .venue-finder-premium-image img,
+    #venue-finder .venue-result-image img,
+    #venue-finder .venue-finder-result-image img,
+    #venue-finder [class*="result"] img,
+    #venue-finder [class*="match"] img {
+        width: 100% !important;
+        height: 210px !important;
+        max-height: 210px !important;
+        object-fit: cover !important;
+    }
+
+    #venue-finder .venue-finder-premium-content,
+    #venue-finder .venue-result-content,
+    #venue-finder .venue-finder-result-content,
+    #venue-finder [class*="result-content"],
+    #venue-finder [class*="match-content"] {
+        padding: 1.25rem 1.15rem 1.35rem !important;
+    }
+
+    #venue-finder .venue-finder-premium-content h4,
+    #venue-finder .venue-result-title,
+    #venue-finder .venue-finder-result-title,
+    #venue-finder [class*="result"] h3,
+    #venue-finder [class*="match"] h3 {
+        font-size: clamp(1.85rem, 9vw, 2.4rem) !important;
+        line-height: 1.08 !important;
+        margin-bottom: 0.8rem !important;
+    }
+
+    #venue-finder .venue-finder-location,
+    #venue-finder .venue-result-location,
+    #venue-finder [class*="location"] {
+        font-size: 0.64rem !important;
+        letter-spacing: 0.2em !important;
+        margin-bottom: 0.8rem !important;
+    }
+
+    #venue-finder .venue-finder-premium-stats,
+    #venue-finder .venue-result-stats,
+    #venue-finder .venue-finder-result-stats,
+    #venue-finder [class*="stats"] {
+        gap: 0 !important;
+        margin: 0.8rem 0 0.9rem !important;
+    }
+
+    #venue-finder .venue-finder-premium-stats div,
+    #venue-finder .venue-result-stat,
+    #venue-finder .venue-finder-result-stat,
+    #venue-finder [class*="stat"] {
+        padding: 0.65rem 0 !important;
+    }
+
+    #venue-finder .venue-finder-premium-stats span,
+    #venue-finder .venue-result-stat span,
+    #venue-finder .venue-finder-result-stat span,
+    #venue-finder [class*="stat"] span {
+        font-size: 0.52rem !important;
+        letter-spacing: 0.18em !important;
+    }
+
+    #venue-finder .venue-finder-premium-stats strong,
+    #venue-finder .venue-result-stat strong,
+    #venue-finder .venue-finder-result-stat strong,
+    #venue-finder [class*="stat"] strong {
+        font-size: 0.92rem !important;
+        line-height: 1.35 !important;
+    }
+
+    #venue-finder .venue-finder-premium-image span,
+    #venue-finder .venue-result-badge,
+    #venue-finder .venue-finder-result-badge,
+    #venue-finder [class*="badge"] {
+        font-size: 0.52rem !important;
+        letter-spacing: 0.16em !important;
+        padding: 0.48rem 0.62rem !important;
+    }
+
+    #venue-finder .venue-finder-premium-image strong,
+    #venue-finder .venue-result-score,
+    #venue-finder .venue-finder-result-score,
+    #venue-finder [class*="score"] {
+        font-size: 2.35rem !important;
+        line-height: 1 !important;
+    }
+
+    #venue-finder .venue-finder-note,
+    #venue-finder .venue-result-note,
+    #venue-finder .venue-finder-result-note,
+    #venue-finder [class*="note"] {
+        font-size: 0.78rem !important;
+        line-height: 1.65 !important;
+        margin-top: 0.9rem !important;
+    }
+
+    #venue-finder .venue-finder-reasons,
+    #venue-finder .venue-result-reasons,
+    #venue-finder .venue-result-highlights,
+    #venue-finder [class*="reasons"],
+    #venue-finder [class*="highlights"] {
+        gap: 0.45rem !important;
+        margin-top: 0.9rem !important;
+    }
+
+    #venue-finder .venue-finder-reasons span {
+        font-size: 0.52rem !important;
+        letter-spacing: 0.14em !important;
+        padding: 0.45rem 0.58rem !important;
+    }
+
+    #venue-finder .venue-result-cta,
+    #venue-finder .venue-finder-result-cta,
+    #venue-finder [class*="result"] a,
+    #venue-finder [class*="match"] a {
+        min-height: 42px !important;
+        padding: 0.75rem 0.95rem !important;
+        font-size: 0.54rem !important;
+        letter-spacing: 0.16em !important;
+    }
+}
+
+@media (max-width: 390px) {
+    #venue-finder .venue-finder-premium-image,
+    #venue-finder .venue-result-image,
+    #venue-finder .venue-finder-result-image {
+        height: 185px !important;
+        max-height: 185px !important;
+    }
+
+    #venue-finder .venue-finder-premium-image img,
+    #venue-finder .venue-result-image img,
+    #venue-finder .venue-finder-result-image img,
+    #venue-finder [class*="result"] img,
+    #venue-finder [class*="match"] img {
+        height: 185px !important;
+        max-height: 185px !important;
+    }
+
+    #venue-finder .venue-finder-premium-content,
+    #venue-finder .venue-result-content,
+    #venue-finder .venue-finder-result-content,
+    #venue-finder [class*="result-content"],
+    #venue-finder [class*="match-content"] {
+        padding: 1.05rem 1rem 1.2rem !important;
+    }
+
+    #venue-finder .venue-finder-premium-content h4,
+    #venue-finder .venue-result-title,
+    #venue-finder .venue-finder-result-title,
+    #venue-finder [class*="result"] h3,
+    #venue-finder [class*="match"] h3 {
+        font-size: 1.8rem !important;
+    }
+
+    #venue-finder .venue-finder-premium-image strong,
+    #venue-finder .venue-result-score,
+    #venue-finder .venue-finder-result-score,
+    #venue-finder [class*="score"] {
+        font-size: 2rem !important;
+    }
+}
+
+/* ── GLOBAL MOBILE SECTION SCALE REFINEMENT ── */
+
+@media (max-width: 700px) {
+    section:not(#hero) {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+    }
+
+    .section-label {
+        font-size: 0.52rem !important;
+        letter-spacing: 0.22em !important;
+        margin-bottom: 0.75rem !important;
+    }
+
+    .section-title,
+    section:not(#hero) h2 {
+        font-size: clamp(2.05rem, 10vw, 3rem) !important;
+        line-height: 1.05 !important;
+    }
+
+    .gold-line {
+        margin: 1rem 0 1.2rem !important;
+    }
+
+    .about-content,
+    .services-grid,
+    .packages-grid,
+    .venue-partners-grid,
+    .founders-split-grid,
+    .testimonials-grid,
+    .blog-grid {
+        gap: 1.2rem !important;
+    }
+
+    .service-card,
+    .package-card,
+    .venue-partner-card,
+    .founder-split-card,
+    .testimonial-card,
+    .blog-card {
+        padding: 1.25rem !important;
+    }
+
+    .service-card h3,
+    .package-card h3,
+    .venue-partner-card h3,
+    .founder-split-card h3,
+    .testimonial-card h3,
+    .blog-card h3 {
+        font-size: clamp(1.45rem, 7vw, 2rem) !important;
+        line-height: 1.12 !important;
+    }
+
+    .service-card p,
+    .package-card p,
+    .venue-partner-card p,
+    .founder-split-card p,
+    .testimonial-card p,
+    .blog-card p,
+    section:not(#hero) p {
+        font-size: 0.84rem !important;
+        line-height: 1.75 !important;
+    }
+
+    .venue-partner-card img,
+    .blog-card img,
+    .gallery-item img {
+        max-height: 250px !important;
+        object-fit: cover !important;
+    }
+}
+
+@media (max-width: 390px) {
+    .section-title,
+    section:not(#hero) h2 {
+        font-size: clamp(1.9rem, 9.5vw, 2.55rem) !important;
+    }
+
+    .service-card,
+    .package-card,
+    .venue-partner-card,
+    .founder-split-card,
+    .testimonial-card,
+    .blog-card {
+        padding: 1.05rem !important;
+    }
+
+    .service-card p,
+    .package-card p,
+    .venue-partner-card p,
+    .founder-split-card p,
+    .testimonial-card p,
+    .blog-card p,
+    section:not(#hero) p {
+        font-size: 0.8rem !important;
+    }
+}
