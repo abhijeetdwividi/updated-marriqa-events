@@ -25,6 +25,8 @@ type Venue = {
 type VenueWithScore = Venue & {
     matchScore: number;
     matchPercent: number;
+    matchLabel: string;
+    showMatchPercent: boolean;
     matchReasons: string[];
 };
 
@@ -62,6 +64,52 @@ function formatBudget(value: number | null) {
     }
 
     return `₹${Math.round(value / 100000)}L`;
+}
+
+function formatBudgetRange(minBudget: number | null, maxBudget: number | null) {
+    if (!minBudget && !maxBudget) return "Quote on request";
+
+    if (minBudget && maxBudget) {
+        if (minBudget === maxBudget) {
+            return formatBudget(minBudget);
+        }
+
+        return `${formatBudget(minBudget)} - ${formatBudget(maxBudget)}`;
+    }
+
+    if (minBudget) {
+        return `From ${formatBudget(minBudget)}`;
+    }
+
+    return `Up to ${formatBudget(maxBudget)}`;
+}
+
+function formatRooms(roomCount: number | null) {
+    if (!roomCount) return "On request";
+
+    if (roomCount === 1) return "1 Room";
+
+    return `${roomCount} Rooms`;
+}
+
+function formatGuests(minGuests: number | null, maxGuests: number | null) {
+    if (minGuests && maxGuests) {
+        if (minGuests === maxGuests) {
+            return `${maxGuests} pax`;
+        }
+
+        return `${minGuests}-${maxGuests} pax`;
+    }
+
+    if (maxGuests) {
+        return `Up to ${maxGuests} pax`;
+    }
+
+    if (minGuests) {
+        return `${minGuests}+ pax`;
+    }
+
+    return "Custom capacity";
 }
 
 function getVenueScore(venue: Venue, form: FinderForm) {
@@ -133,19 +181,38 @@ function getVenueScore(venue: Venue, form: FinderForm) {
         }
     }
 
-    const matchPercent = Math.min(
-        98,
-        Math.max(35, Math.round((score / 130) * 100)),
-    );
+    return { score, reasons };
+}
 
-    return { score, matchPercent, reasons };
+function getMatchPercent(score: number) {
+    return Math.min(98, Math.max(0, Math.round((score / 130) * 100)));
+}
+
+function getMatchLabel(matchPercent: number) {
+    if (matchPercent >= 75) return "Best Match";
+    if (matchPercent >= 60) return "Strong Match";
+    if (matchPercent >= 45) return "Suggested Option";
+
+    return "Curated Option";
+}
+
+function shouldShowMatchPercent(matchPercent: number) {
+    return matchPercent >= 60;
 }
 
 function getWhatsAppUrl(form: FinderForm, venues: VenueWithScore[]) {
     const venueNames = venues.map((venue) => venue.name).join(", ");
 
     const message = encodeURIComponent(
-        `Hello Marriqa Events, I used the Venue Finder and want details.\n\nLocation: ${form.location || "Not selected"}\nEvent Type: ${form.eventType || "Not selected"}\nVenue Type: ${form.venueType || "Not selected"}\nGuests: ${form.guests || "Not shared"}\nBudget: ${form.budget ? `₹${form.budget}L` : "Not shared"}\nRooms: ${form.rooms || "Not shared"}\n\nSuggested Venues: ${venueNames || "Please suggest options"}`,
+        `Hello Marriqa Events, I used the Venue Finder and want details.\n\nLocation: ${
+            form.location || "Not selected"
+        }\nEvent Type: ${form.eventType || "Not selected"}\nVenue Type: ${
+            form.venueType || "Not selected"
+        }\nGuests: ${form.guests || "Not shared"}\nBudget: ${
+            form.budget ? `₹${form.budget}L` : "Not shared"
+        }\nRooms: ${form.rooms || "Not shared"}\n\nSuggested Venues: ${
+            venueNames || "Please suggest options"
+        }`,
     );
 
     return `https://wa.me/918252216549?text=${message}`;
@@ -159,11 +226,16 @@ export default function VenueFinderClient({ venues }: VenueFinderClientProps) {
         return venues
             .map((venue) => {
                 const match = getVenueScore(venue, form);
+                const matchPercent = getMatchPercent(match.score);
+                const matchLabel = getMatchLabel(matchPercent);
+                const showMatchPercent = shouldShowMatchPercent(matchPercent);
 
                 return {
                     ...venue,
                     matchScore: match.score,
-                    matchPercent: match.matchPercent,
+                    matchPercent,
+                    matchLabel,
+                    showMatchPercent,
                     matchReasons: match.reasons,
                 };
             })
@@ -313,8 +385,8 @@ export default function VenueFinderClient({ venues }: VenueFinderClientProps) {
                     <>
                         <div className="venue-finder-result-header venue-finder-result-header-refined">
                             <div>
-                                <span>Best Matches</span>
-                                <h3>Recommended Venues</h3>
+                                <span>Recommended Options</span>
+                                <h3>Curated Venue Matches</h3>
                             </div>
 
                             <a
@@ -328,7 +400,7 @@ export default function VenueFinderClient({ venues }: VenueFinderClientProps) {
                         </div>
 
                         <div className="venue-finder-result-grid">
-                            {results.map((venue, index) => (
+                            {results.map((venue) => (
                                 <article
                                     className="venue-finder-premium-card"
                                     key={venue.id}
@@ -341,13 +413,13 @@ export default function VenueFinderClient({ venues }: VenueFinderClientProps) {
                                             />
                                         ) : null}
 
-                                        <span>
-                                            {index === 0
-                                                ? "Best Match"
-                                                : `Option ${index + 1}`}
-                                        </span>
+                                        <span>{venue.matchLabel}</span>
 
-                                        <strong>{venue.matchPercent}%</strong>
+                                        {venue.showMatchPercent ? (
+                                            <strong>
+                                                {venue.matchPercent}%
+                                            </strong>
+                                        ) : null}
                                     </div>
 
                                     <div className="venue-finder-premium-content">
@@ -363,29 +435,27 @@ export default function VenueFinderClient({ venues }: VenueFinderClientProps) {
                                             <div>
                                                 <span>Rooms</span>
                                                 <strong>
-                                                    {venue.room_count ||
-                                                        "Request"}
+                                                    {formatRooms(
+                                                        venue.room_count,
+                                                    )}
                                                 </strong>
                                             </div>
 
                                             <div>
                                                 <span>Guests</span>
                                                 <strong>
-                                                    {venue.min_guests &&
-                                                    venue.max_guests
-                                                        ? `${venue.min_guests}-${venue.max_guests}`
-                                                        : "Request"}
+                                                    {formatGuests(
+                                                        venue.min_guests,
+                                                        venue.max_guests,
+                                                    )}
                                                 </strong>
                                             </div>
 
                                             <div>
                                                 <span>Budget</span>
                                                 <strong>
-                                                    {formatBudget(
+                                                    {formatBudgetRange(
                                                         venue.min_budget,
-                                                    )}{" "}
-                                                    -{" "}
-                                                    {formatBudget(
                                                         venue.max_budget,
                                                     )}
                                                 </strong>
