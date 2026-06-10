@@ -15,8 +15,12 @@ export default function SiteInteractions() {
         const cursor = document.getElementById("cursor");
         const ring = document.getElementById("cursor-ring");
 
+        const isFinePointer = window.matchMedia(
+            "(hover: hover) and (pointer: fine)",
+        ).matches;
+
         const handleMouseMove = (e: MouseEvent) => {
-            if (!cursor || !ring) return;
+            if (!isFinePointer || !cursor || !ring) return;
 
             cursor.style.left = `${e.clientX}px`;
             cursor.style.top = `${e.clientY}px`;
@@ -27,35 +31,81 @@ export default function SiteInteractions() {
             }, 80);
         };
 
-        document.addEventListener("mousemove", handleMouseMove);
+        if (isFinePointer) {
+            document.addEventListener("mousemove", handleMouseMove);
+        }
 
         const hoverElements = document.querySelectorAll(
             "a, button, .service-card, .gallery-item",
         );
 
-        hoverElements.forEach((el) => {
-            el.addEventListener("mouseenter", () => {
-                if (!cursor || !ring) return;
-                cursor.style.width = "20px";
-                cursor.style.height = "20px";
-                ring.style.width = "60px";
-                ring.style.height = "60px";
-            });
+        const handleHoverEnter = () => {
+            if (!isFinePointer || !cursor || !ring) return;
 
-            el.addEventListener("mouseleave", () => {
-                if (!cursor || !ring) return;
-                cursor.style.width = "12px";
-                cursor.style.height = "12px";
-                ring.style.width = "40px";
-                ring.style.height = "40px";
-            });
-        });
+            cursor.style.width = "20px";
+            cursor.style.height = "20px";
+            ring.style.width = "60px";
+            ring.style.height = "60px";
+        };
 
-        // LOADER
+        const handleHoverLeave = () => {
+            if (!isFinePointer || !cursor || !ring) return;
+
+            cursor.style.width = "12px";
+            cursor.style.height = "12px";
+            ring.style.width = "40px";
+            ring.style.height = "40px";
+        };
+
+        if (isFinePointer) {
+            hoverElements.forEach((el) => {
+                el.addEventListener("mouseenter", handleHoverEnter);
+                el.addEventListener("mouseleave", handleHoverLeave);
+            });
+        }
+
+        // LOADER WITH MINIMUM DISPLAY TIME + SAFE FALLBACK
         const loader = document.getElementById("loader");
-        const loaderTimer = window.setTimeout(() => {
-            loader?.classList.add("hidden");
-        }, 2200);
+        let loaderHidden = false;
+        let loaderHideTimer: number | undefined;
+
+        const loaderStartedAt = performance.now();
+        const minimumLoaderDuration = 3200;
+        const maximumLoaderDuration = 5200;
+
+        const hideLoader = () => {
+            if (!loader || loaderHidden) return;
+
+            loaderHidden = true;
+            loader.classList.add("hidden");
+
+            window.setTimeout(() => {
+                loader.style.display = "none";
+            }, 800);
+        };
+
+        const scheduleLoaderHide = () => {
+            const elapsed = performance.now() - loaderStartedAt;
+            const remainingTime = Math.max(0, minimumLoaderDuration - elapsed);
+
+            if (loaderHideTimer) {
+                window.clearTimeout(loaderHideTimer);
+            }
+
+            loaderHideTimer = window.setTimeout(() => {
+                hideLoader();
+            }, remainingTime);
+        };
+
+        const maximumLoaderTimer = window.setTimeout(() => {
+            hideLoader();
+        }, maximumLoaderDuration);
+
+        window.addEventListener("load", scheduleLoaderHide);
+
+        if (document.readyState === "complete") {
+            window.setTimeout(scheduleLoaderHide, 150);
+        }
 
         // NAVBAR SCROLL
         const navbar = document.getElementById("navbar");
@@ -72,11 +122,37 @@ export default function SiteInteractions() {
         const mobileMenu = document.getElementById("mobileMenu");
         const menuClose = document.getElementById("menuClose");
 
-        const openMenu = () => mobileMenu?.classList.add("open");
-        const closeMenu = () => mobileMenu?.classList.remove("open");
+        const lockBodyScroll = () => {
+            document.documentElement.classList.add("menu-open");
+            document.body.classList.add("menu-open");
+            document.body.style.overflow = "hidden";
+        };
+
+        const unlockBodyScroll = () => {
+            document.documentElement.classList.remove("menu-open");
+            document.body.classList.remove("menu-open");
+            document.body.style.overflow = "";
+        };
+
+        const openMenu = () => {
+            mobileMenu?.classList.add("open");
+            lockBodyScroll();
+        };
+
+        const closeMenu = () => {
+            mobileMenu?.classList.remove("open");
+            unlockBodyScroll();
+        };
+
+        const handleEscape = (event: KeyboardEvent) => {
+            if (event.key === "Escape") {
+                closeMenu();
+            }
+        };
 
         hamburger?.addEventListener("click", openMenu);
         menuClose?.addEventListener("click", closeMenu);
+        document.addEventListener("keydown", handleEscape);
 
         document.querySelectorAll(".mobile-link").forEach((link) => {
             link.addEventListener("click", closeMenu);
@@ -88,7 +164,9 @@ export default function SiteInteractions() {
         if (particlesContainer) {
             particlesContainer.innerHTML = "";
 
-            for (let i = 0; i < 30; i++) {
+            const particleCount = window.innerWidth <= 768 ? 14 : 30;
+
+            for (let i = 0; i < particleCount; i++) {
                 const p = document.createElement("div");
                 p.classList.add("particle");
 
@@ -134,25 +212,39 @@ export default function SiteInteractions() {
         ) as HTMLImageElement | null;
         const lbClose = document.getElementById("lb-close");
 
-        document.querySelectorAll(".gallery-item img").forEach((img) => {
-            img.addEventListener("click", () => {
+        const galleryImages = document.querySelectorAll(".gallery-item img");
+
+        const galleryClickHandlers: Array<{
+            img: Element;
+            handler: EventListener;
+        }> = [];
+
+        galleryImages.forEach((img) => {
+            const handler = () => {
                 const image = img as HTMLImageElement;
                 if (!lbImg || !lightbox) return;
 
                 lbImg.src = image.src.replace("w=600", "w=1200");
                 lightbox.classList.add("open");
-            });
+            };
+
+            img.addEventListener("click", handler);
+            galleryClickHandlers.push({ img, handler });
         });
 
-        lbClose?.addEventListener("click", () => {
+        const closeLightbox = () => {
             lightbox?.classList.remove("open");
-        });
+        };
 
-        lightbox?.addEventListener("click", (e) => {
-            if (e.target === lightbox) {
-                lightbox.classList.remove("open");
+        lbClose?.addEventListener("click", closeLightbox);
+
+        const handleLightboxBackdrop = (event: MouseEvent) => {
+            if (event.target === lightbox) {
+                lightbox?.classList.remove("open");
             }
-        });
+        };
+
+        lightbox?.addEventListener("click", handleLightboxBackdrop);
 
         // TESTIMONIALS FALLBACK
         const testimonials: Testimonial[] = [
@@ -197,16 +289,16 @@ export default function SiteInteractions() {
         const track = document.getElementById("testiTrack");
 
         if (track && track.children.length === 0) {
-            const renderTestimonial = (t: Testimonial) => `
+            const renderTestimonial = (testimonial: Testimonial) => `
                 <div class="testi-card">
                     <div class="testi-quote">"</div>
-                    <p class="testi-text">${t.text}</p>
+                    <p class="testi-text">${testimonial.text}</p>
                     <div class="testi-stars">★ ★ ★ ★ ★</div>
                     <div class="testi-author">
-                        <div class="testi-avatar">${t.initial}</div>
+                        <div class="testi-avatar">${testimonial.initial}</div>
                         <div>
-                            <div class="testi-name">${t.name}</div>
-                            <div class="testi-event">${t.event}</div>
+                            <div class="testi-name">${testimonial.name}</div>
+                            <div class="testi-event">${testimonial.event}</div>
                         </div>
                     </div>
                 </div>
@@ -218,14 +310,12 @@ export default function SiteInteractions() {
         }
 
         // OLD FORM SUBMIT FALLBACK
-        // This only works for old Formspree form.
-        // Supabase contact form is handled inside Contact.tsx.
         const form = document.getElementById(
             "bookingForm",
         ) as HTMLFormElement | null;
 
-        const handleSubmit = async (e: SubmitEvent) => {
-            e.preventDefault();
+        const handleSubmit = async (event: SubmitEvent) => {
+            event.preventDefault();
 
             if (!form) return;
 
@@ -239,7 +329,7 @@ export default function SiteInteractions() {
             }
 
             try {
-                const res = await fetch(form.action, {
+                const response = await fetch(form.action, {
                     method: "POST",
                     body: new FormData(form),
                     headers: {
@@ -247,7 +337,7 @@ export default function SiteInteractions() {
                     },
                 });
 
-                if (res.ok) {
+                if (response.ok) {
                     form.reset();
 
                     const success = document.getElementById("formSuccess");
@@ -280,13 +370,13 @@ export default function SiteInteractions() {
 
         // PARALLAX HERO
         const handleHeroParallax = () => {
-            if (window.innerWidth <= 768) {
-                const heroContent = document.querySelector(
-                    ".hero-content",
-                ) as HTMLElement | null;
+            const heroContent = document.querySelector(
+                ".hero-content",
+            ) as HTMLElement | null;
 
+            if (window.innerWidth <= 768) {
                 if (heroContent) {
-                    heroContent.style.transform = "none";
+                    heroContent.style.transform = "";
                     heroContent.style.opacity = "1";
                 }
 
@@ -294,9 +384,6 @@ export default function SiteInteractions() {
             }
 
             const scrolled = window.scrollY;
-            const heroContent = document.querySelector(
-                ".hero-content",
-            ) as HTMLElement | null;
 
             if (heroContent && scrolled < window.innerHeight) {
                 heroContent.style.transform = `translateY(${scrolled * 0.25}px)`;
@@ -310,18 +397,46 @@ export default function SiteInteractions() {
         document.addEventListener("scroll", handleHeroParallax);
 
         return () => {
-            document.removeEventListener("mousemove", handleMouseMove);
+            if (isFinePointer) {
+                document.removeEventListener("mousemove", handleMouseMove);
+
+                hoverElements.forEach((el) => {
+                    el.removeEventListener("mouseenter", handleHoverEnter);
+                    el.removeEventListener("mouseleave", handleHoverLeave);
+                });
+            }
+
+            window.removeEventListener("load", scheduleLoaderHide);
+
+            if (loaderHideTimer) {
+                window.clearTimeout(loaderHideTimer);
+            }
+
+            window.clearTimeout(maximumLoaderTimer);
+
             window.removeEventListener("scroll", handleScrollNavbar);
             document.removeEventListener("scroll", handleHeroParallax);
 
             hamburger?.removeEventListener("click", openMenu);
             menuClose?.removeEventListener("click", closeMenu);
+            document.removeEventListener("keydown", handleEscape);
+
+            document.querySelectorAll(".mobile-link").forEach((link) => {
+                link.removeEventListener("click", closeMenu);
+            });
+
+            galleryClickHandlers.forEach(({ img, handler }) => {
+                img.removeEventListener("click", handler);
+            });
+
+            lbClose?.removeEventListener("click", closeLightbox);
+            lightbox?.removeEventListener("click", handleLightboxBackdrop);
 
             if (form && !form.dataset.supabaseForm) {
                 form.removeEventListener("submit", handleSubmit);
             }
 
-            window.clearTimeout(loaderTimer);
+            unlockBodyScroll();
             revealObserver.disconnect();
         };
     }, []);

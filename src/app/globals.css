@@ -8422,3 +8422,138 @@ footer {
         line-height: 1.48 !important;
     }
 }
+/* ── MOBILE HERO TO NEXT SECTION SMOOTH BLEND ── */
+
+@media (max-width: 700px) {
+    #hero {
+        position: relative !important;
+        overflow: hidden !important;
+        margin-bottom: 0 !important;
+    }
+
+    #hero::after {
+        content: "" !important;
+        position: absolute !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: -1px !important;
+        height: 140px !important;
+        z-index: 2 !important;
+        pointer-events: none !important;
+        background: linear-gradient(
+            180deg,
+            rgba(5, 5, 5, 0) 0%,
+            rgba(5, 5, 5, 0.72) 62%,
+            var(--black) 100%
+        ) !important;
+    }
+
+    #about {
+        position: relative !important;
+        z-index: 3 !important;
+        margin-top: -1px !important;
+        padding-top: 4.4rem !important;
+        background:
+            radial-gradient(
+                circle at 50% 0%,
+                rgba(212, 175, 55, 0.045),
+                transparent 34%
+            ),
+            var(--black) !important;
+    }
+
+    .scroll-indicator {
+        z-index: 4 !important;
+    }
+}
+
+@media (max-width: 390px) {
+    #hero::after {
+        height: 120px !important;
+    }
+
+    #about {
+        padding-top: 3.8rem !important;
+    }
+}
+/* ── MOBILE HERO TO NEXT SECTION SMOOTH BLEND ── */
+
+@media (max-width: 700px) {
+    #hero {
+        position: relative !important;
+        overflow: hidden !important;
+        margin-bottom: 0 !important;
+    }
+
+    #hero::after {
+        content: "" !important;
+        position: absolute !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: -1px !important;
+        height: 140px !important;
+        z-index: 2 !important;
+        pointer-events: none !important;
+        background: linear-gradient(
+            180deg,
+            rgba(5, 5, 5, 0) 0%,
+            rgba(5, 5, 5, 0.72) 62%,
+            var(--black) 100%
+        ) !important;
+    }
+
+    #about {
+        position: relative !important;
+        z-index: 3 !important;
+        margin-top: -1px !important;
+        padding-top: 4.4rem !important;
+        background:
+            radial-gradient(
+                circle at 50% 0%,
+                rgba(212, 175, 55, 0.045),
+                transparent 34%
+            ),
+            var(--black) !important;
+    }
+
+    .scroll-indicator {
+        z-index: 4 !important;
+    }
+}
+
+@media (max-width: 390px) {
+    #hero::after {
+        height: 120px !important;
+    }
+
+    #about {
+        padding-top: 3.8rem !important;
+    }
+}
+
+/* ── LOADER SAFE HIDE FALLBACK ── */
+
+#loader {
+    transition:
+        opacity 0.55s ease,
+        visibility 0.55s ease !important;
+}
+
+#loader.hidden {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+}
+/* ── LOADER SMOOTHER EXIT TIMING ── */
+
+#loader {
+    transition:
+        opacity 0.8s ease,
+        visibility 0.8s ease !important;
+}
+
+#loader.hidden {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+}
