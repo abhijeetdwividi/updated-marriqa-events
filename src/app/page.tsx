@@ -1,21 +1,13 @@
-import SiteInteractions from "@/components/SiteInteractions";
-
-import CursorLoader from "@/components/legacy/CursorLoader";
-import Navbar from "@/components/legacy/Navbar";
+import MarketingShell from "@/components/legacy/MarketingShell";
 import Hero from "@/components/legacy/Hero";
-import About from "@/components/legacy/About";
-import Founders from "@/components/legacy/Founders";
-import Services from "@/components/legacy/Services";
-import Packages from "@/components/legacy/Packages";
+import HomeIntro from "@/components/legacy/HomeIntro";
+import ServicesPreview from "@/components/legacy/ServicesPreview";
+import DestinationFinderPreview from "@/components/legacy/DestinationFinderPreview";
 import VenuePartners from "@/components/legacy/VenuePartners";
-import VenueFinder from "@/components/legacy/VenueFinder";
 import Gallery from "@/components/legacy/Gallery";
 import Testimonials from "@/components/legacy/Testimonials";
-import BlogSection from "@/components/legacy/BlogSection";
-import Contact from "@/components/legacy/Contact";
 import Instagram from "@/components/legacy/Instagram";
-import Footer from "@/components/legacy/Footer";
-import FloatingEnquiry from "@/components/legacy/FloatingEnquiry";
+import FinalCTA from "@/components/legacy/FinalCTA";
 
 export const dynamic = "force-dynamic";
 
@@ -24,7 +16,7 @@ const siteUrl =
 
 export default function Home() {
     return (
-        <>
+        <MarketingShell>
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{
@@ -34,7 +26,7 @@ export default function Home() {
                         name: "Marriqa Events",
                         url: siteUrl,
                         logo: `${siteUrl}/images/logonew.jpeg`,
-                        image: `${siteUrl}/images/destination.png`,
+                        image: `${siteUrl}/opengraph-image`,
                         telephone: "+91 82522 16549",
                         email: "marriqaevents@gmail.com",
                         priceRange: "₹₹₹",
@@ -60,24 +52,30 @@ export default function Home() {
                 }}
             />
 
-            <CursorLoader />
-            <Navbar />
             <Hero />
-            <About />
-            <Founders />
-            <Services />
-            <Packages />
-            <VenuePartners />
-            <VenueFinder />
-            <Gallery />
-            <Testimonials />
-            <BlogSection />
-            <Contact />
-            <Instagram />
-            <Footer />
-            <FloatingEnquiry />
+            <HomeIntro />
+            <ServicesPreview />
+            <DestinationFinderPreview />
 
-            <SiteInteractions />
-        </>
+            <section className="home-section-short">
+                <VenuePartners />
+            </section>
+
+            <section className="home-section-short">
+                <Gallery />
+            </section>
+
+            <Testimonials />
+
+            <FinalCTA
+                eyebrow="Start Planning"
+                title="Tell us your event date, guest count and preferred city."
+                text="We’ll help you with venues, decor, planning scope and a clear direction for your celebration."
+                buttonText="Start Enquiry"
+                buttonHref="/contact"
+            />
+
+            <Instagram />
+        </MarketingShell>
     );
 }

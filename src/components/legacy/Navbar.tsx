@@ -2,93 +2,89 @@ export default function Navbar() {
     return (
         <>
             <nav id="navbar">
-                <a href="#hero" className="nav-logo">
+                <a href="/" className="nav-logo">
                     Marriqa <span>Events</span>
                 </a>
 
                 <ul className="nav-links">
                     <li>
-                        <a href="#about">About</a>
+                        <a href="/">Home</a>
                     </li>
                     <li>
-                        <a href="#founders">Founders</a>
+                        <a href="/about">About</a>
                     </li>
                     <li>
-                        <a href="#services">Services</a>
+                        <a href="/services">Services</a>
                     </li>
                     <li>
-                        <a href="#packages">Packages</a>
+                        <a href="/destination-weddings">Destinations</a>
                     </li>
                     <li>
-                        <a href="#venue-partners">Venues</a>
+                        <a href="/venues">Venues</a>
                     </li>
                     <li>
-                        <a href="#venue-finder">Venue Finder</a>
+                        <a href="/portfolio">Portfolio</a>
                     </li>
                     <li>
-                        <a href="#gallery">Portfolio</a>
+                        <a href="/packages">Packages</a>
                     </li>
                     <li>
-                        <a href="#testimonials">Stories</a>
+                        <a href="/blogs">Blogs</a>
                     </li>
                     <li>
-                        <a href="#blog">Blogs</a>
-                    </li>
-                    <li>
-                        <a href="#contact">Contact</a>
+                        <a href="/contact">Contact</a>
                     </li>
                 </ul>
 
-                <a href="#contact" className="nav-cta">
+                <a href="/contact" className="nav-cta">
                     Book Consultation
                 </a>
 
-                <div className="hamburger" id="hamburger">
+                <button
+                    type="button"
+                    className="hamburger"
+                    id="hamburger"
+                    aria-label="Open navigation menu"
+                >
                     <span></span>
                     <span></span>
                     <span></span>
-                </div>
+                </button>
             </nav>
 
             <div className="mobile-menu" id="mobileMenu">
-                <button className="menu-close" id="menuClose">
+                <button
+                    type="button"
+                    className="menu-close"
+                    id="menuClose"
+                    aria-label="Close navigation menu"
+                >
                     ✕
                 </button>
 
-                <a href="#about" className="mobile-link">
-                    About
+                <a href="/" className="mobile-link">
+                    Home
                 </a>
-                <a href="#services" className="mobile-link">
+                <a href="/services" className="mobile-link">
                     Services
                 </a>
-                <a href="#packages" className="mobile-link">
-                    Packages
+                <a href="/destination-weddings" className="mobile-link">
+                    Destinations
                 </a>
-                <a href="#venue-partners" className="mobile-link">
-                    Venue Partners
+                <a href="/venues" className="mobile-link">
+                    Venues
                 </a>
-                <a href="#venue-finder" className="mobile-link">
-                    Venue Finder
-                </a>
-                <a href="#gallery" className="mobile-link">
+                <a href="/portfolio" className="mobile-link">
                     Portfolio
                 </a>
-                <a href="#testimonials" className="mobile-link">
-                    Stories
+                <a href="/packages" className="mobile-link">
+                    Packages
                 </a>
-                <a href="#blog" className="mobile-link">
+                <a href="/blogs" className="mobile-link">
                     Blogs
                 </a>
-                <a href="#contact" className="mobile-link">
+                <a href="/contact" className="mobile-link">
                     Contact
-                </a>
-
-                <a
-                    href="#contact"
-                    className="btn-primary"
-                    style={{ fontSize: "0.72rem" }}
-                >
-                    Book Consultation
                 </a>
             </div>
         </>
