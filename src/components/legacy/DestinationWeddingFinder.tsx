@@ -1,224 +1,279 @@
+import type { CSSProperties } from "react";
+
 import VenueFinder from "@/components/legacy/VenueFinder";
-import FinalCTA from "@/components/legacy/FinalCTA";
 
 const weddingStyles = [
     {
-        title: "Hill Destination Wedding",
-        text: "Best for sundowners, intimate pheras and luxury weekend celebrations.",
-        meta: "Mussoorie · Dehradun · Rishikesh",
+        title: "Hill Retreat Wedding",
+        location: "Mussoorie · Shimla · Kasauli",
+        text: "Misty views, intimate rituals, boutique stays and soft sundowner moments.",
     },
     {
-        title: "Jim Corbett Resort Wedding",
-        text: "Perfect for nature-led weddings with rooms, lawns and multi-day functions.",
-        meta: "Resorts · Lawns · 80–250 guests",
+        title: "Forest Resort Wedding",
+        location: "Jim Corbett · Rishikesh",
+        text: "Resort lawns, rooms, poolside functions and relaxed wedding weekends.",
     },
     {
-        title: "Riverside Wedding",
-        text: "Ideal for soulful ceremonies, mehendi lunches and scenic guest experiences.",
-        meta: "Rishikesh · Uttarakhand",
+        title: "Delhi NCR Luxury Wedding",
+        location: "Delhi · Gurgaon · Noida",
+        text: "Premium hotels, farmhouses, controlled logistics and easy access for guests.",
     },
     {
-        title: "Noida Farmhouse Wedding",
-        text: "Best for Delhi NCR couples looking for controlled budgets and flexible decor.",
-        meta: "Noida · Farmhouse · Engagements",
-    },
-    {
-        title: "Rajasthan Heritage Wedding",
-        text: "For regal, editorial and palace-inspired wedding experiences.",
-        meta: "Jaipur · Heritage · Luxury",
-    },
-    {
-        title: "Luxury Hotel Wedding",
-        text: "For couples who want rooms, banquet, hospitality and premium service under one roof.",
-        meta: "Delhi NCR · Jaipur · Varanasi",
+        title: "Heritage Palace Wedding",
+        location: "Jaipur · Udaipur · Rajasthan",
+        text: "Regal settings, cultural warmth, palace backdrops and editorial wedding frames.",
     },
 ];
 
-const destinations = [
-    "Jim Corbett",
-    "Mussoorie",
-    "Rishikesh",
-    "Dehradun",
-    "Noida",
-    "Delhi NCR",
-    "Nainital / Bhimtal",
-    "Jaipur / Rajasthan",
-    "Varanasi",
+const destinationCards = [
+    {
+        name: "Jim Corbett",
+        type: "Nature Resort Weddings",
+        mood: "Lawns · Rooms · Poolside Functions",
+        image: "https://images.unsplash.com/photo-1475027810313-fda7c2c8e71a?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    },
+    {
+        name: "Mussoorie",
+        type: "Hill Wedding Retreats",
+        mood: "Views · Boutique Stays · Sundowners",
+        image: "https://images.unsplash.com/photo-1637387568999-92c68bdee212?q=80&w=1287&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    },
+    {
+        name: "Rishikesh",
+        type: "Riverside Celebrations",
+        mood: "Rituals · Calm Luxury · Scenic Hospitality",
+        image: "https://images.unsplash.com/photo-1718383537411-6f9e727ae0bb?q=80&w=1287&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    },
+    {
+        name: "Jaipur",
+        type: "Heritage Wedding Weekends",
+        mood: "Palaces · Forts · Royal Hospitality",
+        image: "https://images.unsplash.com/photo-1603262110263-fb0112e7cc33?q=80&w=2671&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    },
+    {
+        name: "Udaipur",
+        type: "Lake & Palace Weddings",
+        mood: "Luxury Hotels · Lakeside Frames · Regal Celebrations",
+        image: "https://images.unsplash.com/photo-1715405155995-61757307e065?q=80&w=1287&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    },
+    {
+        name: "Delhi NCR",
+        type: "Luxury City Weddings",
+        mood: "Hotels · Farmhouses · Easy Guest Movement",
+        image: "https://images.unsplash.com/photo-1598977054780-2dc700fdc9d3?q=80&w=1335&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    },
 ];
 
-const budgetBuckets = [
+const methodSteps = [
     {
-        title: "Intimate Wedding",
-        range: "Under ₹15L",
-        text: "Best for compact guest lists, private venues and curated decor.",
+        count: "01",
+        title: "Discover",
+        text: "We understand your guest count, room needs, dates, budget and family priorities.",
     },
     {
-        title: "Destination Wedding",
-        range: "₹25L–₹45L",
-        text: "Ideal for 80–150 guests with rooms, meals and key wedding functions.",
+        count: "02",
+        title: "Shortlist",
+        text: "We curate destinations and venues that actually fit your wedding requirement.",
     },
     {
-        title: "Premium Resort Wedding",
-        range: "₹45L–₹75L",
-        text: "Best for 2-day celebrations with venue, decor, hospitality and entertainment.",
+        count: "03",
+        title: "Design",
+        text: "Decor, hospitality, entertainment and guest flow are planned function-wise.",
     },
     {
-        title: "Luxury Destination Wedding",
-        range: "₹75L+",
-        text: "For full-scale destination weddings with premium venues and complete planning.",
+        count: "04",
+        title: "Execute",
+        text: "Our team coordinates vendors, timelines and on-ground event management.",
     },
 ];
 
-const processSteps = [
-    "Understand guest count, rooms and event style",
-    "Shortlist suitable destinations and venues",
-    "Create function-wise budget and planning scope",
-    "Design decor, experiences and hospitality flow",
-    "Coordinate vendors, artists, logistics and rooms",
-    "Execute the wedding on-ground with Marriqa’s team",
-];
+const destinationSlides = [...destinationCards, ...destinationCards];
 
 export default function DestinationWeddingFinder() {
     return (
-        <main>
-            <section className="destination-page-hero">
-                <div className="destination-page-hero-content reveal">
-                    <span className="section-label">
-                        Destination Weddings by Marriqa
-                    </span>
+        <main className="destination-weddings-page">
+            <section className="dw-hero">
+                <div className="dw-hero-bg"></div>
 
-                    <h1>
-                        Find the right destination, venue and planning
-                        direction.
-                    </h1>
+                <div className="dw-hero-inner">
+                    <div className="dw-hero-copy reveal-left">
+                        <span className="dw-kicker">
+                            Destination Weddings by Marriqa
+                        </span>
 
-                    <p>
-                        From hill resorts to riverside retreats, Noida
-                        farmhouses and heritage-inspired venues, Marriqa helps
-                        you shortlist wedding destinations with clarity around
-                        rooms, budget, guest count and execution.
-                    </p>
+                        <h1>Find your perfect wedding destination.</h1>
 
-                    <div className="destination-hero-stats">
-                        <span>50–300 Guests</span>
-                        <span>2-Day Plans</span>
-                        <span>Venue + Decor + Hospitality</span>
+                        <p>
+                            Explore venues, room plans, decor direction and
+                            destination ideas across Jim Corbett, Mussoorie,
+                            Rishikesh, Jaipur, Udaipur and Delhi NCR.
+                        </p>
+
+                        <div className="dw-hero-actions">
+                            <a
+                                href="#venue-finder"
+                                className="dw-btn dw-btn-primary"
+                            >
+                                Start Venue Match
+                            </a>
+                            <a
+                                href="/contact"
+                                className="dw-btn dw-btn-secondary"
+                            >
+                                Talk to Planner
+                            </a>
+                        </div>
                     </div>
 
-                    <div className="destination-hero-actions">
-                        <a href="#quick-match" className="btn-primary">
-                            Start Quick Match
-                        </a>
-                        <a href="/contact" className="btn-secondary">
-                            Talk to Planner
-                        </a>
+                    <div className="dw-hero-visual reveal-right">
+                        <div className="dw-visual-frame">
+                            <div className="dw-visual-top">
+                                <span>Curated Match</span>
+                                <strong>Wedding Weekend</strong>
+                            </div>
+
+                            <div className="dw-visual-center">
+                                <span>Suggested Direction</span>
+                                <h2>Hill Resort Wedding</h2>
+                                <p>
+                                    100–160 guests · 35 rooms · 2 nights ·
+                                    sundowner · pheras · gala dinner
+                                </p>
+                            </div>
+
+                            <div className="dw-visual-grid">
+                                <div>
+                                    <span>Location</span>
+                                    <strong>Mussoorie</strong>
+                                </div>
+                                <div>
+                                    <span>Style</span>
+                                    <strong>Luxury Retreat</strong>
+                                </div>
+                                <div>
+                                    <span>Budget</span>
+                                    <strong>Custom Plan</strong>
+                                </div>
+                                <div>
+                                    <span>Scope</span>
+                                    <strong>Full Planning</strong>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
 
-            <section id="quick-match" className="destination-section reveal">
-                <div className="destination-section-header">
-                    <span className="section-label">Quick Match</span>
-                    <h2 className="section-title">
-                        Start with your wedding style.
-                    </h2>
-                    <div className="gold-line"></div>
+            <section className="dw-section dw-section-compact">
+                <div className="dw-section-head reveal">
+                    <span className="dw-kicker">Wedding Styles</span>
+                    <h2>Choose the experience before choosing the venue.</h2>
                     <p>
-                        Choose the experience you imagine. We’ll help you match
-                        it with the right destination, venue type, guest count
-                        and budget direction.
+                        Every destination has a different mood. We first define
+                        the wedding style, then shortlist venues that fit the
+                        guest count, rooms and budget.
                     </p>
                 </div>
 
-                <div className="destination-style-grid">
+                <div className="dw-style-grid">
                     {weddingStyles.map((style) => (
                         <article
-                            className="destination-style-card"
+                            className="dw-style-card reveal"
                             key={style.title}
                         >
-                            <span>{style.meta}</span>
+                            <span>{style.location}</span>
                             <h3>{style.title}</h3>
                             <p>{style.text}</p>
-                            <a href="#venue-finder">Explore Matches</a>
                         </article>
                     ))}
                 </div>
             </section>
 
-            <section className="destination-section reveal">
-                <div className="destination-section-header">
-                    <span className="section-label">Popular Locations</span>
-                    <h2 className="section-title">
-                        Wedding destinations we curate.
+            <section className="dw-destination-carousel-section">
+                <div className="dw-carousel-head reveal">
+                    <span className="dw-kicker">Curated Destinations</span>
+                    <h2>
+                        Places that work beautifully for Indian wedding
+                        weekends.
                     </h2>
-                    <div className="gold-line"></div>
+                    <p>
+                        We look at rooms, food flow, guest movement, weather,
+                        access, function spaces and decor possibilities before
+                        recommending a destination.
+                    </p>
                 </div>
 
-                <div className="destination-location-grid">
-                    {destinations.map((destination) => (
-                        <a
-                            href="#venue-finder"
-                            className="destination-location-card"
-                            key={destination}
-                        >
-                            {destination}
-                        </a>
-                    ))}
+                <div className="dw-destination-carousel reveal">
+                    <div className="dw-destination-track">
+                        {destinationSlides.map((destination, index) => (
+                            <article
+                                className="dw-destination-slide"
+                                key={`${destination.name}-${index}`}
+                                style={
+                                    {
+                                        "--destination-image": `url(${destination.image})`,
+                                    } as CSSProperties
+                                }
+                            >
+                                <div className="dw-slide-content">
+                                    <span>{destination.type}</span>
+                                    <h3>{destination.name}</h3>
+                                    <p>{destination.mood}</p>
+                                </div>
+                            </article>
+                        ))}
+                    </div>
                 </div>
             </section>
 
-            <VenueFinder />
+            <section id="venue-finder" className="dw-finder-section">
+                <div className="dw-finder-shell dw-finder-shell-single reveal">
+                    <VenueFinder />
+                </div>
+            </section>
 
-            <section className="destination-section reveal">
-                <div className="destination-section-header">
-                    <span className="section-label">Budget Direction</span>
-                    <h2 className="section-title">
-                        Choose a comfortable planning bracket.
+            <section className="dw-method-section">
+                <div className="dw-section-head reveal">
+                    <span className="dw-kicker">Marriqa Method</span>
+                    <h2>
+                        From shortlist to execution, one clear planning flow.
                     </h2>
-                    <div className="gold-line"></div>
                 </div>
 
-                <div className="budget-bucket-grid">
-                    {budgetBuckets.map((bucket) => (
+                <div className="dw-method-grid">
+                    {methodSteps.map((step) => (
                         <article
-                            className="budget-bucket-card"
-                            key={bucket.title}
+                            className="dw-method-card reveal"
+                            key={step.title}
                         >
-                            <span>{bucket.range}</span>
-                            <h3>{bucket.title}</h3>
-                            <p>{bucket.text}</p>
-                            <a href="/contact">Get Plan</a>
+                            <span>{step.count}</span>
+                            <h3>{step.title}</h3>
+                            <p>{step.text}</p>
                         </article>
                     ))}
                 </div>
             </section>
 
-            <section className="destination-section reveal">
-                <div className="destination-section-header">
-                    <span className="section-label">How It Works</span>
-                    <h2 className="section-title">
-                        How Marriqa plans your destination wedding.
-                    </h2>
-                    <div className="gold-line"></div>
-                </div>
+            <section className="dw-final-cta reveal">
+                <div className="dw-final-cta-inner">
+                    <span className="dw-kicker">Request Destination Plan</span>
+                    <h2>Need a clear venue, budget and wedding plan?</h2>
+                    <p>
+                        Share your guest count, rooms, dates and preferred
+                        locations. Our team will help you build a clear
+                        destination wedding plan.
+                    </p>
 
-                <div className="planning-process-grid">
-                    {processSteps.map((step, index) => (
-                        <article className="planning-process-card" key={step}>
-                            <span>{String(index + 1).padStart(2, "0")}</span>
-                            <p>{step}</p>
-                        </article>
-                    ))}
+                    <div className="dw-hero-actions">
+                        <a href="/contact" className="dw-btn dw-btn-primary">
+                            Request Plan
+                        </a>
+                        <a href="/venues" className="dw-btn dw-btn-secondary">
+                            Explore Venues
+                        </a>
+                    </div>
                 </div>
             </section>
-
-            <FinalCTA
-                eyebrow="Request Destination Plan"
-                title="Need a venue, budget and function-wise plan?"
-                text="Share your guest count, room requirement, budget and preferred locations. Our team will help you shortlist the right destination wedding options."
-                buttonText="Request Detailed Plan"
-                buttonHref="/contact"
-            />
         </main>
     );
 }
