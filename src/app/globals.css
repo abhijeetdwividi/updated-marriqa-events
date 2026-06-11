@@ -14908,3 +14908,796 @@ body:has(.destination-weddings-page) {
         width: 100%;
     }
 }
+/* ─────────────────────────────────────────────
+   VENUES PAGE V2 — PREMIUM VENUE CURATION PAGE
+───────────────────────────────────────────── */
+
+.venues-page-v2 {
+    background: #050505;
+    color: var(--white);
+    overflow: hidden;
+}
+
+.vn-hero {
+    position: relative;
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    padding: 9rem 6vw 6rem;
+    overflow: hidden;
+    background:
+        radial-gradient(
+            circle at 16% 16%,
+            rgba(212, 175, 55, 0.08),
+            transparent 27%
+        ),
+        radial-gradient(
+            circle at 82% 24%,
+            rgba(92, 21, 41, 0.32),
+            transparent 34%
+        ),
+        linear-gradient(180deg, #090808 0%, #050505 100%);
+}
+
+.vn-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(rgba(212, 175, 55, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(212, 175, 55, 0.025) 1px, transparent 1px);
+    background-size: 86px 86px;
+    mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.58), transparent 86%);
+    pointer-events: none;
+}
+
+.vn-hero-glow {
+    position: absolute;
+    right: -12vw;
+    top: 18%;
+    width: 36vw;
+    height: 36vw;
+    border-radius: 999px;
+    background: rgba(212, 175, 55, 0.06);
+    filter: blur(70px);
+    pointer-events: none;
+}
+
+.vn-hero-inner {
+    position: relative;
+    z-index: 2;
+    width: min(1120px, 100%);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 410px;
+    gap: 5rem;
+    align-items: center;
+}
+
+.vn-kicker {
+    display: inline-flex;
+    width: fit-content;
+    max-width: max-content;
+    align-items: center;
+    justify-content: center;
+    color: var(--gold);
+    border: 1px solid rgba(212, 175, 55, 0.22);
+    background: rgba(212, 175, 55, 0.055);
+    padding: 0.36rem 0.72rem;
+    font-size: 0.54rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+}
+
+.vn-hero-copy h1,
+.vn-positioning h2,
+.vn-section-head h2 {
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 300;
+    color: var(--white);
+    letter-spacing: -0.045em;
+}
+
+.vn-hero-copy h1 {
+    max-width: 760px;
+    font-size: clamp(3.2rem, 7vw, 6.8rem);
+    line-height: 0.92;
+    margin-bottom: 1.2rem;
+}
+
+.vn-hero-copy p {
+    max-width: 620px;
+    color: rgba(245, 241, 232, 0.7);
+    font-size: 0.9rem;
+    line-height: 1.85;
+    margin-bottom: 1.7rem;
+}
+
+.vn-hero-actions {
+    display: flex;
+    gap: 0.85rem;
+    flex-wrap: wrap;
+}
+
+.vn-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 46px;
+    padding: 0.9rem 1.25rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 0.62rem;
+    letter-spacing: 0.18em;
+    transition:
+        transform 0.35s ease,
+        border-color 0.35s ease,
+        background 0.35s ease,
+        color 0.35s ease;
+}
+
+.vn-btn:hover {
+    transform: translateY(-2px);
+}
+
+.vn-btn-primary {
+    background: var(--gold);
+    border: 1px solid var(--gold);
+    color: #050505;
+}
+
+.vn-btn-secondary {
+    background: transparent;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    color: var(--gold);
+}
+
+.vn-btn-secondary:hover {
+    border-color: rgba(212, 175, 55, 0.6);
+    background: rgba(212, 175, 55, 0.06);
+}
+
+.vn-hero-panel {
+    position: relative;
+    border: 1px solid rgba(212, 175, 55, 0.22);
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.055),
+            rgba(255, 255, 255, 0.014)
+        ),
+        #080808;
+    padding: 1.4rem;
+    min-height: 465px;
+}
+
+.vn-hero-panel::before {
+    content: "";
+    position: absolute;
+    inset: 12px;
+    border: 1px solid rgba(212, 175, 55, 0.09);
+    pointer-events: none;
+}
+
+.vn-panel-label {
+    position: relative;
+    z-index: 2;
+    display: block;
+    color: var(--gold);
+    font-size: 0.52rem;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    margin-bottom: 1.8rem;
+}
+
+.vn-panel-list {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.8rem;
+}
+
+.vn-panel-list div {
+    border-top: 1px solid rgba(212, 175, 55, 0.14);
+    padding-top: 0.85rem;
+}
+
+.vn-panel-list strong {
+    display: block;
+    font-family: "Cormorant Garamond", serif;
+    color: rgba(212, 175, 55, 0.9);
+    font-size: 2.1rem;
+    font-weight: 300;
+    line-height: 1;
+    margin-bottom: 0.35rem;
+}
+
+.vn-panel-list span {
+    display: block;
+    color: rgba(245, 241, 232, 0.68);
+    font-size: 0.7rem;
+    line-height: 1.5;
+}
+
+/* Positioning */
+
+.vn-positioning {
+    padding: 5.5rem 6vw;
+    background:
+        radial-gradient(
+            circle at 16% 20%,
+            rgba(92, 21, 41, 0.18),
+            transparent 30%
+        ),
+        #050505;
+}
+
+.vn-positioning-inner {
+    max-width: 860px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.vn-positioning-inner .vn-kicker {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.vn-positioning h2 {
+    font-size: clamp(2.65rem, 5vw, 4.7rem);
+    line-height: 0.98;
+    margin-bottom: 1rem;
+}
+
+.vn-positioning p {
+    max-width: 660px;
+    margin: 0 auto;
+    color: rgba(245, 241, 232, 0.68);
+    font-size: 0.84rem;
+    line-height: 1.72;
+}
+
+/* Venue styles */
+
+.vn-style-section {
+    padding: 5.8rem 6vw 6.3rem;
+    background:
+        radial-gradient(
+            circle at 84% 14%,
+            rgba(212, 175, 55, 0.055),
+            transparent 30%
+        ),
+        #080707;
+}
+
+.vn-section-head {
+    max-width: 760px;
+    margin: 0 auto 2.5rem;
+    text-align: center;
+}
+
+.vn-section-head .vn-kicker {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.vn-section-head h2 {
+    max-width: 720px;
+    margin: 0 auto 0.9rem;
+    font-size: clamp(2.55rem, 4.8vw, 4.4rem);
+    line-height: 1;
+}
+
+.vn-section-head p {
+    max-width: 580px;
+    margin: 0 auto;
+    color: rgba(245, 241, 232, 0.68);
+    font-size: 0.84rem;
+    line-height: 1.7;
+}
+
+.vn-style-grid {
+    max-width: 1120px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.9rem;
+}
+
+.vn-style-card {
+    position: relative;
+    min-height: 260px;
+    border: 1px solid rgba(212, 175, 55, 0.16);
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.045),
+            rgba(255, 255, 255, 0.012)
+        ),
+        #080808;
+    padding: 1.2rem;
+    overflow: hidden;
+    transition:
+        transform 0.35s ease,
+        border-color 0.35s ease,
+        background 0.35s ease;
+}
+
+.vn-style-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(212, 175, 55, 0.42);
+    background:
+        linear-gradient(
+            145deg,
+            rgba(212, 175, 55, 0.065),
+            rgba(255, 255, 255, 0.014)
+        ),
+        #080808;
+}
+
+.vn-style-card > span {
+    display: block;
+    font-family: "Cormorant Garamond", serif;
+    color: rgba(212, 175, 55, 0.86);
+    font-size: 2.4rem;
+    font-weight: 300;
+    line-height: 1;
+    margin-bottom: 1.2rem;
+}
+
+.vn-style-card h3 {
+    font-family: "Cormorant Garamond", serif;
+    color: var(--white);
+    font-size: 1.75rem;
+    font-weight: 300;
+    line-height: 1;
+    margin-bottom: 0.7rem;
+}
+
+.vn-style-card p {
+    color: rgba(245, 241, 232, 0.66);
+    font-size: 0.73rem;
+    line-height: 1.62;
+}
+
+/* Mobile */
+
+@media (max-width: 1020px) {
+    .vn-hero-inner {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+
+    .vn-hero-panel {
+        max-width: 620px;
+        min-height: auto;
+    }
+
+    .vn-style-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        max-width: 720px;
+    }
+}
+
+@media (max-width: 700px) {
+    .vn-hero {
+        min-height: auto;
+        padding: 7.2rem 1.15rem 4rem;
+        align-items: flex-start;
+    }
+
+    .vn-hero-inner,
+    .vn-positioning-inner,
+    .vn-section-head,
+    .vn-style-grid {
+        max-width: 330px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .vn-hero-copy h1 {
+        font-size: clamp(2.5rem, 13vw, 3.65rem);
+        line-height: 0.95;
+    }
+
+    .vn-hero-copy p {
+        font-size: 0.76rem;
+        line-height: 1.65;
+    }
+
+    .vn-hero-actions {
+        flex-direction: column;
+    }
+
+    .vn-btn {
+        width: 100%;
+        min-height: 44px;
+        padding: 0.85rem 1rem;
+    }
+
+    .vn-hero-panel {
+        padding: 1.1rem;
+    }
+
+    .vn-panel-list {
+        grid-template-columns: 1fr;
+    }
+
+    .vn-positioning,
+    .vn-style-section {
+        padding: 3.8rem 1.15rem;
+    }
+
+    .vn-positioning-inner,
+    .vn-section-head {
+        text-align: left;
+    }
+
+    .vn-positioning-inner .vn-kicker,
+    .vn-section-head .vn-kicker {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .vn-positioning h2,
+    .vn-section-head h2 {
+        font-size: clamp(2rem, 9vw, 2.65rem);
+        line-height: 1.02;
+    }
+
+    .vn-positioning p,
+    .vn-section-head p {
+        font-size: 0.74rem;
+        line-height: 1.58;
+    }
+
+    .vn-style-grid {
+        grid-template-columns: 1fr;
+        gap: 0.8rem;
+    }
+
+    .vn-style-card {
+        min-height: auto;
+        padding: 1rem;
+    }
+
+    body:has(.venues-page-v2) .floating-enquiry-button {
+        display: none !important;
+    }
+}
+
+@media (max-width: 390px) {
+    .vn-hero-inner,
+    .vn-positioning-inner,
+    .vn-section-head,
+    .vn-style-grid {
+        max-width: 308px;
+    }
+}
+/* ─────────────────────────────────────────────
+   VENUES PAGE — REFINED CLEAN VERSION
+───────────────────────────────────────────── */
+
+.venues-page-refined .vn-hero {
+    min-height: 86vh !important;
+    padding-bottom: 5rem !important;
+}
+
+.venues-page-refined #venue-partners {
+    padding-top: 5.6rem !important;
+}
+
+.venues-page-refined .vn-hero-copy h1 {
+    max-width: 620px;
+}
+
+.venues-page-refined .vn-hero-copy p {
+    max-width: 620px;
+}
+
+.venues-page-refined .vn-hero-panel {
+    min-height: 430px !important;
+}
+
+.venues-page-refined .vn-panel-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 1rem !important;
+}
+
+.venues-page-refined .vn-panel-list div {
+    padding-top: 0.9rem !important;
+}
+
+.venues-page-refined .vn-panel-list strong {
+    font-size: 2rem !important;
+}
+
+.venues-page-refined .vn-panel-list span {
+    font-size: 0.7rem !important;
+}
+
+/* Hide old venue-page sections if CSS/classes still exist somewhere */
+.venues-page-refined .vn-positioning,
+.venues-page-refined .vn-style-section {
+    display: none !important;
+}
+
+/* Make VenuePartners feel closer to hero */
+.venues-page-refined #venue-partners {
+    background:
+        radial-gradient(
+            circle at 16% 18%,
+            rgba(212, 175, 55, 0.04),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 88% 30%,
+            rgba(92, 21, 41, 0.2),
+            transparent 34%
+        ),
+        #080707 !important;
+}
+
+/* Final CTA spacing refinement */
+.venues-page-refined .home-final-cta,
+.venues-page-refined .premium-cta,
+.venues-page-refined .home-final-cta-inner {
+    margin-top: 0 !important;
+}
+
+@media (max-width: 700px) {
+    .venues-page-refined .vn-hero {
+        min-height: auto !important;
+        padding-bottom: 3.8rem !important;
+    }
+
+    .venues-page-refined #venue-partners {
+        padding-top: 3.8rem !important;
+    }
+
+    .venues-page-refined .vn-panel-list {
+        grid-template-columns: 1fr !important;
+    }
+
+    .venues-page-refined .vn-hero-panel {
+        min-height: auto !important;
+    }
+}
+/* ─────────────────────────────────────────────
+   VENUES HERO — PREMIUM CONTENT ADDITION
+───────────────────────────────────────────── */
+
+.vn-hero-proof {
+    max-width: 680px;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.7rem;
+    margin: 1.45rem 0 1.55rem;
+}
+
+.vn-hero-proof div {
+    border: 1px solid rgba(212, 175, 55, 0.14);
+    background: rgba(255, 255, 255, 0.025);
+    padding: 0.85rem;
+}
+
+.vn-hero-proof strong {
+    display: block;
+    color: var(--gold);
+    font-family: "Cormorant Garamond", serif;
+    font-size: 1.25rem;
+    font-weight: 300;
+    line-height: 1;
+    margin-bottom: 0.42rem;
+}
+
+.vn-hero-proof span {
+    display: block;
+    color: rgba(245, 241, 232, 0.62);
+    font-size: 0.68rem;
+    line-height: 1.45;
+}
+
+.venues-page-refined .vn-hero-copy p {
+    margin-bottom: 0 !important;
+}
+
+@media (max-width: 700px) {
+    .vn-hero-proof {
+        grid-template-columns: 1fr;
+        max-width: 330px;
+        gap: 0.65rem;
+        margin: 1.25rem 0 1.35rem;
+    }
+
+    .vn-hero-proof div {
+        padding: 0.78rem;
+    }
+
+    .vn-hero-proof strong {
+        font-size: 1.15rem;
+    }
+
+    .vn-hero-proof span {
+        font-size: 0.68rem;
+    }
+}
+
+@media (max-width: 390px) {
+    .vn-hero-proof {
+        max-width: 308px;
+    }
+}
+/* ─────────────────────────────────────────────
+   VENUES HERO BUTTON SIZE FIX
+───────────────────────────────────────────── */
+
+.venues-page-v2 .vn-hero-actions {
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.8rem !important;
+}
+
+.venues-page-v2 .vn-hero-actions .vn-btn {
+    width: 210px !important;
+    min-height: 46px !important;
+    padding: 0.85rem 1rem !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    line-height: 1 !important;
+    font-size: 0.58rem !important;
+    letter-spacing: 0.17em !important;
+    white-space: nowrap !important;
+}
+
+/* Secondary button same visual weight */
+.venues-page-v2 .vn-hero-actions .vn-btn-secondary {
+    border-color: rgba(212, 175, 55, 0.35) !important;
+}
+
+/* Mobile full width */
+@media (max-width: 700px) {
+    .venues-page-v2 .vn-hero-actions {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 0.7rem !important;
+    }
+
+    .venues-page-v2 .vn-hero-actions .vn-btn {
+        width: 100% !important;
+        min-height: 44px !important;
+        font-size: 0.56rem !important;
+    }
+}
+/* ─────────────────────────────────────────────
+   VENUES HERO — FINAL BUTTON ALIGNMENT FIX
+───────────────────────────────────────────── */
+
+.venues-page-v2 .vn-hero-actions {
+    width: 100% !important;
+    max-width: 495px !important;
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 0.75rem !important;
+    align-items: stretch !important;
+    margin-top: 1.15rem !important;
+}
+
+.venues-page-v2 .vn-hero-actions .vn-btn {
+    width: 100% !important;
+    min-width: 0 !important;
+    height: 54px !important;
+    min-height: 54px !important;
+    padding: 0 1rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    line-height: 1.15 !important;
+    font-size: 0.58rem !important;
+    letter-spacing: 0.16em !important;
+    white-space: normal !important;
+    box-sizing: border-box !important;
+}
+
+.venues-page-v2 .vn-hero-actions .vn-btn-primary,
+.venues-page-v2 .vn-hero-actions .vn-btn-secondary {
+    border-width: 1px !important;
+}
+
+/* Outline button ko visual weight do, warna filled button bada lagta hai */
+.venues-page-v2 .vn-hero-actions .vn-btn-secondary {
+    background: rgba(212, 175, 55, 0.035) !important;
+    border-color: rgba(212, 175, 55, 0.38) !important;
+}
+
+/* Mobile */
+@media (max-width: 700px) {
+    .venues-page-v2 .vn-hero-actions {
+        max-width: 330px !important;
+        grid-template-columns: 1fr !important;
+        gap: 0.7rem !important;
+    }
+
+    .venues-page-v2 .vn-hero-actions .vn-btn {
+        height: 48px !important;
+        min-height: 48px !important;
+        font-size: 0.56rem !important;
+    }
+}
+
+@media (max-width: 390px) {
+    .venues-page-v2 .vn-hero-actions {
+        max-width: 308px !important;
+    }
+}
+/* ─────────────────────────────────────────────
+   VENUES PAGE — REMOVE FIND MY VENUE CTA
+───────────────────────────────────────────── */
+
+.venues-page-v2 .venue-partners-cta {
+    display: none !important;
+}
+
+/* Final hero button alignment */
+.venues-page-v2 .vn-hero-actions {
+    width: 100% !important;
+    max-width: 495px !important;
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 0.75rem !important;
+    align-items: stretch !important;
+    margin-top: 1.15rem !important;
+}
+
+.venues-page-v2 .vn-hero-actions .vn-btn {
+    width: 100% !important;
+    min-width: 0 !important;
+    height: 54px !important;
+    min-height: 54px !important;
+    padding: 0 1rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    line-height: 1.15 !important;
+    font-size: 0.58rem !important;
+    letter-spacing: 0.16em !important;
+    white-space: normal !important;
+    box-sizing: border-box !important;
+}
+
+.venues-page-v2 .vn-hero-actions .vn-btn-primary,
+.venues-page-v2 .vn-hero-actions .vn-btn-secondary {
+    border-width: 1px !important;
+}
+
+.venues-page-v2 .vn-hero-actions .vn-btn-secondary {
+    background: rgba(212, 175, 55, 0.035) !important;
+    border-color: rgba(212, 175, 55, 0.38) !important;
+}
+
+/* Mobile */
+@media (max-width: 700px) {
+    .venues-page-v2 .vn-hero-actions {
+        max-width: 330px !important;
+        grid-template-columns: 1fr !important;
+        gap: 0.7rem !important;
+    }
+
+    .venues-page-v2 .vn-hero-actions .vn-btn {
+        height: 48px !important;
+        min-height: 48px !important;
+        font-size: 0.56rem !important;
+    }
+}
+
+@media (max-width: 390px) {
+    .venues-page-v2 .vn-hero-actions {
+        max-width: 308px !important;
+    }
+}
