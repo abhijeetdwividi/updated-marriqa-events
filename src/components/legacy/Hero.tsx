@@ -37,7 +37,7 @@ export default function Hero() {
                     <a href="#contact" className="btn-primary">
                         Book Consultation
                     </a>
-                    <a href="#gallery" className="btn-outline">
+                    <a href="/portfolio" className="btn-outline">
                         View Portfolio
                     </a>
                 </div>
