@@ -14,12 +14,16 @@ export default function FinalCTA({
     buttonHref = "/contact",
 }: FinalCTAProps) {
     return (
-        <section className="final-cta-section reveal">
-            <div className="final-cta-card">
-                <span>{eyebrow}</span>
+        <section className="home-final-cta reveal">
+            <div className="home-final-cta-inner">
+                <span className="home-luxe-kicker">{eyebrow}</span>
                 <h2>{title}</h2>
                 <p>{text}</p>
-                <a href={buttonHref} className="btn-primary">
+
+                <a
+                    href={buttonHref}
+                    className="home-luxe-btn home-luxe-btn-primary"
+                >
                     {buttonText}
                 </a>
             </div>

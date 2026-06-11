@@ -3,8 +3,8 @@ import Hero from "@/components/legacy/Hero";
 import HomeIntro from "@/components/legacy/HomeIntro";
 import ServicesPreview from "@/components/legacy/ServicesPreview";
 import DestinationFinderPreview from "@/components/legacy/DestinationFinderPreview";
-import VenuePartners from "@/components/legacy/VenuePartners";
-import Gallery from "@/components/legacy/Gallery";
+import FeaturedVenuesPreview from "@/components/legacy/FeaturedVenuesPreview";
+import PortfolioPreview from "@/components/legacy/PortfolioPreview";
 import Testimonials from "@/components/legacy/Testimonials";
 import Instagram from "@/components/legacy/Instagram";
 import FinalCTA from "@/components/legacy/FinalCTA";
@@ -56,15 +56,8 @@ export default function Home() {
             <HomeIntro />
             <ServicesPreview />
             <DestinationFinderPreview />
-
-            <section className="home-section-short">
-                <VenuePartners />
-            </section>
-
-            <section className="home-section-short">
-                <Gallery />
-            </section>
-
+            <FeaturedVenuesPreview />
+            <PortfolioPreview />
             <Testimonials />
 
             <FinalCTA
